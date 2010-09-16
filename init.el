@@ -62,7 +62,7 @@
 ; (color-theme-vim-colors)
 ; (color-theme-snowish)
 ;(color-theme-clarity)		
-(set-default-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+;(set-default-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 (require 'ecb)
 (require 'ecb-autoloads)
 (require 'window-numbering)
@@ -74,7 +74,7 @@
 (if window-system 
     (progn
 	(server-start)
-	(fullscreen)
+	(my-fullscreen)
 	(make-my-layout)))
 
 ;;(clojure-slime-config "/home/rags/projects/clojure/src")
