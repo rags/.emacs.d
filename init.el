@@ -1,14 +1,19 @@
-(defun load-quick()
-  ;;load fast for "emacs -nw"
+
+(defun load-all ()
+
   (custom-set-variables
    '(inhibit-startup-screen t)
    '(initial-scratch-message nil)
-   '(menu-bar-mode nil))
-  (global-set-key (kbd "C-x c") 'save-buffers-kill-emacs)
-  )
+   '(menu-bar-mode nil)
+   '(ecb-options-version "2.32")
+   '(ido-create-new-buffer (quote always))
+   '(show-paren-mode t)
+   '(tool-bar-mode nil)
+   '(desktop-save-buffer nil)
+   '(transient-mark-mode nil)
+   '(desktop-load-locked-desktop t))
+  
 
-(defun load-all ()
-  (load-quick)
   (put 'narrow-to-region 'disabled nil)
   (put 'set-goal-column 'disabled nil)
   (show-paren-mode 1)
@@ -24,15 +29,9 @@
   (column-number-mode 1)
   (display-time-mode 1)
   (winner-mode 1)
-  (fset 'yes-or-no-p 'y-or-n-p)
-
-  (custom-set-variables
-   '(ecb-options-version "2.32")
-   '(ido-create-new-buffer (quote always))
-   '(show-paren-mode t)
-   '(tool-bar-mode nil)
-   '(transient-mark-mode nil))
-
+  (fset 'yes-or-no-p 'y-or-n-p)   	
+  
+  
   (when
       (load
        (expand-file-name "~/.emacs.d/elpa/package.el"))
@@ -42,6 +41,7 @@
     (load-file (concat plugins-dir "cua-emul.el"))
     (load-file (concat plugins-dir "ido.el"))
     (load-file (concat plugins-dir "encrypt.el"))
+    (load-file (concat plugins-dir "paredit.el"))
     (setq load-path 
 	  (append `(,emacs.d ,plugins-dir
 			     ,(concat plugins-dir "color-theme")
@@ -50,11 +50,14 @@
 			     ,(concat plugins-dir "speedbar")
 			     ,(concat plugins-dir "semantic")
 			     ,(concat plugins-dir "eieio")
+			     ,(concat plugins-dir "slime")
+			     ,(concat plugins-dir "clojure-mode")
 			     ) load-path)))
 
   (autoload 'encrypt-decrypt "encrypt"
     "Decrypt a crypted file use encrypt coding system" t)
 
+  (desktop-save-mode 1)
   (require 'ido)
   (ido-mode t)
 
@@ -76,12 +79,35 @@
   (window-numbering-mode 1)
   (require 'mydefuns)
   (require 'myshortcuts)
-					;(require 'gmail)
+  (require 'clojure-mode)
+  (require 'paredit)
+  
+  (eval-after-load "slime" 
+  '(progn (slime-setup '(slime-repl))	
+	(defun paredit-mode-enable () (paredit-mode 1))	
+	(add-hook 'slime-mode-hook 'paredit-mode-enable)	
+	(add-hook 'slime-repl-mode-hook 'paredit-mode-enable)
+	(setq slime-protocol-version 'ignore)))
+  (require 'slime)
+  (slime-setup)
 
-  (server-start)
+  (add-hook 'after-make-frame-functions 'client-initialization)
+  
+  
+  ;;(require 'gmail)
+
+  ;;(server-start)
+  ;;(my-fullscreen)
+  ;;(make-my-layout)
+)
+
+(defun client-initialization (frame)
+  "frame initialization ui/layout related"
+  (interactive)
+  (select-frame frame)
   (my-fullscreen)
   (make-my-layout))
 
-(if window-system (load-all) (load-quick))
-
+(load-all)
+;;(if window-system (load-all) (load-quick))
 ;;(clojure-slime-config "/home/rags/projects/clojure/src")

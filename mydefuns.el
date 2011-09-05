@@ -1,19 +1,19 @@
 (defvar my-fullscreen-p t "Check if fullscreen is on or off")
 
-(defun my-non-fullscreen ()
+(defun my-non-fullscreen (&optional frame)
   (interactive)
   (if (fboundp 'w32-send-sys-command)
 	  ;; WM_SYSCOMMAND restore #xf120
 	  (w32-send-sys-command 61728))
-	(progn (set-frame-parameter nil 'width 82)
-		   (set-frame-parameter nil 'fullscreen 'fullheight)))
+	(progn (set-frame-parameter frame 'width 82)
+		   (set-frame-parameter frame 'fullscreen 'fullheight)))
 
-(defun my-fullscreen ()
+(defun my-fullscreen (&optional frame)
   (interactive)
   (if (fboundp 'w32-send-sys-command)
 	  ;; WM_SYSCOMMAND maximaze #xf030
 	  (w32-send-sys-command 61488))
-	(set-frame-parameter nil 'fullscreen 'fullboth))
+	(set-frame-parameter frame 'fullscreen 'fullboth))
 
 (defun fullscreen ()
   (interactive)
