@@ -32,10 +32,7 @@
   (fset 'yes-or-no-p 'y-or-n-p)   	
   
   
-  (when
-      (load
-       (expand-file-name "~/.emacs.d/elpa/package.el"))
-    (package-initialize))
+  
 
   (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
     (load-file (concat plugins-dir "cua-emul.el"))
