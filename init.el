@@ -13,11 +13,11 @@
    '(transient-mark-mode nil)
    '(desktop-load-locked-desktop t))
   
-
+  (setq stack-trace-on-error t)
   (put 'narrow-to-region 'disabled nil)
   (put 'set-goal-column 'disabled nil)
   (show-paren-mode 1)
-  (tool-bar-mode -1)
+  (if (boundp 'tool-bar-mode)  (tool-bar-mode -1))
   (setq frame-title-format "%b")
   (setq x-select-enable-clipboard t)
   (recentf-mode 1)
@@ -25,7 +25,7 @@
   (put 'upcase-region 'disabled nil)
   (delete-selection-mode t) 
   (transient-mark-mode nil)
-  (scroll-bar-mode 0)
+  (if (boundp 'scroll-bar-mode) (scroll-bar-mode 0))
   (column-number-mode 1)
   (display-time-mode 1)
   (winner-mode 1)
@@ -39,14 +39,15 @@
     (load-file (concat plugins-dir "ido.el"))
     (load-file (concat plugins-dir "encrypt.el"))
     (load-file (concat plugins-dir "paredit.el"))
+    (load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
     (setq load-path 
 	  (append `(,emacs.d ,plugins-dir
 			     ,(concat plugins-dir "color-theme")
 			     ,(concat plugins-dir "nxml-mode")
-			     ,(concat plugins-dir "ecb")
 			     ,(concat plugins-dir "speedbar")
 			     ,(concat plugins-dir "semantic")
 			     ,(concat plugins-dir "eieio")
+			     ,(concat plugins-dir "ecb")
 			     ,(concat plugins-dir "slime")
 			     ,(concat plugins-dir "clojure-mode")
 			     ) load-path)))
@@ -108,3 +109,25 @@
 (load-all)
 ;;(if window-system (load-all) (load-quick))
 ;;(clojure-slime-config "/home/rags/projects/clojure/src")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(desktop-load-locked-desktop t)
+ '(desktop-save-buffer nil t)
+ '(ecb-options-version "2.32")
+ '(ecb-wget-setup (quote cons))
+ '(ido-create-new-buffer (quote always))
+ '(inhibit-startup-screen t)
+ '(initial-scratch-message nil)
+ '(menu-bar-mode nil)
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
+ '(transient-mark-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
