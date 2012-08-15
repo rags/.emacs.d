@@ -78,6 +78,25 @@
   (map nil (function kill-buffer)
        (remove-if (function buffer-modified-p) (buffer-list))))
 
+(defun  python-stuff ()
+  (epy-setup-ipython)
+  (epy-setup-checker "pyflakes %f")
+  (setq default-tab-width 4)
+  (add-hook 'python-mode-hook
+	  (lambda ()
+		(smart-operator-mode 1)
+	    )))
+
+(defun make-desktop-load-non-blocking ()
+  (defadvice desktop-restore-file-buffer
+	(around my-desktop-restore-file-buffer-advice)
+	"Be non-interactive while starting a daemon."
+	(if (and (daemonp)
+			 (not server-process))
+		(let ((noninteractive t))
+		  ad-do-it)
+	  ad-do-it))
+  (ad-activate 'desktop-restore-file-buffer))
 (provide 'mydefuns)
 
 

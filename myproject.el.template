@@ -1,0 +1,3 @@
+(setq default-directory "~/projects/hagglev1")
+
+(provide 'myproject)

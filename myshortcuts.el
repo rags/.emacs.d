@@ -1,5 +1,8 @@
 (global-set-key [f11] 'fullscreen)
 (global-set-key (kbd "<C-return>") 'duplicate-line)
+(global-set-key (kbd "C-c d") 'duplicate-line)
+(global-set-key (kbd "C-RET") 'duplicate-line)
+(global-set-key  [(control return)] 'duplicate-line)
 (global-set-key (kbd "M-RET") 'duplicate)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "<M-f4>") 'save-buffers-kill-terminal)
