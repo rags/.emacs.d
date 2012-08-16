@@ -79,7 +79,7 @@
   (require 'myshortcuts)
   (require 'clojure-mode)
   (require 'paredit)
-  
+    
   (eval-after-load "slime" 
   '(progn (slime-setup '(slime-repl))	
 	(defun paredit-mode-enable () (paredit-mode 1))	
@@ -88,7 +88,7 @@
 	(setq slime-protocol-version 'ignore)))
   (require 'slime)
   (slime-setup)
-
+  (require 'myproject nil 'noerror)
   (add-hook 'after-make-frame-functions 'client-initialization)
   (python-stuff)
   ;;(require 'gmail)
