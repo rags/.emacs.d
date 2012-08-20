@@ -85,7 +85,12 @@
   (add-hook 'python-mode-hook
 	  (lambda ()
 		(smart-operator-mode 1)
+		(define-key smart-operator-mode-map  "." 'op-override-.)
 	    )))
+
+(defun op-override-. ()
+  (interactive)
+  (insert "."))
 
 (defun make-desktop-load-non-blocking ()
   (defadvice desktop-restore-file-buffer

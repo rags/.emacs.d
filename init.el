@@ -28,7 +28,6 @@
 
   (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
     (load-file (concat plugins-dir "cua-emul.el"))
-    (load-file (concat plugins-dir "ido.el"))
     (load-file (concat plugins-dir "encrypt.el"))
     (load-file (concat plugins-dir "flymake.el"))
     (load-file (concat plugins-dir "paredit.el"))
@@ -38,13 +37,10 @@
 	  (append `(,emacs.d ,plugins-dir
 			     ,(concat plugins-dir "color-theme")
 			     ,(concat plugins-dir "nxml-mode")
-			     ,(concat plugins-dir "speedbar")
-			     ,(concat plugins-dir "semantic")
-			     ,(concat plugins-dir "eieio")
-			     ,(concat plugins-dir "ecb")
 			     ,(concat plugins-dir "slime")
 			     ,(concat plugins-dir "clojure-mode")
 			     ,(concat plugins-dir "emacs-for-python")
+			     ,(concat plugins-dir "ecb")
 			     ) load-path)))
   (add-to-list 'exec-path "/usr/local/bin")
 
@@ -74,7 +70,7 @@
 					;(set-default-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
   (require 'smart-operator)
   (require 'ecb)
-  (require 'ecb-autoloads)
+  ;(require 'ecb-autoloads)
   (require 'window-numbering)
   (window-numbering-mode 1)
   (require 'myshortcuts)
