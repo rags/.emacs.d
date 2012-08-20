@@ -33,6 +33,7 @@
     (load-file (concat plugins-dir "flymake.el"))
     (load-file (concat plugins-dir "paredit.el"))
     (load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
+
     (setq load-path 
 	  (append `(,emacs.d ,plugins-dir
 			     ,(concat plugins-dir "color-theme")
@@ -46,7 +47,7 @@
 			     ,(concat plugins-dir "emacs-for-python")
 			     ) load-path)))
   (add-to-list 'exec-path "/usr/local/bin")
-  
+
 
   (autoload 'encrypt-decrypt "encrypt"
     "Decrypt a crypted file use encrypt coding system" t)
@@ -80,17 +81,20 @@
   (require 'clojure-mode)
   (require 'paredit)
     
-  (eval-after-load "slime" 
+
+(eval-after-load "slime" 
   '(progn (slime-setup '(slime-repl))	
-	(defun paredit-mode-enable () (paredit-mode 1))	
-	(add-hook 'slime-mode-hook 'paredit-mode-enable)	
-	(add-hook 'slime-repl-mode-hook 'paredit-mode-enable)
-	(setq slime-protocol-version 'ignore)))
-  (require 'slime)
-  (slime-setup)
-  (require 'myproject nil 'noerror)
-  (add-hook 'after-make-frame-functions 'client-initialization)
-  (python-stuff)
+		  (defun paredit-mode-enable () (paredit-mode 1))	
+		  (add-hook 'slime-mode-hook 'paredit-mode-enable)	
+		  (add-hook 'slime-repl-mode-hook 'paredit-mode-enable)
+		  (setq slime-protocol-version 'ignore)))
+
+(require 'slime)
+(slime-setup)
+(python-stuff)
+(require 'myproject nil 'noerror)
+(add-hook 'after-make-frame-functions 'client-initialization)
+(message "load all done")
   ;;(require 'gmail)
 
   ;;(server-start)
