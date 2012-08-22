@@ -10,3 +10,6 @@
 [submodule "plugins/ecb"]
 	path = plugins/ecb
 	url = git://github.com/emacsmirror/ecb.git
+[submodule "plugins/find-file-in-project"]
+	path = plugins/find-file-in-project
+	url = git://github.com/technomancy/find-file-in-project.git

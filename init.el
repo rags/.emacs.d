@@ -1,4 +1,3 @@
-
 (defun load-all ()
 
 (custom-set-variables  
@@ -23,9 +22,6 @@
   (winner-mode 1)
   (fset 'yes-or-no-p 'y-or-n-p)   	
   
-  
-  
-
   (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
     (load-file (concat plugins-dir "cua-emul.el"))
     (load-file (concat plugins-dir "encrypt.el"))
@@ -41,6 +37,7 @@
 			     ,(concat plugins-dir "clojure-mode")
 			     ,(concat plugins-dir "emacs-for-python")
 			     ,(concat plugins-dir "ecb")
+			     ,(concat plugins-dir "find-file-in-project")
 			     ) load-path)))
   (add-to-list 'exec-path "/usr/local/bin")
 
@@ -58,24 +55,25 @@
 
 					;(require 'mercurial)
   (require 'color-theme)
+  (require 'find-file-in-project)
   (color-theme-initialize)
 
 					;(color-theme-bharadwaj)
 					;(color-theme-blippblopp)
 					; (color-theme-calm-forest)
-  (color-theme-charcoal-black)
+  ;(color-theme-charcoal-black)
 					; (color-theme-vim-colors)
 					; (color-theme-snowish)
-					;(color-theme-clarity)		
+  (color-theme-clarity)		
 					;(set-default-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
   (require 'smart-operator)
   (require 'ecb)
   ;(require 'ecb-autoloads)
   (require 'window-numbering)
   (window-numbering-mode 1)
-  (require 'myshortcuts)
   (require 'clojure-mode)
   (require 'paredit)
+
     
 
 (eval-after-load "slime" 
@@ -88,9 +86,11 @@
 (require 'slime)
 (slime-setup)
 (python-stuff)
-(require 'myproject nil 'noerror)
 (add-hook 'after-make-frame-functions 'client-initialization)
-(message "load all done")
+(require 'myshortcuts)
+(require 'myproject nil 'noerror)
+
+
   ;;(require 'gmail)
 
   ;;(server-start)
@@ -101,13 +101,13 @@
    '(inhibit-startup-screen t)
    '(initial-scratch-message nil)
    '(menu-bar-mode nil)
-   '(ecb-options-version "2.32")
+ ;;  '(ecb-options-version "2.32")
    '(ido-create-new-buffer (quote always))
    '(show-paren-mode t)
    '(tool-bar-mode nil)
    '(transient-mark-mode nil))
-
-  
+   (global-font-lock-mode 1)    
+   (message "load all done")
 )
 
 (defun client-initialization (frame)
@@ -115,7 +115,9 @@
   (interactive)
   (select-frame frame)
   (my-fullscreen)
-  (make-my-layout))
+  (make-my-layout)   
+  (global-font-lock-mode 1))
+
 
 (load-all)
 ;;(if window-system (load-all) (load-quick))

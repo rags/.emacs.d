@@ -36,9 +36,16 @@
      (incf line-num))   
    (message (concat (int-to-string (- lines-before (num-of-lines))) " duplicate line deleted")))
 
-(defun duplicate-line ()
-  (interactive)  
-  (duplicate (point-at-bol)  (line-beginning-position 2)))
+;(defun duplicate-line ()
+;  (interactive)  
+;  (duplicate (point-at-bol)  (line-beginning-position 2)))
+;
+
+(defun copy-line () 
+  (interactive) 
+  (kill-ring-save 
+   (point-at-bol)  
+   (line-beginning-position 2)))
 
 (defun duplicate (beg end)
   (interactive "r")
