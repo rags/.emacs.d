@@ -6,10 +6,13 @@
 	url = git://github.com/technomancy/clojure-mode.git
 [submodule "plugins/emacs-for-python"]
 	path = plugins/emacs-for-python
-	url = https://github.com/gabrielelanaro/emacs-for-python.git
+	url = git://github.com/emacsmirror/icicles.git
 [submodule "plugins/ecb"]
 	path = plugins/ecb
 	url = git://github.com/emacsmirror/ecb.git
 [submodule "plugins/find-file-in-project"]
 	path = plugins/find-file-in-project
 	url = git://github.com/technomancy/find-file-in-project.git
+[submodule "plugins/fuzzy-match"]
+	path = plugins/fuzzy-match
+	url = git://github.com/emacsmirror/fuzzy-match.git

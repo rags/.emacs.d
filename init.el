@@ -21,6 +21,7 @@
   (display-time-mode 1)
   (winner-mode 1)
   (fset 'yes-or-no-p 'y-or-n-p)   	
+  (setq ac-auto-show-menu nil)
   
   (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
     (load-file (concat plugins-dir "cua-emul.el"))
@@ -37,25 +38,26 @@
 			     ,(concat plugins-dir "clojure-mode")
 			     ,(concat plugins-dir "emacs-for-python")
 			     ,(concat plugins-dir "ecb")
-			     ,(concat plugins-dir "find-file-in-project")
-			     ) load-path)))
-  (add-to-list 'exec-path "/usr/local/bin")
+				 ,(concat plugins-dir "find-file-in-project")
+				 ,(concat plugins-dir "fuzzy-match")
+				  ) load-path)))
+   (add-to-list 'exec-path "/usr/local/bin")
 
 
-  (autoload 'encrypt-decrypt "encrypt"
-    "Decrypt a crypted file use encrypt coding system" t)
-  
-  (require 'server)
-  (require 'mydefuns)
+   (autoload 'encrypt-decrypt "encrypt"
+	 "Decrypt a crypted file use encrypt coding system" t)
 
-  (make-desktop-load-non-blocking)
-  (desktop-save-mode 1)
-  (require 'ido)
-  (ido-mode t)
+   (require 'server)
+   (require 'mydefuns)
 
-					;(require 'mercurial)
+   (make-desktop-load-non-blocking)
+   (desktop-save-mode 1)
+   (require 'ido)
+   (ido-mode t)
+   (require 'find-file-in-project)
+   (require 'fuzzy-match)
+   					;(require 'mercurial)
   (require 'color-theme)
-  (require 'find-file-in-project)
   (color-theme-initialize)
 
 					;(color-theme-bharadwaj)
