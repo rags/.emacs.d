@@ -21,8 +21,9 @@
   (display-time-mode 1)
   (winner-mode 1)
   (fset 'yes-or-no-p 'y-or-n-p)   	
-  (setq ac-auto-show-menu nil)
-  
+
+
+
   (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
     (load-file (concat plugins-dir "cua-emul.el"))
     (load-file (concat plugins-dir "encrypt.el"))
@@ -40,6 +41,7 @@
 			     ,(concat plugins-dir "ecb")
 				 ,(concat plugins-dir "find-file-in-project")
 				 ,(concat plugins-dir "fuzzy-match")
+				 ,(concat plugins-dir "smex")
 				  ) load-path)))
    (add-to-list 'exec-path "/usr/local/bin")
 
@@ -75,7 +77,8 @@
   (window-numbering-mode 1)
   (require 'clojure-mode)
   (require 'paredit)
-
+  (require 'smex) 
+  (smex-initialize) 
     
 
 (eval-after-load "slime" 
@@ -90,6 +93,14 @@
 (python-stuff)
 (add-hook 'after-make-frame-functions 'client-initialization)
 (require 'myshortcuts)
+
+;(eval-after-load "pymacs"
+;  '(progn
+;	 (add-to-list 'pymacs-load-path "~/.emacs.d")
+;	 (pymacs-load "my_py_funcs" "py-")
+;	 (message "loaded pyemacs funcs")
+;	 ))
+
 (require 'myproject nil 'noerror)
 
 
@@ -108,7 +119,7 @@
    '(show-paren-mode t)
    '(tool-bar-mode nil)
    '(transient-mark-mode nil))
-   (global-font-lock-mode 1)    
+   (global-font-lock-mode 1)
    (message "load all done")
 )
 
@@ -117,10 +128,12 @@
   (interactive)
   (select-frame frame)
   (my-fullscreen)
-  (make-my-layout)   
+  (make-my-layout)
   (global-font-lock-mode 1))
 
 
 (load-all)
 ;;(if window-system (load-all) (load-quick))
 ;;(clojure-slime-config "/home/rags/projects/clojure/src")
+
+

@@ -16,3 +16,6 @@
 [submodule "plugins/fuzzy-match"]
 	path = plugins/fuzzy-match
 	url = git://github.com/emacsmirror/fuzzy-match.git
+[submodule "plugins/smex"]
+	path = plugins/smex
+	url = git://github.com/nonsequitur/smex.git

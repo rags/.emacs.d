@@ -18,7 +18,9 @@
 (global-set-key (kbd "ESC <down>") 'move-text-down)
 (global-set-key (kbd "C-x f") 'find-file-in-project)
 (global-set-key (kbd "C-x M-f") 'find-file-in-project)
-
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (defalias 'rr 'replace-regexp)
 
 

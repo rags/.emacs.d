@@ -88,11 +88,18 @@
 (defun  python-stuff ()
   (epy-setup-ipython)
   (epy-setup-checker "pyflakes %f")
-  (setq default-tab-width 4)
   (add-hook 'python-mode-hook
 	  (lambda ()
 		(smart-operator-mode 1)
 		(define-key smart-operator-mode-map  "." 'op-override-.)
+		(setq-default tab-width 4)
+		(setq-default python-indent-offset 4)
+
+		(outline-minor-mode)
+		(setq outline-regexp " *\\(def \\|clas\\|#hea\\)")
+		;(hide-sublevels 1)
+
+		(setq ropemacs-goto-def-newwin t)
 	    )))
 
 (defun op-override-. ()
