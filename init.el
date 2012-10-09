@@ -21,8 +21,8 @@
   (display-time-mode 1)
   (winner-mode 1)
   (fset 'yes-or-no-p 'y-or-n-p)   	
-
-
+  (setq mac-command-modifier 'super)
+  (setq mac-control-modifier 'control)
 
   (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
     (load-file (concat plugins-dir "cua-emul.el"))
@@ -42,6 +42,11 @@
 				 ,(concat plugins-dir "find-file-in-project")
 				 ,(concat plugins-dir "fuzzy-match")
 				 ,(concat plugins-dir "smex")
+				 ,(concat plugins-dir "js2-mode")
+				 ,(concat plugins-dir "js2-highlight-vars")
+				 ,(concat plugins-dir "expand-region")
+				 ,(concat plugins-dir "mark-multiple")
+				 ,(concat plugins-dir "js2-refactor")
 				  ) load-path)))
    (add-to-list 'exec-path "/usr/local/bin")
 
@@ -78,9 +83,10 @@
   (require 'clojure-mode)
   (require 'paredit)
   (require 'smex) 
+  (require 'expand-region)
   (smex-initialize) 
-    
-
+  (require 'js2-highlight-vars)
+  (require 'js2-refactor)
 (eval-after-load "slime" 
   '(progn (slime-setup '(slime-repl))	
 		  (defun paredit-mode-enable () (paredit-mode 1))	
@@ -91,15 +97,10 @@
 (require 'slime)
 (slime-setup)
 (python-stuff)
+(js-stuff)
 (add-hook 'after-make-frame-functions 'client-initialization)
 (require 'myshortcuts)
 
-;(eval-after-load "pymacs"
-;  '(progn
-;	 (add-to-list 'pymacs-load-path "~/.emacs.d")
-;	 (pymacs-load "my_py_funcs" "py-")
-;	 (message "loaded pyemacs funcs")
-;	 ))
 
 (require 'myproject nil 'noerror)
 

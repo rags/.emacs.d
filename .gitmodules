@@ -19,3 +19,15 @@
 [submodule "plugins/smex"]
 	path = plugins/smex
 	url = git://github.com/nonsequitur/smex.git
+[submodule "plugins/js2-mode"]
+	path = plugins/js2-mode
+	url = git://github.com/mooz/js2-mode.git
+[submodule "plugins/js2-refactor"]
+	path = plugins/js2-refactor
+	url = git://github.com/magnars/js2-refactor.el.git
+[submodule "plugins/expand-region"]
+	path = plugins/expand-region
+	url = git://github.com/magnars/expand-region.el.git
+[submodule "plugins/mark-multiple"]
+	path = plugins/mark-multiple
+	url = git://github.com/magnars/mark-multiple.el.git

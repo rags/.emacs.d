@@ -5,3 +5,4 @@ tramp
 myproject.el
 ac-comphist.dat
 *.elc
+nohup.out
