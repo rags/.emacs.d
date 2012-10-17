@@ -29,6 +29,7 @@
     (load-file (concat plugins-dir "encrypt.el"))
     (load-file (concat plugins-dir "flymake.el"))
     (load-file (concat plugins-dir "paredit.el"))
+    (load-file (concat plugins-dir "kill-ring-ido.el"))
     (load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
 
     (setq load-path 

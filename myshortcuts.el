@@ -22,8 +22,8 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (global-set-key (kbd "C-c w") 'er/expand-region)
+(global-set-key (kbd "M-y") 'kill-ring-ido)
 (defalias 'rr 'replace-regexp)
-
 
 (add-hook 'python-mode-hook
 	  (lambda ()
@@ -38,10 +38,7 @@
  (lambda ()
  (define-key scheme-mode-map (kbd "C-M-/") 'insert-lambda)))
 
-(add-hook 'js2-mode-hook
- (lambda ()
-(if (featurep 'js2-highlight-vars)
-  (js2-highlight-vars-mode))))
+
 
 
 (add-hook 'doc-view-mode-hook

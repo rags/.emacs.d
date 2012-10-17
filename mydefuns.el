@@ -94,17 +94,26 @@
 		(define-key smart-operator-mode-map  "." 'op-override-.)
 		(setq-default tab-width 4)
 		(setq-default python-indent-offset 4)
-
-		(outline-minor-mode)
+		(programming-modes)
 		(setq outline-regexp " *\\(def \\|clas\\|#hea\\)")
 		;(hide-sublevels 1)
-
+	
 		(setq ropemacs-goto-def-newwin t)
 	    )))
 
 (defun js-stuff()
   (autoload 'js2-mode "js2-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode)))
+  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+  (add-hook 'js2-mode-hook
+			(lambda ()
+			  (programming-modes)
+			  (setq outline-regexp " *\\(function\\)")
+			  (if (featurep 'js2-highlight-vars)
+				  (js2-highlight-vars-mode)))))
+
+(defun programming-modes ()
+  	(subword-mode)
+	(outline-minor-mode))
 
 (defun op-override-. ()
   (interactive)
