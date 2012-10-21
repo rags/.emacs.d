@@ -48,6 +48,7 @@
 				 ,(concat plugins-dir "expand-region")
 				 ,(concat plugins-dir "mark-multiple")
 				 ,(concat plugins-dir "js2-refactor")
+				 ,(concat plugins-dir "pretty-lambdada")
 				  ) load-path)))
    (add-to-list 'exec-path "/usr/local/bin")
 
@@ -100,8 +101,9 @@
 (python-stuff)
 (js-stuff)
 (add-hook 'after-make-frame-functions 'client-initialization)
+(require 'pretty-lambdada)
+;(global-pretty-lambda-mode 0)
 (require 'myshortcuts)
-
 
 (require 'myproject nil 'noerror)
 
