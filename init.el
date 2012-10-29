@@ -49,6 +49,7 @@
 				 ,(concat plugins-dir "mark-multiple")
 				 ,(concat plugins-dir "js2-refactor")
 				 ,(concat plugins-dir "pretty-lambdada")
+				 ,(concat plugins-dir "magit")
 				  ) load-path)))
    (add-to-list 'exec-path "/usr/local/bin")
 
@@ -102,9 +103,9 @@
 (js-stuff)
 (add-hook 'after-make-frame-functions 'client-initialization)
 (require 'pretty-lambdada)
-;(global-pretty-lambda-mode 0)
+(global-pretty-lambda-mode)
 (require 'myshortcuts)
-
+(require 'magit)
 (require 'myproject nil 'noerror)
 
 
