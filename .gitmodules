@@ -34,3 +34,6 @@
 [submodule "plugins/pretty-lambdada"]
 	path = plugins/pretty-lambdada
 	url = git://github.com/emacsmirror/pretty-lambdada.git
+[submodule "plugins/magit"]
+	path = plugins/magit
+	url = git://github.com/magit/magit.git
