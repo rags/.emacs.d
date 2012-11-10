@@ -37,3 +37,6 @@
 [submodule "plugins/magit"]
 	path = plugins/magit
 	url = git://github.com/magit/magit.git
+[submodule "plugins/wrap-region"]
+	path = plugins/wrap-region
+	url = https://github.com/rejeep/wrap-region

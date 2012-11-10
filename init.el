@@ -23,6 +23,7 @@
   (fset 'yes-or-no-p 'y-or-n-p)   	
   (setq mac-command-modifier 'super)
   (setq mac-control-modifier 'control)
+  (global-linum-mode t)
 
   (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
     (load-file (concat plugins-dir "cua-emul.el"))
@@ -50,6 +51,7 @@
 				 ,(concat plugins-dir "js2-refactor")
 				 ,(concat plugins-dir "pretty-lambdada")
 				 ,(concat plugins-dir "magit")
+				 ,(concat plugins-dir "wrap-region")
 				  ) load-path)))
    (add-to-list 'exec-path "/usr/local/bin")
 
@@ -104,8 +106,10 @@
 (add-hook 'after-make-frame-functions 'client-initialization)
 (require 'pretty-lambdada)
 (global-pretty-lambda-mode)
-(require 'myshortcuts)
+(require 'wrap-region)
+(wrap-region-mode t)
 (require 'magit)
+(require 'myshortcuts)
 (require 'myproject nil 'noerror)
 
 
