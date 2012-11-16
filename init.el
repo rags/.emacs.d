@@ -109,6 +109,7 @@
 (require 'wrap-region)
 (wrap-region-mode t)
 (require 'magit)
+(require 'mark-more-like-this)
 (require 'myshortcuts)
 (require 'myproject nil 'noerror)
 

@@ -25,13 +25,20 @@
 (global-set-key (kbd "M-y") 'kill-ring-ido)
 (defalias 'rr 'replace-regexp)
 
+(global-set-key (kbd "C-<") 'mark-previous-like-this)
+(global-set-key (kbd "C->") 'mark-next-like-this)
+(global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
+(global-set-key (kbd "C-*") 'mark-all-like-this)
+
 (add-hook 'python-mode-hook
 	  (lambda ()
 	    (define-key python-mode-map (kbd "ESC <right>")
 	      'balle-python-shift-right)
 	    (define-key python-mode-map (kbd "ESC <left>")
 	      'balle-python-shift-left))
-	    (define-key smart-operator-mode-map  "." 'op-override-.)			
+	    (define-key smart-operator-mode-map  "." 'op-override-.)
+		(global-set-key (kbd "M-/") 'dabbrev-expand)
+		
 	  )
 
 (add-hook 'scheme-mode-hook
