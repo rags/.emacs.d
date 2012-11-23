@@ -1,12 +1,23 @@
 (setq default-directory "~/projects/hagglev1")
 (rope-open-project "~/projects/hagglev1")
 
-(defun grep-proj ()
+(defun proj-grep ()
+  (interactive)
+  (py-grep (ffip-project-root)))
+
+(defun src-grep ()
+  (interactive)
+  (py-grep (concat (ffip-project-root) "src")))
+(defun test-grep ()
+  (interactive)
+  (py-grep (concat (ffip-project-root) "tests")))
+
+(defun py-grep (dir)
   (interactive)
   (grep-find (read-shell-command "Run find (like this): "
-                                   (concat "find " (ffip-project-root) " -type f -name \"*.py\" -exec grep -nH -e  {} +") 'grep-find-history)))
+                                   (concat "find " dir " -type f -name \"*.py\" -exec grep -nH -e  {} +") 'grep-find-history)))
 
-(defun t- ()
+(defun toggle-test ()
   (interactive)
   (let* ((proj-root (file-truename (ffip-project-root)))
 		(f (file-truename buffer-file-name))
@@ -14,12 +25,13 @@
 	(find-file-other-window
 	 (if (string-match "/tests/" f)
 		 (replace-regexp-in-string "test_" "" 
-								   (replace-regexp-in-string "tests/" "" f))
-	   (replace-regexp-in-string fname (concat "test_" fname) (replace-regexp-in-string proj-root (concat proj-root "tests/") f)
+								   (replace-regexp-in-string "tests/" "src/" f))
+	   (replace-regexp-in-string fname (concat "test_" fname) (replace-regexp-in-string (concat proj-root "src/") (concat proj-root "tests/") f)
 	)))))
 (add-hook 'python-mode-hook
 	  (lambda ()
-	    (define-key python-mode-map (kbd "C-c t") 't-)))
+	    (define-key python-mode-map (kbd "C-c t") 'toggle-test)))
 
+(setq ffip-find-options (mapconcat (lambda (dir) (format "-not -regex \".*/%s/.*\"" dir)) '("htmlcov" "lib" "src/lib" ".git" "\\.ropeproject") " "))
 (provide 'myproject)
 
