@@ -7,3 +7,5 @@ ac-comphist.dat
 *.elc
 nohup.out
 bookmarks
+eproject.lst
+eshell

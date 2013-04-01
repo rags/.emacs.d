@@ -27,19 +27,24 @@
    (interactive)
    (require 'cl)
    (defun num-of-lines () (count-lines (point-min) (point-max)))
-   (setq lines-before (num-of-lines))
-   (setq line-num 1)
+   (let
+   ((lines-before (num-of-lines))
+	(line-num 1))
    (while (< line-num (num-of-lines))
      (goto-line line-num)
-     (setq cur-line (concat "^" (regexp-quote (buffer-substring (point-at-bol) (point-at-eol))) "$"))
-     (delete-matching-lines cur-line (point-at-eol) (point-max))
+     (let ((cur-line (concat "^" (regexp-quote (buffer-substring (point-at-bol) (point-at-eol))) "$")))
+	   (delete-matching-lines cur-line (point-at-eol) (point-max)))
      (incf line-num))   
-   (message (concat (int-to-string (- lines-before (num-of-lines))) " duplicate line deleted")))
+   (message (concat (int-to-string (- lines-before (num-of-lines))) " duplicate line deleted"))))
 
 ;(defun duplicate-line ()
 ;  (interactive)  
 ;  (duplicate (point-at-bol)  (line-beginning-position 2)))
 ;
+
+(defun backward-kill-line ()
+  (interactive)
+  (kill-line 0))
 
 (defun copy-line () 
   (interactive) 
@@ -49,11 +54,11 @@
 
 (defun duplicate (beg end)
   (interactive "r")
-  (setq cur-pos (point))
-  (kill-ring-save beg end)
-  (goto-char end)
-  (yank)
-  (goto-char cur-pos))
+  (let ((cur-pos (point)))
+	(kill-ring-save beg end)
+	(goto-char end)
+	(yank)
+	(goto-char cur-pos)))
 
 (defun make-my-layout ()
   (split-window-horizontally)
@@ -114,6 +119,11 @@
 			  (if (featurep 'js2-highlight-vars)
 				  (js2-highlight-vars-mode)))))
 
+(defun elisp-stuff ()
+  (add-hook 'emacs-lisp-mode-hook
+			(lambda () 
+			  (programming-modes)
+			  (paredit-mode))))
 (defun programming-modes ()
   	(subword-mode)
 	(outline-minor-mode))

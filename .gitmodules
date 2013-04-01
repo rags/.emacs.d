@@ -40,3 +40,9 @@
 [submodule "plugins/wrap-region"]
 	path = plugins/wrap-region
 	url = https://github.com/rejeep/wrap-region
+[submodule "plugins/scala-mode2"]
+	path = plugins/scala-mode2
+	url = git://github.com/hvesalai/scala-mode2.git
+[submodule "plugins/toggle-test"]
+	path = plugins/toggle-test
+	url = git@github.com:rags/toggle-test.git

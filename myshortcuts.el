@@ -23,12 +23,14 @@
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 (global-set-key (kbd "C-c w") 'er/expand-region)
 (global-set-key (kbd "M-y") 'kill-ring-ido)
+(global-set-key (kbd "C-c k") 'kill-whole-line)
 (defalias 'rr 'replace-regexp)
 
 (global-set-key (kbd "C-<") 'mark-previous-like-this)
 (global-set-key (kbd "C->") 'mark-next-like-this)
 (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
 (global-set-key (kbd "C-*") 'mark-all-like-this)
+(define-key python-mode-map (kbd "C-c t") 'tgt-toggle)
 
 (add-hook 'python-mode-hook
 	  (lambda ()
@@ -37,9 +39,12 @@
 	    (define-key python-mode-map (kbd "ESC <left>")
 	      'balle-python-shift-left))
 	    (define-key smart-operator-mode-map  "." 'op-override-.)
-		(global-set-key (kbd "M-/") 'dabbrev-expand)
+
 		
 	  )
+
+(add-hook 'python-mode-hook
+		  (lambda () (define-key python-mode-map (kbd "M-/") 'dabbrev-expand)))
 
 (add-hook 'scheme-mode-hook
  (lambda ()
@@ -52,15 +57,5 @@
  (lambda ()
 (define-key doc-view-mode-map (kbd "C-+") 'doc-view-enlarge)
 (define-key doc-view-mode-map (kbd "C-M-+") 'doc-view-shrink))) 
-
-
-
-(defun ido-my-keys ()
-  "Add my keybindings for ido."
-  (when (eq ido-cur-item 'file)
-	(define-key ido-mode-map (kbd "ESC DEL") 'ido-delete-backward-updir)
-	(define-key ido-mode-map (kbd "C-e") 'ido-my-edit-input)
-	(define-key ido-mode-map (kbd "<backspace>") 'ido-my-edit-input)
-	))
 
 (provide 'myshortcuts)

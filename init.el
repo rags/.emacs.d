@@ -24,6 +24,7 @@
   (setq mac-command-modifier 'super)
   (setq mac-control-modifier 'control)
   (global-linum-mode t)
+  (menu-bar-mode 0)
 
   (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
     (load-file (concat plugins-dir "cua-emul.el"))
@@ -52,6 +53,9 @@
 				 ,(concat plugins-dir "pretty-lambdada")
 				 ,(concat plugins-dir "magit")
 				 ,(concat plugins-dir "wrap-region")
+				 ,(concat plugins-dir "scala-mode2")
+				 ,(concat plugins-dir "ensime/elisp")
+				 ,(concat plugins-dir "toggle-test")
 				  ) load-path)))
    (add-to-list 'exec-path "/usr/local/bin")
 
@@ -63,10 +67,14 @@
    (require 'mydefuns)
 
    (make-desktop-load-non-blocking)
-   (desktop-save-mode 1)
+;   (desktop-save-mode 1)
+   (desktop-save-mode 0)
    (require 'ido)
    (ido-mode t)
    (require 'find-file-in-project)
+   (add-to-list 'ffip-patterns "*.yaml")
+   (add-to-list 'ffip-patterns "*.css")
+  
    (require 'fuzzy-match)
    					;(require 'mercurial)
   (require 'color-theme)
@@ -92,6 +100,7 @@
   (smex-initialize) 
   (require 'js2-highlight-vars)
   (require 'js2-refactor)
+  (require 'toggle-test)
 (eval-after-load "slime" 
   '(progn (slime-setup '(slime-repl))	
 		  (defun paredit-mode-enable () (paredit-mode 1))	
@@ -103,6 +112,7 @@
 (slime-setup)
 (python-stuff)
 (js-stuff)
+(elisp-stuff)
 (add-hook 'after-make-frame-functions 'client-initialization)
 (require 'pretty-lambdada)
 (global-pretty-lambda-mode)
@@ -111,6 +121,11 @@
 (require 'magit)
 (require 'magit-blame)
 (require 'mark-more-like-this)
+(require 'scala-mode2)
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+
 (require 'myshortcuts)
 (require 'myproject nil 'noerror)
 
@@ -124,13 +139,13 @@
   (custom-set-variables
    '(inhibit-startup-screen t)
    '(initial-scratch-message nil)
-   '(menu-bar-mode nil)
  ;;  '(ecb-options-version "2.32")
    '(ido-create-new-buffer (quote always))
    '(show-paren-mode t)
    '(tool-bar-mode nil)
    '(transient-mark-mode nil))
    (global-font-lock-mode 1)
+   (auto-complete-mode t)
    (message "load all done")
 )
 
@@ -140,11 +155,31 @@
   (select-frame frame)
   (my-fullscreen)
   (make-my-layout)
+  (menu-bar-mode 0)
   (global-font-lock-mode 1))
-
 
 (load-all)
 ;;(if window-system (load-all) (load-quick))
 ;;(clojure-slime-config "/home/rags/projects/clojure/src")
 
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(desktop-load-locked-desktop t)
+ '(desktop-save-buffer nil t)
+ '(ido-create-new-buffer (quote always))
+ '(inhibit-startup-screen t)
+ '(initial-scratch-message nil)
+ '(send-mail-function (quote mailclient-send-it))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
+ '(transient-mark-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
