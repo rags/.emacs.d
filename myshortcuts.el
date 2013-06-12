@@ -1,5 +1,7 @@
 
 (global-set-key [f11] 'fullscreen)
+
+(global-set-key (kbd "M-c") 'capitalize-word)
 (global-set-key (kbd "C-z") 'copy-line)
 (global-set-key (kbd "M-RET") 'duplicate)
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)

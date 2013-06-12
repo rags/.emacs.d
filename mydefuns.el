@@ -109,6 +109,9 @@
 		(setq ropemacs-goto-def-newwin t)
 	    )))
 
+(defun make-file-associations ()
+(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode)))
+
 (defun js-stuff()
   (autoload 'js2-mode "js2-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
