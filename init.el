@@ -38,7 +38,7 @@
 	  (append `(,emacs.d ,plugins-dir
 			     ,(concat plugins-dir "color-theme")
 			     ,(concat plugins-dir "nxml-mode")
-			     ,(concat plugins-dir "slime")
+			     ;,(concat plugins-dir "slime")
 			     ,(concat plugins-dir "clojure-mode")
 			     ,(concat plugins-dir "emacs-for-python")
 			     ,(concat plugins-dir "ecb")
@@ -88,6 +88,7 @@
 					; (color-theme-snowish)
   (color-theme-clarity)		
 					;(set-default-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+					(set-default-font "-unknown-Inconsolata-bold-normal-normal-*-18-*-*-*-m-0-iso10646-1")
   (require 'smart-operator)
   (require 'ecb)
   ;(require 'ecb-autoloads)
@@ -101,15 +102,15 @@
   (require 'js2-highlight-vars)
   (require 'js2-refactor)
   (require 'toggle-test)
-(eval-after-load "slime" 
-  '(progn (slime-setup '(slime-repl))	
-		  (defun paredit-mode-enable () (paredit-mode 1))	
-		  (add-hook 'slime-mode-hook 'paredit-mode-enable)	
-		  (add-hook 'slime-repl-mode-hook 'paredit-mode-enable)
-		  (setq slime-protocol-version 'ignore)))
-
-(require 'slime)
-(slime-setup)
+;(eval-after-load "slime" 
+;  '(progn (slime-setup '(slime-repl))	
+;		  (defun paredit-mode-enable () (paredit-mode 1))	
+;		  (add-hook 'slime-mode-hook 'paredit-mode-enable)	
+;		  (add-hook 'slime-repl-mode-hook 'paredit-mode-enable)
+;		  (setq slime-protocol-version 'ignore)))
+;
+;(require 'slime)
+;(slime-setup)
 (python-stuff)
 (js-stuff)
 (elisp-stuff)

@@ -22,6 +22,11 @@
 	  (my-non-fullscreen)
 	(my-fullscreen)))
 
+(defun make-trasparent ()  
+  (set-frame-parameter (selected-frame) 'alpha '(96 80))
+  (add-to-list 'default-frame-alist '(alpha 96 80))
+)
+
     
 (defun delete-duplicate-lines ()
    (interactive)
