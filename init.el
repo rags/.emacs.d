@@ -73,7 +73,8 @@
 ;; Install ELPA packages
 (dolist (package `(sml-mode magit smex color-theme find-file-in-project ecb 
 			    fuzzy-match js3-mode js2-refactor expand-region
-			    mark-multiple wrap-region flymake clojure-mode auctex toggle-test ensime scala-mode2))
+			    mark-multiple wrap-region flymake clojure-mode 
+			    auctex toggle-test ensime scala-mode2))
   (if (not (package-installed-p package))
       (package-install package)))
 
@@ -94,9 +95,9 @@
    (add-to-list 'ffip-patterns "*.yaml")
    (add-to-list 'ffip-patterns "*.css")
   
-   (require 'fuzzy-match)
+   ;(require 'fuzzy-match)
    					;(require 'mercurial)
-  (require 'color-theme)
+  ;(require 'color-theme)
   (color-theme-initialize)
 
 					;(color-theme-bharadwaj)
@@ -114,9 +115,9 @@
   (require 'window-numbering)
   (window-numbering-mode 1)
   (require 'clojure-mode)
-  (require 'paredit)
-  (require 'smex) 
-  (require 'expand-region)
+  ;(require 'paredit)
+  ;(require 'smex) 
+  ;(require 'expand-region)
   (smex-initialize) 
   (require 'js2-highlight-vars)
   (require 'js2-refactor)
@@ -138,13 +139,13 @@
 ;(add-hook 'after-make-frame-functions 'client-initialization)
 (require 'pretty-lambdada)
 (global-pretty-lambda-mode)
-(require 'wrap-region)
+;(require 'wrap-region)
 (wrap-region-mode t)
 (require 'magit)
 (require 'magit-blame)
-(require 'mark-more-like-this)
-(require 'scala-mode2)
-(require 'ensime)
+;(require 'mark-more-like-this)
+;(require 'scala-mode2)
+;(require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 
