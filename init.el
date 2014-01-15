@@ -25,34 +25,35 @@
   (setq mac-control-modifier 'control)
   (global-linum-mode t)
   (menu-bar-mode 0)
+  (setq vc-follow-symlinks t)
 
   (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
     (load-file (concat plugins-dir "cua-emul.el"))
     (load-file (concat plugins-dir "encrypt.el"))
-    (load-file (concat plugins-dir "flymake.el"))
-    (load-file (concat plugins-dir "paredit.el"))
+    ;(load-file (concat plugins-dir "flymake.el"))
+    ;(load-file (concat plugins-dir "paredit.el"))
     (load-file (concat plugins-dir "kill-ring-ido.el"))
     (load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
 
     (setq load-path 
 	  (append `(,emacs.d ,plugins-dir
-			     ,(concat plugins-dir "color-theme")
+			     ;,(concat plugins-dir "color-theme")
 			     ,(concat plugins-dir "nxml-mode")
 			     ;,(concat plugins-dir "slime")
-			     ,(concat plugins-dir "clojure-mode")
+			     ;,(concat plugins-dir "clojure-mode")
 			     ,(concat plugins-dir "emacs-for-python")
-			     ,(concat plugins-dir "ecb")
-				 ,(concat plugins-dir "find-file-in-project")
-				 ,(concat plugins-dir "fuzzy-match")
-				 ,(concat plugins-dir "smex")
-				 ,(concat plugins-dir "js2-mode")
+			     ;,(concat plugins-dir "ecb")
+				 ;,(concat plugins-dir "find-file-in-project")
+				 ;,(concat plugins-dir "fuzzy-match")
+				 ;,(concat plugins-dir "smex")
+				 ;,(concat plugins-dir "js2-mode")
 				 ,(concat plugins-dir "js2-highlight-vars")
-				 ,(concat plugins-dir "expand-region")
-				 ,(concat plugins-dir "mark-multiple")
-				 ,(concat plugins-dir "js2-refactor")
+				 ;,(concat plugins-dir "expand-region")
+				 ;,(concat plugins-dir "mark-multiple")
+				 ;,(concat plugins-dir "js2-refactor")
 				 ,(concat plugins-dir "pretty-lambdada")
-				 ,(concat plugins-dir "magit")
-				 ,(concat plugins-dir "wrap-region")
+				 ;,(concat plugins-dir "magit")
+				 ;,(concat plugins-dir "wrap-region")
 				 ,(concat plugins-dir "scala-mode2")
 				 ,(concat plugins-dir "ensime/elisp")
 				 ,(concat plugins-dir "toggle-test")
@@ -60,11 +61,29 @@
    (add-to-list 'exec-path "/usr/local/bin")
 
 
+(require 'package)
+(add-to-list 'package-archives 
+	     '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives 
+	     '("melpa" . "http://melpa.milkbox.net/packages/"))
+(package-initialize)
+;; todo add more repos and install magit, ffip, smex and other common packages from ELPA
+;;      delete these packages from plugins fodler
+
+;; Install ELPA packages
+(dolist (package `(sml-mode magit smex color-theme find-file-in-project ecb 
+			    fuzzy-match js3-mode js2-refactor expand-region
+			    mark-multiple wrap-region flymake clojure-mode auctex))
+  (if (not (package-installed-p package))
+      (package-install package)))
+
+
    (autoload 'encrypt-decrypt "encrypt"
 	 "Decrypt a crypted file use encrypt coding system" t)
 
    (require 'server)
    (require 'mydefuns)
+
 
    (make-desktop-load-non-blocking)
 ;   (desktop-save-mode 1)
@@ -88,7 +107,7 @@
 					; (color-theme-snowish)
   (color-theme-clarity)		
 					;(set-default-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
-					(set-default-font "-unknown-Inconsolata-bold-normal-normal-*-18-*-*-*-m-0-iso10646-1")
+					
   (require 'smart-operator)
   (require 'ecb)
   ;(require 'ecb-autoloads)
@@ -114,6 +133,7 @@
 (python-stuff)
 (js-stuff)
 (elisp-stuff)
+(LaTeX-stuff)
 (make-file-associations)
 ;(add-hook 'after-make-frame-functions 'client-initialization)
 (require 'pretty-lambdada)
@@ -130,7 +150,6 @@
 
 (require 'myshortcuts)
 (require 'myproject nil 'noerror)
-
 
   ;;(require 'gmail)
 
@@ -158,7 +177,8 @@
   (my-fullscreen)
   (make-my-layout)
   (menu-bar-mode 0)
-  (global-font-lock-mode 1))
+  (global-font-lock-mode 1)
+  (set-frame-font "-unknown-Inconsolata-bold-normal-normal-*-18-*-*-*-m-0-iso10646-1"))
 
 (load-all)
 ;;(if window-system (load-all) (load-quick))
@@ -179,6 +199,7 @@
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(transient-mark-mode nil))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -7,6 +7,7 @@
 (global-set-key (kbd "C-x C-r") 'recentf-open-files)
 (global-set-key (kbd "<M-f4>") 'save-buffers-kill-terminal)
 (global-set-key (kbd "C-x C-c") 'save-buffers-kill-terminal)
+(global-set-key (kbd "<s-f4>") 'cua-emul-kill-buffer)
 (global-set-key [C-f4] 'cua-emul-kill-buffer)
 (global-set-key [C-tab] 'cua-emul-next-buffer)
 (global-set-key [C-S-iso-lefttab] 'cua-emul-previous-buffer)
@@ -26,6 +27,7 @@
 (global-set-key (kbd "C-c w") 'er/expand-region)
 (global-set-key (kbd "M-y") 'kill-ring-ido)
 (global-set-key (kbd "C-c k") 'kill-whole-line)
+(global-set-key (kbd "C-x C-h") 'browse-url-emacs)
 (defalias 'rr 'replace-regexp)
 
 (global-set-key (kbd "C-<") 'mark-previous-like-this)

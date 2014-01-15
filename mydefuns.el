@@ -117,6 +117,23 @@
 (defun make-file-associations ()
 (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode)))
 
+(defun LaTeX-stuff ()
+  (setq TeX-PDF-mode t)
+  (setq TeX-output-view-style
+	'(("^pdf$" "." "emacsclient %o")
+	  ("^html?$" "." "firefox %o")))
+  (setq TeX-view-program-selection
+	'(((output-dvi style-pstricks)
+	   "dvips and gv")
+	  (output-dvi "xdvi")
+	  (output-pdf "emacsclient")
+	  (output-html "xdg-open")))
+  (setq TeX-view-program-list '(("emacsclient" "emacsclient %o")))
+  (add-hook 'tex-mode-hook
+	    (lambda () 
+	      (TeX-PDF-mode)))
+  )
+
 (defun js-stuff()
   (autoload 'js2-mode "js2-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
