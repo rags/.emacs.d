@@ -67,6 +67,8 @@
     ("while" "" python-skeleton-while 0)
    ))
 
+(define-abbrev-table 'shell-mode-abbrev-table '())
+
 (define-abbrev-table 'snippet-mode-abbrev-table '())
 
 (define-abbrev-table 'special-mode-abbrev-table '())

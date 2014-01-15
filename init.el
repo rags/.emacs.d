@@ -54,9 +54,9 @@
 				 ,(concat plugins-dir "pretty-lambdada")
 				 ;,(concat plugins-dir "magit")
 				 ;,(concat plugins-dir "wrap-region")
-				 ,(concat plugins-dir "scala-mode2")
-				 ,(concat plugins-dir "ensime/elisp")
-				 ,(concat plugins-dir "toggle-test")
+				 ;,(concat plugins-dir "scala-mode2")
+				 ;,(concat plugins-dir "ensime/elisp")
+				 ;,(concat plugins-dir "toggle-test")
 				  ) load-path)))
    (add-to-list 'exec-path "/usr/local/bin")
 
@@ -73,7 +73,7 @@
 ;; Install ELPA packages
 (dolist (package `(sml-mode magit smex color-theme find-file-in-project ecb 
 			    fuzzy-match js3-mode js2-refactor expand-region
-			    mark-multiple wrap-region flymake clojure-mode auctex))
+			    mark-multiple wrap-region flymake clojure-mode auctex toggle-test ensime scala-mode2))
   (if (not (package-installed-p package))
       (package-install package)))
 
