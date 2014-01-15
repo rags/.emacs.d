@@ -120,7 +120,7 @@
   (smex-initialize) 
   (require 'js2-highlight-vars)
   (require 'js2-refactor)
-  (require 'toggle-test)
+ ; (require 'toggle-test)
 ;(eval-after-load "slime" 
 ;  '(progn (slime-setup '(slime-repl))	
 ;		  (defun paredit-mode-enable () (paredit-mode 1))	
