@@ -74,7 +74,7 @@
 (dolist (package `(sml-mode magit smex color-theme find-file-in-project ecb 
 			    fuzzy-match js3-mode js2-refactor expand-region
 			    mark-multiple wrap-region flymake clojure-mode 
-			    auctex toggle-test ensime scala-mode2))
+			    auctex toggle-test ensime scala-mode2 paredit))
   (if (not (package-installed-p package))
       (package-install package)))
 
@@ -115,7 +115,7 @@
   (require 'window-numbering)
   (window-numbering-mode 1)
   (require 'clojure-mode)
-  ;(require 'paredit)
+  (require 'paredit)
   ;(require 'smex) 
   ;(require 'expand-region)
   (smex-initialize) 
@@ -141,8 +141,8 @@
 (global-pretty-lambda-mode)
 ;(require 'wrap-region)
 (wrap-region-mode t)
-(require 'magit)
-(require 'magit-blame)
+;(require 'magit)
+;(require 'magit-blame)
 ;(require 'mark-more-like-this)
 ;(require 'scala-mode2)
 ;(require 'ensime)
