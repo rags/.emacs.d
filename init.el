@@ -108,7 +108,8 @@
 					; (color-theme-snowish)
   (color-theme-clarity)		
 					;(set-default-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
-					
+  ;(set-default-font "-unknown-Inconsolata-bold-normal-normal-*-21-*-*-*-m-0-iso10646-1")
+ (set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
   (require 'smart-operator)
   (require 'ecb)
   ;(require 'ecb-autoloads)
@@ -179,7 +180,9 @@
   (make-my-layout)
   (menu-bar-mode 0)
   (global-font-lock-mode 1)
-  (set-frame-font "-unknown-Inconsolata-bold-normal-normal-*-18-*-*-*-m-0-iso10646-1"))
+  (set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1"))
+
+
 
 (load-all)
 ;;(if window-system (load-all) (load-quick))
