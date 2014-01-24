@@ -67,7 +67,7 @@
 
 (defun make-my-layout ()
   (split-window-horizontally)
-  (enlarge-window-horizontally 7)
+  (enlarge-window-horizontally 4)
   (select-window-2)
   (split-window-vertically)
   (enlarge-window 2)
