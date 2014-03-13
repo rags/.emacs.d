@@ -1,8 +1,18 @@
 (defun load-all ()
 
-(custom-set-variables  
+  (custom-set-variables  
    '(desktop-save-buffer nil)
-   '(desktop-load-locked-desktop t))
+   '(desktop-load-locked-desktop t)
+
+   '(desktop-load-locked-desktop t)
+   '(desktop-save-buffer nil t)
+   '(ido-create-new-buffer (quote always))
+   '(inhibit-startup-screen t)
+   '(initial-scratch-message nil)
+   '(send-mail-function (quote mailclient-send-it))
+   '(show-paren-mode t)
+   '(tool-bar-mode nil)
+   '(transient-mark-mode nil))
     
   (setq stack-trace-on-error t)
   (put 'narrow-to-region 'disabled nil)
@@ -76,7 +86,9 @@
 			    mark-multiple wrap-region flymake clojure-mode 
 			    auctex toggle-test ensime scala-mode2 paredit))
   (if (not (package-installed-p package))
-      (package-install package)))
+      (progn 
+	(message (concat "installing package: " (symbol-name package)))
+	(package-install package))))
 
 
    (autoload 'encrypt-decrypt "encrypt"
@@ -189,24 +201,5 @@
 ;;(clojure-slime-config "/home/rags/projects/clojure/src")
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(desktop-load-locked-desktop t)
- '(desktop-save-buffer nil t)
- '(ido-create-new-buffer (quote always))
- '(inhibit-startup-screen t)
- '(initial-scratch-message nil)
- '(send-mail-function (quote mailclient-send-it))
- '(show-paren-mode t)
- '(tool-bar-mode nil)
- '(transient-mark-mode nil))
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+

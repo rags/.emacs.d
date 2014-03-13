@@ -3,49 +3,49 @@
 (defun my-non-fullscreen (&optional frame)
   (interactive)
   (if (fboundp 'w32-send-sys-command)
-	  ;; WM_SYSCOMMAND restore #xf120
-	  (w32-send-sys-command 61728))
-	(progn (set-frame-parameter frame 'width 82)
-		   (set-frame-parameter frame 'fullscreen 'fullheight)))
+      ;; WM_SYSCOMMAND restore #xf120
+      (w32-send-sys-command 61728))
+  (progn (set-frame-parameter frame 'width 82)
+	 (set-frame-parameter frame 'fullscreen 'fullheight)))
 
 (defun my-fullscreen (&optional frame)
   (interactive)
   (if (fboundp 'w32-send-sys-command)
-	  ;; WM_SYSCOMMAND maximaze #xf030
-	  (w32-send-sys-command 61488))
-	(set-frame-parameter frame 'fullscreen 'fullboth))
+      ;; WM_SYSCOMMAND maximaze #xf030
+      (w32-send-sys-command 61488))
+  (set-frame-parameter frame 'fullscreen 'fullboth))
 
 (defun fullscreen ()
   (interactive)
   (setq my-fullscreen-p (not my-fullscreen-p))
   (if my-fullscreen-p
-	  (my-non-fullscreen)
-	(my-fullscreen)))
+      (my-non-fullscreen)
+    (my-fullscreen)))
 
 (defun make-trasparent ()  
   (set-frame-parameter (selected-frame) 'alpha '(96 80))
   (add-to-list 'default-frame-alist '(alpha 96 80))
-)
+  )
 
-    
+
 (defun delete-duplicate-lines ()
-   (interactive)
-   (require 'cl)
-   (defun num-of-lines () (count-lines (point-min) (point-max)))
-   (let
-   ((lines-before (num-of-lines))
-	(line-num 1))
-   (while (< line-num (num-of-lines))
-     (goto-line line-num)
-     (let ((cur-line (concat "^" (regexp-quote (buffer-substring (point-at-bol) (point-at-eol))) "$")))
-	   (delete-matching-lines cur-line (point-at-eol) (point-max)))
-     (incf line-num))   
-   (message (concat (int-to-string (- lines-before (num-of-lines))) " duplicate line deleted"))))
+  (interactive)
+  (require 'cl)
+  (defun num-of-lines () (count-lines (point-min) (point-max)))
+  (let
+      ((lines-before (num-of-lines))
+       (line-num 1))
+    (while (< line-num (num-of-lines))
+      (goto-line line-num)
+      (let ((cur-line (concat "^" (regexp-quote (buffer-substring (point-at-bol) (point-at-eol))) "$")))
+	(delete-matching-lines cur-line (point-at-eol) (point-max)))
+      (incf line-num))   
+    (message (concat (int-to-string (- lines-before (num-of-lines))) " duplicate line deleted"))))
 
-;(defun duplicate-line ()
-;  (interactive)  
-;  (duplicate (point-at-bol)  (line-beginning-position 2)))
-;
+					;(defun duplicate-line ()
+					;  (interactive)  
+					;  (duplicate (point-at-bol)  (line-beginning-position 2)))
+					;
 
 (defun backward-kill-line ()
   (interactive)
@@ -60,10 +60,10 @@
 (defun duplicate (beg end)
   (interactive "r")
   (let ((cur-pos (point)))
-	(kill-ring-save beg end)
-	(goto-char end)
-	(yank)
-	(goto-char cur-pos)))
+    (kill-ring-save beg end)
+    (goto-char end)
+    (yank)
+    (goto-char cur-pos)))
 
 (defun make-my-layout ()
   (split-window-horizontally)
@@ -74,9 +74,9 @@
   (select-window-1))
 
 
-;(defun switch-window (n)
-;  (let ((windows (window-list)))
-;  (select-window (nth (mod n (length windows))  windows))))
+					;(defun switch-window (n)
+					;  (let ((windows (window-list)))
+					;  (select-window (nth (mod n (length windows))  windows))))
 
 (defun insert-lambda ()
   (interactive) 
@@ -89,7 +89,7 @@
 (defun toggle-selective-display ()
   (interactive)
   (set-selective-display (if selective-display nil 1)))
-  
+
 (defun kill-all-saved-buffers ()
   (interactive)
   (map nil (function kill-buffer)
@@ -102,20 +102,20 @@
   (setq ropemacs-autoimport-modules '("os" "shutil" "logging"))
 
   (add-hook 'python-mode-hook
-	  (lambda ()
-		(smart-operator-mode 1)
-		(define-key smart-operator-mode-map  "." 'op-override-.)
-		(setq-default tab-width 4)
-		(setq-default python-indent-offset 4)
-		(programming-modes)
-		(setq outline-regexp " *\\(def \\|clas\\|#hea\\)")
-		;(hide-sublevels 1)
-	
-		(setq ropemacs-goto-def-newwin t)
-	    )))
+	    (lambda ()
+	      (smart-operator-mode 1)
+	      (define-key smart-operator-mode-map  "." 'op-override-.)
+	      (setq-default tab-width 4)
+	      (setq-default python-indent-offset 4)
+	      (programming-modes)
+	      (setq outline-regexp " *\\(def \\|clas\\|#hea\\)")
+					;(hide-sublevels 1)
+	      
+	      (setq ropemacs-goto-def-newwin t)
+	      )))
 
 (defun make-file-associations ()
-(add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode)))
+  (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode)))
 
 (defun LaTeX-stuff ()
   (setq TeX-PDF-mode t)
@@ -138,17 +138,17 @@
   (autoload 'js2-mode "js2-mode" nil t)
   (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
   (add-hook 'js2-mode-hook
-			(lambda ()
-			  (programming-modes)
-			  (setq outline-regexp " *\\(function\\)")
-			  (if (featurep 'js2-highlight-vars)
-				  (js2-highlight-vars-mode)))))
+	    (lambda ()
+	      (programming-modes)
+	      (setq outline-regexp " *\\(function\\)")
+	      (if (featurep 'js2-highlight-vars)
+		  (js2-highlight-vars-mode)))))
 
 (defun elisp-stuff ()
   (add-hook 'emacs-lisp-mode-hook
-			(lambda () 
-			  (programming-modes)
-			  (paredit-mode))))
+	    (lambda () 
+	      (programming-modes)
+	      (paredit-mode))))
 (defun programming-modes ()
   	(subword-mode)
 	(outline-minor-mode))
