@@ -36,6 +36,7 @@
   (global-linum-mode t)
   (menu-bar-mode 0)
   (setq vc-follow-symlinks t)
+  (setq ac-auto-show-menu nil)
 
   (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
     (load-file (concat plugins-dir "cua-emul.el"))
@@ -68,7 +69,8 @@
 (dolist (package `(sml-mode magit smex color-theme find-file-in-project ecb 
 			    fuzzy-match js3-mode js2-refactor expand-region
 			    mark-multiple wrap-region flymake clojure-mode 
-			    auctex toggle-test ensime scala-mode2 paredit color-theme-solarized))
+			    auctex toggle-test ensime scala-mode2 paredit 
+			    color-theme-solarized helm))
   (if (not (package-installed-p package))
       (progn 
 	(message (concat "installing package: " (symbol-name package)))
@@ -125,7 +127,8 @@
 (wrap-region-mode t)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
-
+(require 'helm-config)
+(helm-mode 1)
 (require 'myshortcuts)
 (require 'myproject nil 'noerror)
 
