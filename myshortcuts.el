@@ -35,6 +35,9 @@
 (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
 (global-set-key (kbd "C-*") 'mark-all-like-this)
 (define-key python-mode-map (kbd "C-c t") 'tgt-toggle)
+(global-set-key (kbd "C-?") 'ac-complete-with-helm)
+(define-key ac-complete-mode-map (kbd "C-?") 'ac-complete-with-helm)
+
 
 (add-hook 'python-mode-hook
 	  (lambda ()

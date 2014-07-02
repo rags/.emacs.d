@@ -70,7 +70,7 @@
 			    fuzzy-match js3-mode js2-refactor expand-region
 			    mark-multiple wrap-region flymake clojure-mode 
 			    auctex toggle-test ensime scala-mode2 paredit 
-			    color-theme-solarized helm))
+			    color-theme-solarized helm ac-helm))
   (if (not (package-installed-p package))
       (progn 
 	(message (concat "installing package: " (symbol-name package)))
@@ -129,6 +129,10 @@
 
 (require 'helm-config)
 (helm-mode 1)
+(require 'auto-complete-config)
+(ac-config-default)
+(ac-complete-with-helm)
+
 (require 'myshortcuts)
 (require 'myproject nil 'noerror)
 

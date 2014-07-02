@@ -135,9 +135,15 @@
   )
 
 (defun js-stuff()
-  (autoload 'js2-mode "js2-mode" nil t)
-  (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-  (add-hook 'js2-mode-hook
+ (custom-set-variables 
+ '(js3-auto-indent-p t)         ; it's nice for commas to right themselves.
+ '(js3-enter-indents-newline t) ; don't need to push tab before typing
+ '(js3-indent-on-enter-key t)   ; fix indenting before moving on
+ )
+ 
+  (autoload 'js3-mode "js3" nil t)
+  (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+  (add-hook 'js3-mode-hook
 	    (lambda ()
 	      (programming-modes)
 	      (setq outline-regexp " *\\(function\\)")
@@ -151,7 +157,8 @@
 	      (paredit-mode))))
 (defun programming-modes ()
   	(subword-mode)
-	(outline-minor-mode))
+	(outline-minor-mode)
+	(electric-pair-mode))
 
 (defun op-override-. ()
   (interactive)
