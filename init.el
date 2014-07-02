@@ -131,7 +131,7 @@
 (helm-mode 1)
 (require 'auto-complete-config)
 (ac-config-default)
-(ac-complete-with-helm)
+
 
 (require 'myshortcuts)
 (require 'myproject nil 'noerror)
