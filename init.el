@@ -47,26 +47,10 @@
 
     (setq load-path 
 	  (append `(,emacs.d ,plugins-dir
-			     ;,(concat plugins-dir "color-theme")
 			     ,(concat plugins-dir "nxml-mode")
-			     ;,(concat plugins-dir "slime")
-			     ;,(concat plugins-dir "clojure-mode")
 			     ,(concat plugins-dir "emacs-for-python")
-			     ;,(concat plugins-dir "ecb")
-				 ;,(concat plugins-dir "find-file-in-project")
-				 ;,(concat plugins-dir "fuzzy-match")
-				 ;,(concat plugins-dir "smex")
-				 ;,(concat plugins-dir "js2-mode")
-				 ,(concat plugins-dir "js2-highlight-vars")
-				 ;,(concat plugins-dir "expand-region")
-				 ;,(concat plugins-dir "mark-multiple")
-				 ;,(concat plugins-dir "js2-refactor")
-				 ,(concat plugins-dir "pretty-lambdada")
-				 ;,(concat plugins-dir "magit")
-				 ;,(concat plugins-dir "wrap-region")
-				 ;,(concat plugins-dir "scala-mode2")
-				 ;,(concat plugins-dir "ensime/elisp")
-				 ;,(concat plugins-dir "toggle-test")
+			     ,(concat plugins-dir "js2-highlight-vars")
+			     ,(concat plugins-dir "pretty-lambdada")
 				  ) load-path)))
    (add-to-list 'exec-path "/usr/local/bin")
 
@@ -84,7 +68,7 @@
 (dolist (package `(sml-mode magit smex color-theme find-file-in-project ecb 
 			    fuzzy-match js3-mode js2-refactor expand-region
 			    mark-multiple wrap-region flymake clojure-mode 
-			    auctex toggle-test ensime scala-mode2 paredit))
+			    auctex toggle-test ensime scala-mode2 paredit color-theme-solarized))
   (if (not (package-installed-p package))
       (progn 
 	(message (concat "installing package: " (symbol-name package)))
@@ -107,10 +91,7 @@
    (add-to-list 'ffip-patterns "*.yaml")
    (add-to-list 'ffip-patterns "*.css")
   
-   ;(require 'fuzzy-match)
-   					;(require 'mercurial)
-  ;(require 'color-theme)
-  (color-theme-initialize)
+  ;(color-theme-initialize)
 
 					;(color-theme-bharadwaj)
 					;(color-theme-blippblopp)
@@ -118,32 +99,21 @@
   ;(color-theme-charcoal-black)
 					; (color-theme-vim-colors)
 					; (color-theme-snowish)
-  (color-theme-clarity)		
-					;(set-default-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+  ;(color-theme-clarity)		
+  (load-theme 'solarized-dark t)
+  (set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
   ;(set-default-font "-unknown-Inconsolata-bold-normal-normal-*-21-*-*-*-m-0-iso10646-1")
- (set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
+ ;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
   (require 'smart-operator)
   (require 'ecb)
-  ;(require 'ecb-autoloads)
   (require 'window-numbering)
   (window-numbering-mode 1)
   (require 'clojure-mode)
   (require 'paredit)
-  ;(require 'smex) 
-  ;(require 'expand-region)
   (smex-initialize) 
   (require 'js2-highlight-vars)
   (require 'js2-refactor)
- ; (require 'toggle-test)
-;(eval-after-load "slime" 
-;  '(progn (slime-setup '(slime-repl))	
-;		  (defun paredit-mode-enable () (paredit-mode 1))	
-;		  (add-hook 'slime-mode-hook 'paredit-mode-enable)	
-;		  (add-hook 'slime-repl-mode-hook 'paredit-mode-enable)
-;		  (setq slime-protocol-version 'ignore)))
-;
-;(require 'slime)
-;(slime-setup)
+
 (python-stuff)
 (js-stuff)
 (elisp-stuff)
@@ -152,29 +122,16 @@
 ;(add-hook 'after-make-frame-functions 'client-initialization)
 (require 'pretty-lambdada)
 (global-pretty-lambda-mode)
-;(require 'wrap-region)
 (wrap-region-mode t)
-;(require 'magit)
-;(require 'magit-blame)
-;(require 'mark-more-like-this)
-;(require 'scala-mode2)
-;(require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 
 (require 'myshortcuts)
 (require 'myproject nil 'noerror)
 
-  ;;(require 'gmail)
-
-  ;;(server-start)
-  ;;(my-fullscreen)
-  ;;(make-my-layout)
-  
   (custom-set-variables
    '(inhibit-startup-screen t)
    '(initial-scratch-message nil)
- ;;  '(ecb-options-version "2.32")
    '(ido-create-new-buffer (quote always))
    '(show-paren-mode t)
    '(tool-bar-mode nil)
@@ -192,7 +149,9 @@
   (make-my-layout)
   (menu-bar-mode 0)
   (global-font-lock-mode 1)
-  (set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1"))
+  ;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
+  (set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+  )
 
 
 
