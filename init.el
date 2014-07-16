@@ -70,7 +70,8 @@
 			    fuzzy-match js3-mode js2-refactor expand-region
 			    mark-multiple wrap-region flymake clojure-mode 
 			    auctex toggle-test ensime scala-mode2 paredit 
-			    color-theme-solarized helm ac-helm))
+			    color-theme-solarized helm ac-helm json-mode
+			    git-gutter-fringe+ flycheck))
   (if (not (package-installed-p package))
       (progn 
 	(message (concat "installing package: " (symbol-name package)))
@@ -120,6 +121,7 @@
 (js-stuff)
 (elisp-stuff)
 (LaTeX-stuff)
+(xml-stuff)
 (make-file-associations)
 (add-hook 'after-make-frame-functions 'client-initialization)
 (require 'pretty-lambdada)
@@ -132,6 +134,10 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
+(require 'git-gutter-fringe+)
+(global-git-gutter+-mode t)
+(setq git-gutter-fr+-side 'right-fringe)
+(set-face-foreground 'git-gutter-fr+-modified "yellow")   
 
 (require 'myshortcuts)
 (require 'myproject nil 'noerror)
@@ -142,15 +148,17 @@
    '(ido-create-new-buffer (quote always))
    '(show-paren-mode t)
    '(tool-bar-mode nil)
-   '(transient-mark-mode nil))
+   '(transient-mark-mode nil)
+   )
+   
    (global-font-lock-mode 1)
    (auto-complete-mode t)
    (message "load all done")
-)
+) 
 
 (defun client-initialization (frame)
   "frame initialization ui/layout related"
-  (interactive)
+  (interactive "XFrame: ")
   (select-frame frame)
   (my-fullscreen)
   ;(make-my-layout)
@@ -161,7 +169,7 @@
   (set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
   )
 
-
+(defun reset () (interactive) (client-initialization (selected-frame)))
 
 (load-all)
 ;;(if window-system (load-all) (load-quick))

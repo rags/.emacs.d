@@ -27,6 +27,11 @@
   (add-to-list 'default-frame-alist '(alpha 96 80))
   )
 
+(defun toggle-comment  ()
+  "toggle comment on current line"
+  (interactive)
+  (comment-or-uncomment-region (point-at-bol) (point-at-eol)))
+
 
 (defun delete-duplicate-lines ()
   (interactive)
@@ -134,6 +139,13 @@
 	      (TeX-PDF-mode)))
   )
 
+(defun xml-stuff ()
+  (add-to-list 'auto-mode-alist '("\\.html$" . nxml-mode))
+  (add-to-list 'auto-mode-alist '("\\.xml$" .  nxml-mode))
+  (add-to-list 'auto-mode-alist '("\\.xsd$" .  nxml-mode))
+  (add-hook 'nxml-mode-hook (lambda () 
+			      (programming-modes) 
+			      (setq nxml-slash-auto-complete-flag t))))
 (defun js-stuff()
  (custom-set-variables 
  '(js3-auto-indent-p t)         ; it's nice for commas to right themselves.
@@ -143,9 +155,13 @@
  
   (autoload 'js3-mode "js3" nil t)
   (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+  (add-hook 'json-mode-hook (lambda () 			      
+			      (programming-modes) 
+			      (setq outline-regexp "[^{]*{")))
   (add-hook 'js3-mode-hook
 	    (lambda ()
 	      (programming-modes)
+	      (flycheck-mode t)
 	      (setq outline-regexp " *\\(function\\)")
 	      (if (featurep 'js2-highlight-vars)
 		  (js2-highlight-vars-mode)))))
