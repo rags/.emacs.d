@@ -152,6 +152,7 @@
    )
    
    (global-font-lock-mode 1)
+   (global-ede-mode t)
    (auto-complete-mode t)
    (message "load all done")
 ) 
