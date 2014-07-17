@@ -151,7 +151,13 @@
  '(js3-auto-indent-p t)         ; it's nice for commas to right themselves.
  '(js3-enter-indents-newline t) ; don't need to push tab before typing
  '(js3-indent-on-enter-key t)   ; fix indenting before moving on
+ '(js3-indent-level 4)
  )
+
+ (eval-after-load 'tern
+   '(progn
+      (require 'tern-auto-complete)
+      (tern-ac-setup)))
  
   (autoload 'js3-mode "js3" nil t)
   (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
@@ -161,6 +167,8 @@
   (add-hook 'js3-mode-hook
 	    (lambda ()
 	      (programming-modes)
+	      (smart-operator-mode 1)
+	      (tern-mode t)
 	      (flycheck-mode t)
 	      (setq outline-regexp " *\\(function\\)")
 	      (if (featurep 'js2-highlight-vars)
@@ -171,10 +179,14 @@
 	    (lambda () 
 	      (programming-modes)
 	      (paredit-mode))))
+
 (defun programming-modes ()
-  	(subword-mode)
-	(outline-minor-mode)
-	(electric-pair-mode))
+  	(subword-mode t)
+	(outline-minor-mode t)
+	(hs-minor-mode t)
+	(imenu-add-menubar-index)
+	(auto-complete-mode t)
+	(electric-pair-mode t))
 
 (defun op-override-. ()
   (interactive)

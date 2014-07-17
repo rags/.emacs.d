@@ -71,7 +71,7 @@
 			    mark-multiple wrap-region flymake clojure-mode 
 			    auctex toggle-test ensime scala-mode2 paredit 
 			    color-theme-solarized helm ac-helm json-mode
-			    git-gutter-fringe+ flycheck))
+			    git-gutter-fringe+ flycheck tern tern-auto-complete))
   (if (not (package-installed-p package))
       (progn 
 	(message (concat "installing package: " (symbol-name package)))
@@ -149,6 +149,8 @@
    '(show-paren-mode t)
    '(tool-bar-mode nil)
    '(transient-mark-mode nil)
+   '(ediff-window-setup-function 'ediff-setup-windows-plain)
+   '(ediff-split-window-function 'split-window-horizontally)
    )
    
    (global-font-lock-mode 1)
