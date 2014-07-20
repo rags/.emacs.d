@@ -1,36 +1,13 @@
 (setq default-directory "~/projects/hagglev1")
 (rope-open-project "~/projects/hagglev1")
 
-(defun proj-grep ()
-  (interactive)
-  (py-grep (ffip-project-root)))
+(setenv "SHELL" "/usr/bin/logbash")
+(add-to-list 'ede-project-directories "/home/raghunr/ws/blast-client/src") 
+(provide 'myproject)
 
-(defun src-grep ()
-  (interactive)
-  (py-grep (concat (ffip-project-root) "src")))
-(defun test-grep ()
-  (interactive)
-  (py-grep (concat (ffip-project-root) "tests")))
-
-(defun py-grep (dir)
-  (interactive)
-  (grep-find (read-shell-command "Run find (like this): "
-                                   (concat "find " dir " -type f -name \"*.py\" -exec grep -nH -e  {} +") 'grep-find-history)))
-
-(defun toggle-test ()
-  (interactive)
-  (let* ((proj-root (file-truename (ffip-project-root)))
-		(f (file-truename buffer-file-name))
-		(fname (file-name-nondirectory f)))
-	(find-file-other-window
-	 (if (string-match "/tests/" f)
-		 (replace-regexp-in-string "test_" "" 
-								   (replace-regexp-in-string "tests/" "src/" f))
-	   (replace-regexp-in-string fname (concat "test_" fname) (replace-regexp-in-string (concat proj-root "src/") (concat proj-root "tests/") f)
-	)))))
-(add-hook 'python-mode-hook
-	  (lambda ()
-	    (define-key python-mode-map (kbd "C-c t") 'toggle-test)))
+(defun proj-grep () (my-grep (parent-dir (ffip-project-root)) "*.js"))
+(defun src-grep () (my-grep (parent-dir (ffip-project-root)) "*.js" " | grep src"))
+(defun tst-grep () (my-grep (parent-dir (ffip-project-root)) "*.js" " | grep tst"))
 
 (setq ffip-find-options (mapconcat (lambda (dir) (format "-not -regex \".*/%s/.*\"" dir)) '("htmlcov" "lib" "src/lib" ".git" "\\.ropeproject") " "))
 (provide 'myproject)

@@ -202,6 +202,34 @@
 		  ad-do-it)
 	  ad-do-it))
   (ad-activate 'desktop-restore-file-buffer))
+
+(defun string/ends-with (s ending)
+  "Return non-nil if string S ends with ENDING."
+  (cond ((>= (length s) (length ending))
+	 (let ((elength (length ending)))
+	   (string= (substring s (- 0 elength)) ending)))
+	(t nil)))
+
+(defun parent-dir (path)
+  (let* ((truepath (cond 
+		    ((string/ends-with path "/") (substring path 0 (- (length path) 1)))
+		    (t path))))
+    (file-name-directory truepath)))
+
+(defun ffip-grep (&optional filters suffix)
+  (my-grep (ffip-project-root) filters suffix))
+
+(defun my-grep (dir &optional filters suffix)
+  (interactive)
+  (grep-find (read-shell-command "Run find (like this): "
+                                   (concat "find " dir " -type f " 
+					   (cond (filters (concat "-name \"" filters "\" ")) 
+						 (t ""))  
+					   "-exec grep -nH -e  {} +"
+					   (cond (suffix (concat " " suffix)) 
+						 (t "")))))) 
+
+
 (provide 'mydefuns)
 
 
