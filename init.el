@@ -73,7 +73,8 @@
 			    color-theme-solarized helm ac-helm json-mode
 			    git-gutter-fringe+ flycheck tern tern-auto-complete))
   (if (not (package-installed-p package))
-      (progn 
+      (progn
+	(package-refresh-contents)
 	(message (concat "installing package: " (symbol-name package)))
 	(package-install package))))
 
