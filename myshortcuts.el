@@ -41,7 +41,7 @@
 (global-set-key (kbd "M-;") 'toggle-comment)
 (global-set-key (kbd "C-c @ t") 'hs-toggle-hiding)
 (global-set-key (kbd "C-c @ a") 'hs-show-all)
-
+(global-set-key (kbd "C-c t") 'tgt-toggle)
 
 (add-hook 'python-mode-hook
 	  (lambda ()
