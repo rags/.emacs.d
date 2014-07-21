@@ -225,7 +225,7 @@
                                    (concat "find " dir " -type f " 
 					   (cond (filters (concat "-name \"" filters "\" ")) 
 						 (t ""))  
-					   "-exec grep -nH -e  {} +"
+					   "-exec grep -nH -F  {} +"
 					   (cond (suffix (concat " " suffix)) 
 						 (t "")))))) 
 

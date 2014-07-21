@@ -93,6 +93,7 @@
    (require 'find-file-in-project)
    (add-to-list 'ffip-patterns "*.yaml")
    (add-to-list 'ffip-patterns "*.css")
+   (setq ffip-project-file `(".ropeproject .tern-project .git"))
   
   ;(color-theme-initialize)
 
