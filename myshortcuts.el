@@ -11,7 +11,7 @@
 (global-set-key [C-f4] 'cua-emul-kill-buffer)
 (global-set-key [C-tab] 'cua-emul-next-buffer)
 (global-set-key [C-S-iso-lefttab] 'cua-emul-previous-buffer)
-(global-set-key (kbd "C-x C-b") 'helm-buffer-list)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C-M-+") 'text-scale-decrease) 
 (global-set-key [f1] 'toggle-selective-display)
@@ -34,6 +34,7 @@
 (global-set-key (kbd "C-<") 'mark-previous-like-this)
 (global-set-key (kbd "C->") 'mark-next-like-this)
 (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
+
 (global-set-key (kbd "C-*") 'mark-all-like-this)
 (define-key python-mode-map (kbd "C-c t") 'tgt-toggle)
 (global-set-key (kbd "C-?") 'ac-complete-with-helm)
