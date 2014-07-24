@@ -151,7 +151,7 @@
  '(js3-auto-indent-p t)         ; it's nice for commas to right themselves.
  '(js3-enter-indents-newline t) ; don't need to push tab before typing
  '(js3-indent-on-enter-key t)   ; fix indenting before moving on
- '(js3-indent-level 4)
+ '(js3-indent-level 2)
  )
 
  (eval-after-load 'tern
@@ -186,6 +186,9 @@
 	(hs-minor-mode t)
 	(imenu-add-menubar-index)
 	(auto-complete-mode t)
+	(yas-minor-mode t)
+	(setq mode-line-modes 'nil)
+	(setq minor-mode-alist 'nil)
 	(electric-pair-mode t))
 
 (defun op-override-. ()
@@ -221,13 +224,15 @@
 
 (defun my-grep (dir &optional filters suffix)
   (interactive)
-  (grep-find (read-shell-command "Run find (like this): "
-                                   (concat "find " dir " -type f " 
+  (-my-grep (concat "find " dir " -type f " 
 					   (cond (filters (concat "-name \"" filters "\" ")) 
 						 (t ""))  
 					   "-exec grep -nH -F  {} +"
 					   (cond (suffix (concat " " suffix)) 
-						 (t "")))))) 
+						 (t ""))))) 
+
+(defun -my-grep (cmd)
+  (grep-find (read-shell-command "Run find (like this): " cmd))) 
 
 
 (provide 'mydefuns)

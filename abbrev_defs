@@ -13,6 +13,10 @@
   '(
    ))
 
+(define-abbrev-table 'calendar-mode-abbrev-table '())
+
+(define-abbrev-table 'clojure-mode-abbrev-table '())
+
 (define-abbrev-table 'comint-mode-abbrev-table '())
 
 (define-abbrev-table 'completion-list-mode-abbrev-table '())
@@ -31,11 +35,15 @@
 
 (define-abbrev-table 'idl-mode-abbrev-table '())
 
+(define-abbrev-table 'inferior-lisp-mode-abbrev-table '())
+
 (define-abbrev-table 'inferior-python-mode-abbrev-table '())
 
 (define-abbrev-table 'java-mode-abbrev-table
   '(
    ))
+
+(define-abbrev-table 'js2-mode-abbrev-table '())
 
 (define-abbrev-table 'lisp-mode-abbrev-table '())
 
@@ -46,6 +54,10 @@
 (define-abbrev-table 'occur-edit-mode-abbrev-table '())
 
 (define-abbrev-table 'occur-mode-abbrev-table '())
+
+(define-abbrev-table 'org-mode-abbrev-table '())
+
+(define-abbrev-table 'outline-mode-abbrev-table '())
 
 (define-abbrev-table 'package-menu-mode-abbrev-table '())
 
@@ -72,6 +84,8 @@
 (define-abbrev-table 'snippet-mode-abbrev-table '())
 
 (define-abbrev-table 'special-mode-abbrev-table '())
+
+(define-abbrev-table 'speedbar-mode-abbrev-table '())
 
 (define-abbrev-table 'tabulated-list-mode-abbrev-table '())
 

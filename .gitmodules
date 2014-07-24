@@ -46,3 +46,6 @@
 [submodule "plugins/toggle-test"]
 	path = plugins/toggle-test
 	url = git@github.com:rags/toggle-test.git
+[submodule "plugins/yasnippet-snippets"]
+	path = plugins/yasnippet-snippets
+	url = git@github.com:AndreaCrotti/yasnippet-snippets.git

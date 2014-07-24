@@ -44,12 +44,11 @@
     ;(load-file (concat plugins-dir "flymake.el"))
     ;(load-file (concat plugins-dir "paredit.el"))
     (load-file (concat plugins-dir "kill-ring-ido.el"))
-    (load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
+   ; (load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
 
     (setq load-path 
 	  (append `(,emacs.d ,plugins-dir
 			     ,(concat plugins-dir "nxml-mode")
-			     ,(concat plugins-dir "emacs-for-python")
 			     ,(concat plugins-dir "js2-highlight-vars")
 			     ,(concat plugins-dir "pretty-lambdada")
 				  ) load-path)))
@@ -71,7 +70,8 @@
 			    mark-multiple wrap-region flymake clojure-mode 
 			    auctex toggle-test ensime scala-mode2 paredit 
 			    color-theme-solarized helm ac-helm json-mode
-			    git-gutter-fringe+ flycheck tern tern-auto-complete))
+			    git-gutter-fringe+ flycheck tern tern-auto-complete
+			    yasnippet ack))
   (if (not (package-installed-p package))
       (progn
 	(package-refresh-contents)
@@ -92,9 +92,9 @@
    (require 'ido)
    (ido-mode t)
    (require 'find-file-in-project)
-   (add-to-list 'ffip-patterns "*.yaml")
-   (add-to-list 'ffip-patterns "*.css")
+   (setq ffip-patterns (append ffip-patterns '("*.yaml" "*.css" "*.json")))
    (setq ffip-project-file `(".ropeproject .tern-project .git"))
+   (setq ffip-find-options "-not -regex \".*/node_modules/.*\" -not -regex \".*/build/.*\"")
   
   ;(color-theme-initialize)
 
@@ -109,7 +109,7 @@
   (set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
   ;(set-default-font "-unknown-Inconsolata-bold-normal-normal-*-21-*-*-*-m-0-iso10646-1")
  ;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
-  (require 'smart-operator)
+
   (require 'ecb)
   (require 'window-numbering)
   (window-numbering-mode 1)
@@ -118,6 +118,12 @@
   (smex-initialize) 
   (require 'js2-highlight-vars)
   (require 'js2-refactor)
+
+(add-to-list 'yas/root-directory "~/.emacs.d/plugins/yasnippet-snippets" "~/.emacs.d/snippets")
+(yas-reload-all)
+(defun yas/initialize());hack old version of yas used by epy
+(load-file  "~/.emacs.d/plugins/emacs-for-python/epy-init.el")
+(require 'smart-operator)
 
 (python-stuff)
 (js-stuff)
@@ -141,8 +147,16 @@
 (setq git-gutter-fr+-side 'right-fringe)
 (set-face-foreground 'git-gutter-fr+-modified "yellow")   
 
+
+
+
 (require 'myshortcuts)
 (require 'myproject nil 'noerror)
+
+ 
+
+   
+
 
   (custom-set-variables
    '(inhibit-startup-screen t)
@@ -153,8 +167,9 @@
    '(transient-mark-mode nil)
    '(ediff-window-setup-function 'ediff-setup-windows-plain)
    '(ediff-split-window-function 'split-window-horizontally)
+   '(yas-global-mode 1)
    )
-   
+
    (global-font-lock-mode 1)
    (global-ede-mode t)
    (auto-complete-mode t)
