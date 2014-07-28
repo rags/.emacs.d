@@ -13,3 +13,4 @@ url
 elpa
 session.*
 ede-projects.el
+.mc-lists.el

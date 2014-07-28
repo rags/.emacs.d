@@ -149,6 +149,7 @@
 			      (programming-modes) 
 			      (setq nxml-slash-auto-complete-flag t))))
 (defun js-stuff()
+ (require 'js3-refactor)
  (custom-set-variables 
  '(js3-auto-indent-p t)         ; it's nice for commas to right themselves.
  '(js3-enter-indents-newline t) ; don't need to push tab before typing

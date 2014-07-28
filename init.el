@@ -51,7 +51,10 @@
 			     ,(concat plugins-dir "nxml-mode")
 			     ,(concat plugins-dir "js2-highlight-vars")
 			     ,(concat plugins-dir "pretty-lambdada")
-				  ) load-path)))
+			     ,(concat plugins-dir "js3-refactor")
+				  ) load-path))
+	(add-to-list 'custom-theme-load-path 
+				 (concat plugins-dir "emacs-color-theme-darkula")))
    (add-to-list 'exec-path "/usr/local/bin")
 
 
@@ -65,8 +68,8 @@
 ;;      delete these packages from plugins fodler
 
 ;; Install ELPA packages
-(dolist (package `(sml-mode magit smex color-theme find-file-in-project ecb 
-			    fuzzy-match js3-mode js3-refactor expand-region
+(dolist (package `(sml-mode magit smex find-file-in-project ecb 
+			    fuzzy-match js3-mode js2-refactor expand-region
 			    mark-multiple wrap-region flymake clojure-mode 
 			    auctex toggle-test ensime scala-mode2 paredit 
 			    color-theme-solarized helm ac-helm json-mode
@@ -74,7 +77,7 @@
 			    yasnippet ack))
   (if (not (package-installed-p package))
       (progn
-	(package-refresh-contents)
+	;(package-refresh-contents)
 	(message (concat "installing package: " (symbol-name package)))
 	(package-install package))))
 
@@ -105,7 +108,7 @@
 					; (color-theme-vim-colors)
 					; (color-theme-snowish)
   ;(color-theme-clarity)		
-  (load-theme 'solarized-dark t)
+  (load-theme 'Darkula t)
   (set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
   ;(set-default-font "-unknown-Inconsolata-bold-normal-normal-*-21-*-*-*-m-0-iso10646-1")
  ;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
@@ -185,7 +188,7 @@
   (menu-bar-mode 0)
   (global-font-lock-mode 1)
   ;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
-  (load-theme 'solarized-dark t)
+  (load-theme 'Darkula t)
   (set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
   )
 
