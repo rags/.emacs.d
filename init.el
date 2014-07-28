@@ -66,7 +66,7 @@
 
 ;; Install ELPA packages
 (dolist (package `(sml-mode magit smex color-theme find-file-in-project ecb 
-			    fuzzy-match js3-mode js2-refactor expand-region
+			    fuzzy-match js3-mode js3-refactor expand-region
 			    mark-multiple wrap-region flymake clojure-mode 
 			    auctex toggle-test ensime scala-mode2 paredit 
 			    color-theme-solarized helm ac-helm json-mode
@@ -117,7 +117,7 @@
   (require 'paredit)
   (smex-initialize) 
   (require 'js2-highlight-vars)
-  (require 'js2-refactor)
+  (require 'js3-refactor)
 
 (add-to-list 'yas/root-directory "~/.emacs.d/plugins/yasnippet-snippets" "~/.emacs.d/snippets")
 (yas-reload-all)

@@ -30,7 +30,9 @@
 (defun toggle-comment  ()
   "toggle comment on current line"
   (interactive)
-  (comment-or-uncomment-region (point-at-bol) (point-at-eol)))
+  (if (use-region-p) 
+	  (comment-or-uncomment-region (region-beginning) (region-end))
+	(comment-or-uncomment-region (point-at-bol) (point-at-eol))))
 
 
 (defun delete-duplicate-lines ()
@@ -171,8 +173,8 @@
 	      (tern-mode t)
 	      (flycheck-mode t)
 	      (setq outline-regexp " *\\(function\\)")
-	      (if (featurep 'js2-highlight-vars)
-		  (js2-highlight-vars-mode)))))
+	      (if (featurep 'js3-highlight-vars)
+		  (js3-highlight-vars-mode)))))
 
 (defun elisp-stuff ()
   (add-hook 'emacs-lisp-mode-hook

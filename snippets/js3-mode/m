@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 #name : m
 # --
+
 ${1:methodName}: function($2) {
   $0
 },
