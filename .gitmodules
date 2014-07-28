@@ -54,4 +54,4 @@
 	url = git@github.com:katyo/js3-refactor.git
 [submodule "plugins/emacs-color-theme-darkula"]
 	path = plugins/emacs-color-theme-darkula
-	url = git@github.com:bmdhacks/emacs-color-theme-darkula.git
+	url = git@github.com:rags/emacs-color-theme-darkula.git
