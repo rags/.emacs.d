@@ -96,7 +96,7 @@
    (ido-mode t)
    (require 'find-file-in-project)
    (setq ffip-patterns (append ffip-patterns '("*.yaml" "*.css" "*.json")))
-   (setq ffip-project-file `(".ropeproject .tern-project .git"))
+   (setq ffip-project-file '(".git" ".ropeproject" ".tern-project"))
    (setq ffip-find-options "-not -regex \".*/node_modules/.*\" -not -regex \".*/build/.*\"")
   
   ;(color-theme-initialize)
