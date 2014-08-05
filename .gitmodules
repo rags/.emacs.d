@@ -55,3 +55,6 @@
 [submodule "plugins/emacs-color-theme-darkula"]
 	path = plugins/emacs-color-theme-darkula
 	url = git@github.com:rags/emacs-color-theme-darkula.git
+[submodule "plugins/js3-highlight-vars"]
+	path = plugins/js3-highlight-vars
+	url = git@github.com:rags/js3-highlight-vars

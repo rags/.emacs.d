@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : nlf
+# --
+
+${1:var} ${2:methodName} = function($3) {
+  $0
+};
