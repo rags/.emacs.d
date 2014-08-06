@@ -145,9 +145,9 @@
   (add-to-list 'auto-mode-alist '("\\.html$" . nxml-mode))
   (add-to-list 'auto-mode-alist '("\\.xml$" .  nxml-mode))
   (add-to-list 'auto-mode-alist '("\\.xsd$" .  nxml-mode))
+  (setq nxml-slash-auto-complete-flag t)
   (add-hook 'nxml-mode-hook (lambda () 
-			      (programming-modes) 
-			      (setq nxml-slash-auto-complete-flag t))))
+			      (programming-modes))))
 (defun js-stuff()
  (require 'js3-refactor)
  (custom-set-variables 
