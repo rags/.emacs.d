@@ -174,8 +174,9 @@
 	      (tern-mode t)
 	      (flycheck-mode t)
 	      (setq outline-regexp " *\\(function\\)")
-	      (if (featurep 'js3-highlight-vars)
-		  (js3-highlight-vars-mode)))))
+	      ;; '(if (featurep 'js3-highlight-vars)
+		  ;; (js3-highlight-vars-mode))
+	      )))
 
 (defun elisp-stuff ()
   (add-hook 'emacs-lisp-mode-hook
