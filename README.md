@@ -3,6 +3,9 @@
 
 My Emacs configuration
 
+Installing:
+
+
 Dependencies:
 
 * sudo yum/apt-get/pacman install ack
