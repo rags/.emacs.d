@@ -4,8 +4,9 @@
 My Emacs configuration
 
 Installing:
-
-
+```
+git clone git@github.com:rags/.emacs.d ~
+```
 Dependencies:
 
 * sudo yum/apt-get/pacman install ack
