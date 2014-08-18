@@ -166,6 +166,7 @@
   (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
   (add-hook 'json-mode-hook (lambda () 			      
 			      (programming-modes) 
+				  (add-hook 'before-save-hook 'web-beautify-js-buffer t t)
 			      (setq outline-regexp "[^{]*{")))
   (add-hook 'js3-mode-hook
 	    (lambda ()
@@ -174,6 +175,7 @@
 	      (tern-mode t)
 	      (flycheck-mode t)
 	      (setq outline-regexp " *\\(function\\)")
+		  (add-hook 'before-save-hook 'web-beautify-js-buffer t t)
 	      ;; '(if (featurep 'js3-highlight-vars)
 		  ;; (js3-highlight-vars-mode))
 	      )))

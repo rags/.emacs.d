@@ -73,7 +73,7 @@
 			      auctex toggle-test ensime scala-mode2 paredit 
 			      color-theme-solarized helm ac-helm json-mode
 			      git-gutter-fringe+ flycheck tern tern-auto-complete
-			      yasnippet ack))
+			      yasnippet ack web-beautify))
     (if (not (package-installed-p package))
 	(progn
 					;(package-refresh-contents)
