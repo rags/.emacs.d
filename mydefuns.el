@@ -110,11 +110,10 @@
 
   (add-hook 'python-mode-hook
 	    (lambda ()
-	      (smart-operator-mode 1)
+	      (infix-language-mode)
 	      (define-key smart-operator-mode-map  "." 'op-override-.)
 	      (setq-default tab-width 4)
 	      (setq-default python-indent-offset 4)
-	      (programming-modes)
 	      (setq outline-regexp " *\\(def \\|clas\\|#hea\\)")
 					;(hide-sublevels 1)
 	      
@@ -170,8 +169,7 @@
 			      (setq outline-regexp "[^{]*{")))
   (add-hook 'js3-mode-hook
 	    (lambda ()
-	      (programming-modes)
-	      (smart-operator-mode 1)
+	      (infix-language-mode)
 	      (tern-mode t)
 	      (flycheck-mode t)
 	      (setq outline-regexp " *\\(function\\)")
@@ -186,17 +184,37 @@
 	      (programming-modes)
 	      (paredit-mode))))
 
-(defun programming-modes ()
-  	(subword-mode t)
-	(outline-minor-mode t)
-	(hs-minor-mode t)
-	(imenu-add-menubar-index)
-	(auto-complete-mode t)
-	(yas-minor-mode t)
-	(setq mode-line-modes 'nil)
-	(setq minor-mode-alist 'nil)
-	(electric-pair-mode t))
+(defun git-stuff ()  
+(require 'git-gutter-fringe+)
+  (global-git-gutter+-mode t)
+  (setq git-gutter-fr+-side 'right-fringe)
+  (set-face-foreground 'git-gutter-fr+-modified "yellow"))
 
+(defun haskell-stuff ()
+  (add-hook 'haskell-interactive-mode-hook 
+	    (lambda () (infix-language-mode t)))
+  (add-hook 'haskell-mode-hook (lambda ()
+				 (haskell-indent-mode t)
+				 (interactive-haskell-mode t)
+				 (infix-language-mode))))
+
+(defun infix-language-mode (&optional interactivep)
+  (programming-modes interactivep) 
+  (smart-operator-mode t))
+
+(defun programming-modes (&optional interactivep)
+  (if (not interactivep) 
+      (progn (outline-minor-mode t)
+	     (hs-minor-mode t)
+	     (imenu-add-menubar-index)
+	     (yas-minor-mode t)))
+  
+  (subword-mode t)
+  (auto-complete-mode t)
+  (setq mode-line-modes 'nil)
+  (setq minor-mode-alist 'nil)
+  (electric-pair-mode t))
+   
 (defun op-override-. ()
   (interactive)
   (insert "."))
@@ -240,6 +258,25 @@
 (defun -my-grep (cmd)
   (grep-find (read-shell-command "Run find (like this): " cmd))) 
 
+(defun setup-programming-modes ()
+  (require 'clojure-mode)
+  (require 'paredit)
+  (require 'js3-highlight-vars)
+  (require 'js3-refactor)
+  (require 'smart-operator)
+  (require 'pretty-lambdada)
+
+  (python-stuff)
+  (js-stuff)
+  (elisp-stuff)
+  (LaTeX-stuff)
+  (xml-stuff)
+  (git-stuff)
+  (make-file-associations)
+  (global-pretty-lambda-mode)
+  (wrap-region-mode t)
+  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+  (haskell-stuff))
 
 (provide 'mydefuns)
 

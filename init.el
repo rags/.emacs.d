@@ -73,7 +73,7 @@
 			      auctex toggle-test ensime scala-mode2 paredit 
 			      color-theme-solarized helm ac-helm json-mode
 			      git-gutter-fringe+ flycheck tern tern-auto-complete
-			      yasnippet ack web-beautify))
+			      yasnippet ack web-beautify haskell-mode))
     (if (not (package-installed-p package))
 	(progn
 					;(package-refresh-contents)
@@ -108,42 +108,26 @@
   (require 'ecb)
   (require 'window-numbering)
   (window-numbering-mode 1)
-  (require 'clojure-mode)
-  (require 'paredit)
   (smex-initialize) 
-  (require 'js3-highlight-vars)
-  (require 'js3-refactor)
 
+  (yas-global-mode t)
   (add-to-list 'yas/root-directory "~/.emacs.d/plugins/yasnippet-snippets" "~/.emacs.d/snippets")
   (yas-reload-all)
   (defun yas/initialize());hack old version of yas used by epy
   (load-file  "~/.emacs.d/plugins/emacs-for-python/epy-init.el")
-  (require 'smart-operator)
 
-  (python-stuff)
-  (js-stuff)
-  (elisp-stuff)
-  (LaTeX-stuff)
-  (xml-stuff)
-  (make-file-associations)
+  
   (add-hook 'after-make-frame-functions 'client-initialization)
-  (require 'pretty-lambdada)
-  (global-pretty-lambda-mode)
-  (wrap-region-mode t)
-  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
   (require 'helm-config)
   (helm-mode 1)
   (require 'auto-complete-config)
   (ac-config-default)
 
-  (require 'git-gutter-fringe+)
-  (global-git-gutter+-mode t)
-  (setq git-gutter-fr+-side 'right-fringe)
-  (set-face-foreground 'git-gutter-fr+-modified "yellow")   
 
-  (require 'myshortcuts)
   (require 'myproject nil 'noerror)
+  (setup-programming-modes)
+  (require 'myshortcuts)
+
 
   (custom-set-variables
    '(inhibit-startup-screen t)
@@ -153,9 +137,7 @@
    '(tool-bar-mode nil)
    '(transient-mark-mode nil)
    '(ediff-window-setup-function 'ediff-setup-windows-plain)
-   '(ediff-split-window-function 'split-window-horizontally)
-   '(yas-global-mode 1)
-   )
+   '(ediff-split-window-function 'split-window-horizontally))
 
   (global-font-lock-mode 1)
   (global-ede-mode t)
