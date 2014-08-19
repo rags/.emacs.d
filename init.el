@@ -55,6 +55,7 @@
     (add-to-list 'custom-theme-load-path 
 		 (concat plugins-dir "emacs-color-theme-darkula")))
   (add-to-list 'exec-path "/usr/local/bin")
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 
 
   (require 'package)
