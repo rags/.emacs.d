@@ -1,5 +1,7 @@
 # -*- mode: snippet -*-
 #name : nlf
+#key: nlf
+#key: lf
 # --
 
 ${1:var} ${2:methodName} = function($3) {

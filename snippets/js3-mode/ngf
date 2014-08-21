@@ -1,5 +1,7 @@
 # -*- mode: snippet -*-
 #name : ngf
+#key: ngf
+#key: gf
 # --
 
 ${1:methodName} = function($2) {

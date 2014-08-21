@@ -44,7 +44,7 @@
 					;(load-file (concat plugins-dir "flymake.el"))
 					;(load-file (concat plugins-dir "paredit.el"))
     (load-file (concat plugins-dir "kill-ring-ido.el"))
-					; (load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
+;    (load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
 
     (setq load-path 
 	  (append `(,emacs.d ,plugins-dir
@@ -112,9 +112,9 @@
   (smex-initialize) 
 
   (yas-global-mode t)
-  (add-to-list 'yas/root-directory "~/.emacs.d/plugins/yasnippet-snippets" "~/.emacs.d/snippets")
+  (my-add-to-list 'yas-snippet-dirs "~/.emacs.d/plugins/yasnippet-snippets" "~/.emacs.d/snippets")
   (yas-reload-all)
-  (defun yas/initialize());hack old version of yas used by epy
+  ;(defun yas/initialize());hack old version of yas used by epy
   (load-file  "~/.emacs.d/plugins/emacs-for-python/epy-init.el")
 
   
@@ -124,9 +124,8 @@
   (require 'auto-complete-config)
   (ac-config-default)
 
-
+  (require 'mymodes)
   (require 'myproject nil 'noerror)
-  (setup-programming-modes)
   (require 'myshortcuts)
 
 

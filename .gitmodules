@@ -6,7 +6,7 @@
 	url = git://github.com/technomancy/clojure-mode.git
 [submodule "plugins/emacs-for-python"]
 	path = plugins/emacs-for-python
-	url = https://github.com/gabrielelanaro/emacs-for-python.git
+	url = git@github.com:rags/emacs-for-python.git
 [submodule "plugins/ecb"]
 	path = plugins/ecb
 	url = git://github.com/emacsmirror/ecb.git
