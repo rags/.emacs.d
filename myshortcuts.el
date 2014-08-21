@@ -45,6 +45,7 @@
 (global-set-key (kbd "C-c @ c") 'hs-hide-level)
 (global-set-key (kbd "C-c t") 'tgt-toggle)
 (global-set-key (kbd "C-s") 'helm-occur)
+(global-set-key (kbd "C-c SPC") 'set-rectangular-region-anchor)
 (js3r-add-keybindings-with-prefix "C-c C-m")
 
 (add-hook 'python-mode-hook
