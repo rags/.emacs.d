@@ -145,6 +145,15 @@
 
 (defun my-add-to-list (l &rest elements)
   (dolist (element elements) (add-to-list l element)))
+
+(defun js-require-file-and-go (filename)
+  "Load a file in the javascript interpreter."
+  (interactive (list (or buffer-file-truename (read-file-name "Require: "))))
+  (let ((filename (expand-file-name filename)))
+    (run-js inferior-js-program-command t)
+    (comint-send-string inferior-js-buffer (concat "require(\"" filename "\")\n"))
+    (switch-to-js inferior-js-buffer)))
+
 (provide 'mydefuns)
 
 
