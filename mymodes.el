@@ -66,6 +66,11 @@
 			      (setq outline-regexp "[^{]*{")))
   (add-hook 'js3-mode-hook
 	    (lambda ()
+	       (local-set-key "\C-x\C-e" 'js-send-last-sexp)
+	       (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
+	       (local-set-key "\C-cb" 'js-send-buffer)
+	       (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
+	       (local-set-key "\C-cl" 'js-load-file-and-go)
 	      (infix-language-mode)
 	      (tern-mode t)
 	      (flycheck-mode t)
@@ -73,7 +78,15 @@
 		  (add-hook 'before-save-hook 'web-beautify-js-buffer t t)
 	      ;; '(if (featurep 'js3-highlight-vars)
 		  ;; (js3-highlight-vars-mode))
-	      )))
+	      ))
+  (setq inferior-js-program-command "node")
+  (add-hook 'inferior-js-mode-hook (lambda () 
+				     (ansi-color-for-comint-mode-on)
+				     (add-to-list
+				      'comint-preoutput-filter-functions
+				      (lambda (output)
+					(replace-regexp-in-string "\033\\[[0-9]+[A-Z]" "" output)))
+				     (infix-language-mode t))))
 
 (defun elisp-stuff ()
   (add-hook 'emacs-lisp-mode-hook

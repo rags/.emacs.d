@@ -10,5 +10,11 @@
 (defun tst-grep () (my-grep (parent-dir (ffip-project-root)) "*.js" " | grep tst"))
 
 (setq ffip-find-options (mapconcat (lambda (dir) (format "-not -regex \".*/%s/.*\"" dir)) '("htmlcov" "lib" "src/lib" ".git" "\\.ropeproject") " "))
+
+(add-to-list 'tgt-projects '((:root-dir "~/repos/ATVBlastCommon")
+                              (:src-dirs "src/js") 
+                              (:test-dirs "src/js/tst")
+                              (:test-suffixes "Test"))) 
+
 (provide 'myproject)
 
