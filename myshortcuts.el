@@ -19,8 +19,8 @@
 (global-set-key (kbd "C-x c") 'save-buffers-kill-emacs)
 (global-set-key (kbd "ESC <up>") 'move-text-up)
 (global-set-key (kbd "ESC <down>") 'move-text-down)
-(global-set-key (kbd "C-x f") 'find-file-in-project)
-(global-set-key (kbd "C-x M-f") 'find-file-in-project)
+(global-set-key (kbd "C-x d") 'projectile-find-dir)
+(global-set-key (kbd "C-x f") 'projectile-find-file)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
@@ -35,6 +35,7 @@
 (global-set-key (kbd "C->") 'mark-next-like-this)
 (global-set-key (kbd "C-M-m") 'mark-more-like-this) ; like the other two, but takes an argument (negative is previous)
 (global-set-key (kbd "C-*") 'mark-all-like-this)
+(global-set-key (kbd "C-c m") 'vr/mc-mark)
 (define-key python-mode-map (kbd "C-c t") 'tgt-toggle)
 (global-set-key (kbd "C-?") 'ac-complete-with-helm)
 (define-key ac-complete-mode-map (kbd "C-?") 'ac-complete-with-helm)
@@ -46,9 +47,12 @@
 (global-set-key (kbd "C-s") 'helm-occur)
 (global-set-key (kbd "C-c SPC") 'set-rectangular-region-anchor)
 (global-set-key (kbd "H-SPC") 'set-rectangular-region-anchor)
+(global-set-key (kbd "s-SPC") 'set-rectangular-region-anchor)
 (global-set-key (kbd "C-^") (lambda () (interactive) (join-line 0)))
 (global-unset-key (kbd "C-c y"))
-(global-set-key (kbd "C-c y") (lambda (beg end) (interactive "r") (if (use-region-p) (duplicate beg end) (djcb-duplicate-line))))
+(global-set-key (kbd "C-c y") 'my-duplicate)
+(global-set-key (kbd "C-c r") 'vr/query-replace)
+
 (js3r-add-keybindings-with-prefix "C-c C-m")
 
 (add-hook 'python-mode-hook
@@ -78,7 +82,7 @@
 (define-key doc-view-mode-map (kbd "C-M-+") 'doc-view-shrink))) 
 ;hyper key for mac
 (setq ns-function-modifier 'hyper) 
-(defalias 'rr 'replace-regexp)
+(defalias 'rr 'vr/query-replace)
 (defalias 'gst 'magit-status)
 (defalias 'gl 'magit-log)
 

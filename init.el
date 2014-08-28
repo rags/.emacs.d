@@ -64,22 +64,24 @@
   (add-to-list 'package-archives 
 	       '("melpa" . "http://melpa.milkbox.net/packages/"))
   (package-initialize)
-  ;; todo add more repos and install magit, ffip, smex and other common packages from ELPA
-  ;;      delete these packages from plugins fodler
 
   ;; Install ELPA packages
-  (dolist (package `(sml-mode magit smex find-file-in-project ecb 
-			      fuzzy-match js3-mode js2-refactor expand-region
-			      mark-multiple wrap-region flymake clojure-mode 
-			      auctex toggle-test ensime scala-mode2 paredit 
-			      color-theme-solarized helm ac-helm json-mode
-			      git-gutter-fringe+ flycheck tern tern-auto-complete
-			      yasnippet ack web-beautify haskell-mode js-comint))
-    (if (not (package-installed-p package))
-	(progn
-					;(package-refresh-contents)
-	  (message (concat "installing package: " (symbol-name package)))
-	  (package-install package))))
+  (let* ((my-packages `(sml-mode magit smex  ecb fuzzy-match js3-mode js2-refactor 
+				mark-multiple flymake clojure-mode 
+				auctex toggle-test ensime scala-mode2 paredit 
+				color-theme-solarized helm ac-helm json-mode expand-region
+				git-gutter-fringe+ flycheck tern tern-auto-complete
+				yasnippet ag web-beautify haskell-mode js-comint projectile
+				flx-ido ido-vertical-mode smartparens visual-regexp))
+	 (to-install-packages (remove-if #'package-installed-p my-packages)))
+
+    (if to-install-packages
+	(progn (message "Refresh packages...") 
+	       (package-refresh-contents)
+	       (dolist (package to-install-packages)      
+		 (message (concat "installing package: " (symbol-name package)))
+		 (package-install package))) 
+      (message "Nothing new to install")))
 
 
   (autoload 'encrypt-decrypt "encrypt"
@@ -87,18 +89,22 @@
 
   (require 'server)
   (require 'mydefuns)
-
+  (require 'smartparens-config)
 
   (make-desktop-load-non-blocking)
 					;   (desktop-save-mode 1)
-  (desktop-save-mode 0)
-  (require 'ido)
+  (desktop-save-mode 0)  
   (ido-mode t)
-  (require 'find-file-in-project)
-  (setq ffip-patterns (append ffip-patterns '("*.yaml" "*.css" "*.json")))
-  (setq ffip-find-options "-not -regex \".*/node_modules/.*\" -not -regex \".*/build/.*\"")
-
-  
+  (ido-vertical-mode 1)
+  (ido-everywhere 1)
+  (flx-ido-mode 1)
+  ;; disable ido faces to see flx highlights.
+  (setq ido-enable-flex-matching t)
+  (setq ido-use-faces nil)
+  (setq flx-ido-use-faces t)
+  (projectile-global-mode)
+  (setq projectile-enable-caching t)
+  (setq ag-highlight-search t)
 					;(color-theme-initialize)
 					;(color-theme-clarity)		
   (load-theme 'Darkula t)

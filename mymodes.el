@@ -51,7 +51,7 @@
  '(js3-enter-indents-newline t) ; don't need to push tab before typing
  '(js3-indent-on-enter-key t)   ; fix indenting before moving on
  '(js3-indent-level 4)
- )
+ '(js3-consistent-level-indent-inner-bracket t))
 
  (eval-after-load 'tern
    '(progn
@@ -113,6 +113,9 @@
   (smart-operator-mode t))
 
 (defun programming-modes (&optional interactivep)
+  ;(smartparens-strict-mode t)
+  (smartparens-mode t)
+  (show-smartparens-mode t)
   (if (not interactivep) 
       (progn (outline-minor-mode t)
 	     (hs-minor-mode t)
@@ -123,7 +126,8 @@
   (auto-complete-mode t)
   (setq mode-line-modes 'nil)
   (setq minor-mode-alist 'nil)
-  (electric-pair-mode t))
+  ;(electric-pair-mode t)
+)
    
 (defun op-override-. ()
   (interactive)
@@ -145,7 +149,6 @@
   (git-stuff)
   (make-file-associations)
   (global-pretty-lambda-mode)
-  (wrap-region-mode t)
   (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
   (haskell-stuff))
 

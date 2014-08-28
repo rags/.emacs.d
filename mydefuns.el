@@ -64,6 +64,8 @@
    (point-at-bol)  
    (line-beginning-position 2)))
 
+(defun my-duplicate () (interactive) (if (use-region-p) (duplicate (region-beginning) (region-end)) (djcb-duplicate-line)))
+
 (defun duplicate (beg end)
   (interactive "r")
   (let ((cur-pos (point)))
@@ -127,21 +129,21 @@
 		    (t path))))
     (file-name-directory truepath)))
 
-(defun ffip-grep (&optional filters suffix)
-  (my-grep (ffip-project-root) filters suffix))
-
-(defun my-grep (dir &optional filters suffix)
-  (interactive)
-  (-my-grep (concat "find " dir " -type f " 
-					   (cond (filters (concat "-name \"" filters "\" ")) 
-						 (t ""))  
-					   "-exec grep -nH -F  {} +"
-					   (cond (suffix (concat " " suffix)) 
-						 (t ""))))) 
-
-(defun -my-grep (cmd)
-  (grep-find (read-shell-command "Run find (like this): " cmd))) 
-
+;(defun projectile-grep (&optional filters suffix)
+;  (my-grep (projectile-project-root) filters suffix))
+;
+;(defun my-grep (dir &optional filters suffix)
+;  (interactive)
+;  (-my-grep (concat "find " dir " -type f " 
+;					   (cond (filters (concat "-name \"" filters "\" ")) 
+;						 (t ""))  
+;					   "-exec grep -nH -F  {} +"
+;					   (cond (suffix (concat " " suffix)) 
+;						 (t ""))))) 
+;
+;(defun -my-grep (cmd)
+;  (grep-find (read-shell-command "Run find (like this): " cmd))) 
+;
 
 (defun my-add-to-list (l &rest elements)
   (dolist (element elements) (add-to-list l element)))
@@ -153,6 +155,25 @@
     (run-js inferior-js-program-command t)
     (comint-send-string inferior-js-buffer (concat "require(\"" filename "\")\n"))
     (switch-to-js inferior-js-buffer)))
+
+;;https://gist.github.com/rejeep/5933343
+;(defun my-projectile-completion-fn (prompt choises)
+;"Projectile completion function that only shows file name.
+;If two files have same name, new completion appears to select between
+;them. These include the path relative to the project root."
+;(interactive)
+;(let* ((stripped-choises
+;(-uniq (--map (file-name-nondirectory (directory-file-name it)) choises)))
+;(choise
+;(ido-completing-read prompt stripped-choises))
+;(matching-files
+;(-filter
+;(lambda (file)
+;(equal (file-name-nondirectory (directory-file-name file)) choise))
+;choises)))
+;(if (> (length matching-files) 1)
+;(ido-completing-read prompt matching-files)
+;(car matching-files))))
 
 (provide 'mydefuns)
 
