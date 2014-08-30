@@ -12,6 +12,7 @@
    '(send-mail-function (quote mailclient-send-it))
    '(show-paren-mode t)
    '(tool-bar-mode nil)
+   '(visible-bell 1)
    '(transient-mark-mode nil))
   
   (setq stack-trace-on-error t)
