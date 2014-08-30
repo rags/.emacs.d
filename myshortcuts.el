@@ -1,4 +1,4 @@
-(global-set-key [f1] 'help)
+(global-set-key [f1] help-map)
 (global-set-key [f11] 'fullscreen)
 
 (global-set-key (kbd "M-c") 'capitalize-word)
@@ -75,7 +75,13 @@
  (define-key scheme-mode-map (kbd "C-M-/") 'insert-lambda)))
 
 
-
+(add-hook 'js3-mode-hook
+	    (lambda ()
+	       (local-set-key "\C-x\C-e" 'js-send-last-sexp)
+	       (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
+	       (local-set-key "\C-cb" 'js-send-buffer)
+	       (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
+	       (local-set-key "\C-cl" 'js-require-file-and-go)))
 
 (add-hook 'doc-view-mode-hook
  (lambda ()
@@ -83,8 +89,22 @@
 (define-key doc-view-mode-map (kbd "C-M-+") 'doc-view-shrink))) 
 ;hyper key for mac
 (setq ns-function-modifier 'hyper) 
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;; keychords ;;;;;;;;;;;;;;;;;;;
+ (key-chord-define js3-mode-map ";;" "\C-e;")
+ (key-chord-define-global "uu" 'undo)
+ (key-chord-define-global "xx" 'kill-whole-line)
+ (key-chord-define-global "yy" 'copy-line)
+ (key-chord-define-global "pp" "\C-a\C-y")
+ (key-chord-define-global "dd" 'my-duplicate)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;; aliases ;;;;;;;;;;;;;;;;;;;
 (defalias 'rr 'vr/query-replace)
 (defalias 'gst 'magit-status)
 (defalias 'gl 'magit-log)
+
 
 (provide 'myshortcuts)

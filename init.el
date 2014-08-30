@@ -67,7 +67,7 @@
 
   ;; Install ELPA packages
   (let* ((my-packages `(sml-mode magit smex  ecb fuzzy-match js3-mode js2-refactor 
-				mark-multiple flymake clojure-mode guide-key
+				mark-multiple flymake clojure-mode guide-key key-chord
 				auctex toggle-test ensime scala-mode2 paredit 
 				color-theme-solarized helm ac-helm json-mode expand-region
 				git-gutter-fringe+ flycheck tern tern-auto-complete
@@ -81,7 +81,7 @@
 	       (dolist (package to-install-packages)      
 		 (message (concat "installing package: " (symbol-name package)))
 		 (package-install package))) 
-      (message "Nothing new to install")))
+      (message "Nothing new to install"))) 
 
 
   (autoload 'encrypt-decrypt "encrypt"
@@ -124,13 +124,14 @@
   (load-file  "~/.emacs.d/plugins/emacs-for-python/epy-init.el")
 
   (guide-key-mode t)
-  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x n" "C-c @" "C-c C-c"))
+  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x n" "C-c @" "C-c C-c" ))
 
   (add-hook 'after-make-frame-functions 'client-initialization)
   (require 'helm-config)
   (helm-mode 1)
   (require 'auto-complete-config)
   (ac-config-default)
+  (key-chord-mode t)
 
   (require 'mymodes)
   (require 'myproject nil 'noerror)

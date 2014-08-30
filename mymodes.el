@@ -53,6 +53,7 @@
  '(js3-indent-level 4)
  '(js3-consistent-level-indent-inner-bracket t))
 
+
  (eval-after-load 'tern
    '(progn
       (require 'tern-auto-complete)
@@ -66,11 +67,6 @@
 			      (setq outline-regexp "[^{]*{")))
   (add-hook 'js3-mode-hook
 	    (lambda ()
-	       (local-set-key "\C-x\C-e" 'js-send-last-sexp)
-	       (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
-	       (local-set-key "\C-cb" 'js-send-buffer)
-	       (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
-	       (local-set-key "\C-cl" 'js-require-file-and-go)
 	      (infix-language-mode)
 	      (tern-mode t)
 	      (flycheck-mode t)
