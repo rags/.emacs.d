@@ -1,4 +1,4 @@
-
+(global-set-key [f1] 'help)
 (global-set-key [f11] 'fullscreen)
 
 (global-set-key (kbd "M-c") 'capitalize-word)
@@ -52,6 +52,7 @@
 (global-unset-key (kbd "C-c y"))
 (global-set-key (kbd "C-c y") 'my-duplicate)
 (global-set-key (kbd "C-c r") 'vr/query-replace)
+(global-set-key (kbd "C-h") 'delete-backward-char)
 
 (js3r-add-keybindings-with-prefix "C-c C-m")
 

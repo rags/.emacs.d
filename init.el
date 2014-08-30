@@ -67,7 +67,7 @@
 
   ;; Install ELPA packages
   (let* ((my-packages `(sml-mode magit smex  ecb fuzzy-match js3-mode js2-refactor 
-				mark-multiple flymake clojure-mode 
+				mark-multiple flymake clojure-mode guide-key
 				auctex toggle-test ensime scala-mode2 paredit 
 				color-theme-solarized helm ac-helm json-mode expand-region
 				git-gutter-fringe+ flycheck tern tern-auto-complete
@@ -123,7 +123,9 @@
   ;(defun yas/initialize());hack old version of yas used by epy
   (load-file  "~/.emacs.d/plugins/emacs-for-python/epy-init.el")
 
-  
+  (guide-key-mode t)
+  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x n" "C-c @" "C-c C-c"))
+
   (add-hook 'after-make-frame-functions 'client-initialization)
   (require 'helm-config)
   (helm-mode 1)
