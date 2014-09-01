@@ -1,5 +1,5 @@
 (defun load-all ()
-
+  (setenv "GPG_AGENT_INFO" nil)
   (custom-set-variables  
    '(desktop-save-buffer nil)
    '(desktop-load-locked-desktop t)
