@@ -134,7 +134,6 @@
   (require 'paredit)
   (require 'js3-highlight-vars)
   (require 'js3-refactor)
-  (require 'smart-operator)
   (require 'pretty-lambdada)
 
   (python-stuff)

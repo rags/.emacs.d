@@ -45,7 +45,7 @@
 					;(load-file (concat plugins-dir "flymake.el"))
 					;(load-file (concat plugins-dir "paredit.el"))
     (load-file (concat plugins-dir "kill-ring-ido.el"))
-;    (load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
+    (load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
 
     (setq load-path 
 	  (append `(,emacs.d ,plugins-dir
@@ -69,7 +69,7 @@
   ;; Install ELPA packages
   (let* ((my-packages `(sml-mode magit smex  ecb fuzzy-match js3-mode js2-refactor 
 				mark-multiple flymake clojure-mode guide-key key-chord
-				auctex toggle-test ensime scala-mode2 paredit 
+				auctex toggle-test ensime scala-mode2 paredit smart-operator
 				color-theme-solarized helm ac-helm json-mode expand-region
 				git-gutter-fringe+ flycheck tern tern-auto-complete
 				yasnippet ag web-beautify haskell-mode js-comint projectile
@@ -122,7 +122,7 @@
   (my-add-to-list 'yas-snippet-dirs "~/.emacs.d/plugins/yasnippet-snippets" "~/.emacs.d/snippets")
   (yas-reload-all)
   ;(defun yas/initialize());hack old version of yas used by epy
-  (load-file  "~/.emacs.d/plugins/emacs-for-python/epy-init.el")
+  ;(load-file  "~/.emacs.d/plugins/emacs-for-python/epy-init.el")
 
   (guide-key-mode t)
   (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x n" "C-c @" "C-c C-c" ))
