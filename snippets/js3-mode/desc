@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+#name : desc
+#key: desc
+#binding: C-C C-C d
+# --
+describe('${1:Describe}',function() {
+  $0		       		       
+});

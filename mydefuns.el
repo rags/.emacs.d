@@ -156,24 +156,13 @@
     (comint-send-string inferior-js-buffer (concat "require(\"" filename "\")\n"))
     (switch-to-js inferior-js-buffer)))
 
-;;https://gist.github.com/rejeep/5933343
-;(defun my-projectile-completion-fn (prompt choises)
-;"Projectile completion function that only shows file name.
-;If two files have same name, new completion appears to select between
-;them. These include the path relative to the project root."
-;(interactive)
-;(let* ((stripped-choises
-;(-uniq (--map (file-name-nondirectory (directory-file-name it)) choises)))
-;(choise
-;(ido-completing-read prompt stripped-choises))
-;(matching-files
-;(-filter
-;(lambda (file)
-;(equal (file-name-nondirectory (directory-file-name file)) choise))
-;choises)))
-;(if (> (length matching-files) 1)
-;(ido-completing-read prompt matching-files)
-;(car matching-files))))
+(defun yank-bol ()
+  (interactive)
+  (beginning-of-line) 
+  (yank))
+
+(defun my-global-set-key (command &rest keys)  
+  (dolist (key keys) (global-set-key key command)))
 
 (provide 'mydefuns)
 

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : before
+# --
+
+before(function() {
+  $0
+});
