@@ -51,6 +51,7 @@
 (my-global-set-key  'goto-line (kbd "s-g") (kbd "H-g"))
 (global-set-key (kbd "C-c r") 'vr/query-replace)
 (global-set-key (kbd "C-h") 'delete-backward-char)
+(global-set-key (kbd "C-M-h") 'backward-kill-word)
 
 (js3r-add-keybindings-with-prefix "C-c C-m")
 
