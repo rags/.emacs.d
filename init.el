@@ -48,7 +48,8 @@
     (load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
 
     (setq load-path 
-	  (append `(,emacs.d ,plugins-dir
+	  (append `( ,plugins-dir
+			     ,(concat emacs.d "lisp")
 			     ,(concat plugins-dir "nxml-mode")
 			     ,(concat plugins-dir "js3-highlight-vars")
 			     ,(concat plugins-dir "pretty-lambdada")
@@ -104,6 +105,7 @@
   (setq ido-use-faces nil)
   (setq flx-ido-use-faces t)
   (projectile-global-mode)
+  (setq projectile-indexing-method 'native)
   (setq projectile-enable-caching t)
   (setq ag-highlight-search t)
 					;(color-theme-initialize)
