@@ -74,7 +74,7 @@
 				color-theme-solarized helm ac-helm json-mode expand-region
 				git-gutter-fringe+ flycheck tern tern-auto-complete
 				yasnippet ag web-beautify haskell-mode js-comint projectile
-				flx-ido ido-vertical-mode smartparens visual-regexp))
+				flx-ido ido-vertical-mode smartparens visual-regexp move-text))
 	 (to-install-packages (remove-if #'package-installed-p my-packages)))
 
     (if to-install-packages

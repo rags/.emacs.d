@@ -106,5 +106,6 @@
 (defalias 'gst 'magit-status)
 (defalias 'gl 'magit-log)
 
+(move-text-default-bindings)
 
 (provide 'myshortcuts)
