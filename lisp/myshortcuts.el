@@ -1,5 +1,5 @@
 (global-set-key [f1] help-map)
-(global-set-key [f11] 'fullscreen)
+(global-set-key [f11] 'toggle-frame-fullscreen)
 
 (global-set-key (kbd "M-c") 'capitalize-word)
 (global-set-key (kbd "C-z") 'copy-line)

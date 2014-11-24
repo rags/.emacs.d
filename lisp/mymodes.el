@@ -134,7 +134,6 @@
   (require 'paredit)
   (require 'js3-highlight-vars)
   (require 'js3-refactor)
-  (require 'pretty-lambdada)
 
   (python-stuff)
   (js-stuff)
@@ -143,7 +142,7 @@
   (xml-stuff)
   (git-stuff)
   (make-file-associations)
-  (global-pretty-lambda-mode)
+  (prettify-symbols-mode)
   (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
   (haskell-stuff))
 

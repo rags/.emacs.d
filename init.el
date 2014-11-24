@@ -52,7 +52,6 @@
 			     ,(concat emacs.d "lisp")
 			     ,(concat plugins-dir "nxml-mode")
 			     ,(concat plugins-dir "js3-highlight-vars")
-			     ,(concat plugins-dir "pretty-lambdada")
 			     ,(concat plugins-dir "js3-refactor")) load-path))
     (add-to-list 'custom-theme-load-path 
 		 (concat plugins-dir "emacs-color-theme-darkula")))
@@ -149,7 +148,8 @@
    '(tool-bar-mode nil)
    '(transient-mark-mode nil)
    '(ediff-window-setup-function 'ediff-setup-windows-plain)
-   '(ediff-split-window-function 'split-window-horizontally))
+   '(ediff-split-window-function 'split-window-horizontally)
+   '(initial-frame-alist (quote ((fullscreen . fullscreen)))))
 
   (global-font-lock-mode 1)
   (global-ede-mode t)
@@ -160,9 +160,10 @@
 (defun client-initialization (frame)
   "frame initialization ui/layout related"
   (interactive "XFrame: ")
+  (message "caled frame init")
   (select-frame frame)
-  (my-fullscreen)
-					;(make-my-layout)
+  (toggle-frame-fullscreen)
+  (make-my-layout)
   (menu-bar-mode 0)
   (global-font-lock-mode 1)
 					;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
