@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 #name : forEach
 # --
-forEach(function(${1:item}) {
+${1:array}.forEach(function(${2:item}) {
   $0
 });

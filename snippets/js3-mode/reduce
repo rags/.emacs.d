@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : reduce
+# --
+${1:array}.reduce(function(${2:accumulator},${3:item}) {
+  $0
+},${4:initValue});
