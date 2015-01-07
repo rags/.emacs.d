@@ -98,8 +98,8 @@
 
 (defun haskell-stuff ()
   (add-hook 'haskell-interactive-mode-hook 
-	    (lambda () (infix-language-mode t)))
-  (add-hook 'haskell-mode-hook (lambda ()
+	    (lambda () (infix-language-mode t) (define-key smart-operator-mode-map  ":" 'disable-smart-op)))
+(add-hook 'haskell-mode-hook (lambda ()
 				 (haskell-indent-mode t)
 				 (interactive-haskell-mode t)
 				 (infix-language-mode))))
@@ -125,9 +125,9 @@
   ;(electric-pair-mode t)
 )
    
-(defun op-override-. ()
+(defun disable-smart-op ()
   (interactive)
-  (insert "."))
+  (string last-command-event))
 
 (defun setup-programming-modes ()
   (require 'clojure-mode)

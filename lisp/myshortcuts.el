@@ -61,7 +61,7 @@
 	      'balle-python-shift-right)
 	    (define-key python-mode-map (kbd "ESC <left>")
 	      'balle-python-shift-left))
-	    (define-key smart-operator-mode-map  "." 'op-override-.)
+	    (define-key smart-operator-mode-map  "." 'disable-smart-op)
 
 		
 	  )
