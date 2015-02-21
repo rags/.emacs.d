@@ -8,7 +8,7 @@
   (add-hook 'python-mode-hook
 	    (lambda ()
 	      (infix-language-mode)
-	      (define-key smart-operator-mode-map  "." 'op-override-.)
+	      (local-unset-key ".")
 	      (setq-default tab-width 4)
 	      (setq-default python-indent-offset 4)
 	      (setq outline-regexp " *\\(def \\|clas\\|#hea\\)")
@@ -98,7 +98,7 @@
 
 (defun haskell-stuff ()
   (add-hook 'haskell-interactive-mode-hook 
-	    (lambda () (infix-language-mode t) (define-key smart-operator-mode-map  ":" 'disable-smart-op)))
+	    (lambda () (infix-language-mode t) (local-unset-key ":")))
 (add-hook 'haskell-mode-hook (lambda ()
 				 (haskell-indent-mode t)
 				 (interactive-haskell-mode t)
@@ -106,7 +106,7 @@
 
 (defun infix-language-mode (&optional interactivep)
   (programming-modes interactivep) 
-  (smart-operator-mode t))
+  (smart-insert-operator-hook))
 
 (defun programming-modes (&optional interactivep)
   ;(smartparens-strict-mode t)
@@ -125,9 +125,6 @@
   ;(electric-pair-mode t)
 )
    
-(defun disable-smart-op ()
-  (interactive)
-  (string last-command-event))
 
 (defun setup-programming-modes ()
   (require 'clojure-mode)
