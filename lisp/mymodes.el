@@ -106,7 +106,7 @@
 
 (defun infix-language-mode (&optional interactivep)
   (programming-modes interactivep) 
-  (smart-insert-operator-hook))
+  (smart-operator-mode t))
 
 (defun programming-modes (&optional interactivep)
   ;(smartparens-strict-mode t)
