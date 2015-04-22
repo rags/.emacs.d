@@ -1,7 +1,6 @@
 # -*- mode: snippet -*-
 #name : map
 #key: map
-#key: forEach
 # --
 ${1:array}.map(function(${2:item}) {
   $0

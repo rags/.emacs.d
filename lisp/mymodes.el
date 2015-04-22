@@ -122,6 +122,7 @@
   (auto-complete-mode t)
   (setq mode-line-modes 'nil)
   (setq minor-mode-alist 'nil)
+  (prettify-symbols-mode)
   ;(electric-pair-mode t)
 )
    
@@ -139,7 +140,7 @@
   (xml-stuff)
   (git-stuff)
   (make-file-associations)
-  (prettify-symbols-mode)
+
   (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
   (haskell-stuff))
 
