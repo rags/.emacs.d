@@ -12,6 +12,8 @@
    '(send-mail-function (quote mailclient-send-it))
    '(show-paren-mode t)
    '(tool-bar-mode nil)
+   '(indent-tabs-mode nil)
+   '(tab-width 4)
    '(visible-bell 1)
    '(transient-mark-mode nil))
   
