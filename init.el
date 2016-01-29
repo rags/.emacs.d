@@ -3,7 +3,11 @@
   (custom-set-variables  
    '(desktop-save-buffer nil)
    '(desktop-load-locked-desktop t)
-
+   '(backup-directory-alist `(("." . "~/.saves")))
+   '(backup-by-copying t)
+   '(delete-old-versions t)
+   '(kept-new-versions 6)
+   '(kept-old-versions 2)
    '(desktop-load-locked-desktop t)
    '(desktop-save-buffer nil t)
    '(ido-create-new-buffer (quote always))
@@ -15,9 +19,9 @@
    '(indent-tabs-mode nil)
    '(tab-width 4)
    '(visible-bell 1)
-   '(transient-mark-mode nil))
-  
-  (setq stack-trace-on-error t)
+   '(transient-mark-mode nil)
+   
+   (setq stack-trace-on-error t))
   (put 'narrow-to-region 'disabled nil)
   (put 'set-goal-column 'disabled nil)
   (show-paren-mode 1)
