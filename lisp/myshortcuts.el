@@ -45,6 +45,7 @@
 (global-set-key (kbd "C-c t") 'tgt-toggle)
 (global-set-key (kbd "C-s") 'helm-occur)
 (my-global-set-key  'set-rectangular-region-anchor (kbd "C-c SPC") (kbd "s-SPC") (kbd "H-SPC"))
+(global-set-key  (kbd "C-M-SPC") 'mc/edit-lines)
 (global-set-key (kbd "C-^") (lambda () (interactive) (join-line 0)))
 (global-unset-key (kbd "C-c y"))
 (my-global-set-key  'my-duplicate (kbd "C-c y") (kbd "s-d") (kbd "H-d"))

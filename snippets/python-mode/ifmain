@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: ifmain1
+# key: ifmain
+# --
+
+def $1():
+    ${2:pass}
+    
+if __name__ == '__main__':
+   ${1:main}()
+
