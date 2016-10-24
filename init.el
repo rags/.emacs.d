@@ -79,7 +79,7 @@
 				color-theme-solarized helm ac-helm json-mode expand-region
 				git-gutter-fringe+ flycheck tern tern-auto-complete
 				yasnippet ag web-beautify haskell-mode js-comint projectile
-				flx-ido ido-vertical-mode smartparens visual-regexp move-text))
+				flx-ido ido-vertical-mode smartparens visual-regexp move-text ess))
 	 (to-install-packages (remove-if #'package-installed-p my-packages)))
 
     (if to-install-packages
@@ -116,7 +116,7 @@
 					;(color-theme-initialize)
 					;(color-theme-clarity)		
   (load-theme 'Darkula t)
-  (set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+  ;(set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 					;(set-default-font "-unknown-Inconsolata-bold-normal-normal-*-21-*-*-*-m-0-iso10646-1")
 					;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
 
@@ -174,14 +174,12 @@
   (global-font-lock-mode 1)
 					;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
   (load-theme 'Darkula t)
-  (set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1"))
+  ;;   (set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
+  )
 
 (defun reset () (interactive) (client-initialization (selected-frame)))
 
 (load-all)
 ;;(if window-system (load-all) (load-quick))
 ;;(clojure-slime-config "/home/rags/projects/clojure/src")
-
-
-
 

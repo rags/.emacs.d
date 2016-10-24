@@ -77,6 +77,7 @@
     (goto-char cur-pos)))
 
 (defun make-my-layout ()
+  (interactive)
   (split-window-horizontally)
   (enlarge-window-horizontally 4)
   (select-window-2)

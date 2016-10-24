@@ -18,7 +18,12 @@
 	      )))
 
 (defun make-file-associations ()
-  (add-to-list 'auto-mode-alist '("\\.m\\'" . octave-mode)))
+  (my-add-to-list 'auto-mode-alist 
+                  '("\\.html$" . nxml-mode)
+                  '("\\.xml$" .  nxml-mode) 
+                  '("\\.xsd$" .  nxml-mode)
+                  '("\\.js$" . js3-mode)
+                  '("\\.m\\'" . octave-mode)))
 
 (defun LaTeX-stuff ()
   (setq TeX-PDF-mode t)
@@ -38,9 +43,7 @@
   )
 
 (defun xml-stuff ()
-  (my-add-to-list 'auto-mode-alist 
-		  '("\\.html$" . nxml-mode) '("\\.xml$" .  nxml-mode) 
-		  '("\\.xsd$" .  nxml-mode))
+
   (setq nxml-slash-auto-complete-flag t)
   (add-hook 'nxml-mode-hook (lambda () 
 			      (programming-modes))))
@@ -59,8 +62,7 @@
       (require 'tern-auto-complete)
       (tern-ac-setup)))
  
-  (autoload 'js3-mode "js3" nil t)
-  (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+  (autoload 'js3-mode "js3" nil t)  
   (add-hook 'json-mode-hook (lambda () 			      
 			      (programming-modes) 
 				  (add-hook 'before-save-hook 'web-beautify-js-buffer t t)
@@ -132,17 +134,19 @@
   (require 'paredit)
   (require 'js3-highlight-vars)
   (require 'js3-refactor)
-
+  
   (python-stuff)
   (js-stuff)
   (elisp-stuff)
   (LaTeX-stuff)
   (xml-stuff)
   (git-stuff)
-  (make-file-associations)
+
 
   (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-  (haskell-stuff))
+  (haskell-stuff)
+  (setq-default inferior-R-program-name "R")
+  (make-file-associations))
 
 (setup-programming-modes)
 
