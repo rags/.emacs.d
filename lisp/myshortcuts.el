@@ -51,9 +51,11 @@
 (my-global-set-key  'my-duplicate (kbd "C-c y") (kbd "s-d") (kbd "H-d"))
 (my-global-set-key  'yank-bol (kbd "s-y") (kbd "H-y") (kbd "C-c C-y"))
 (my-global-set-key  'goto-line (kbd "s-g") (kbd "H-g"))
-(global-set-key (kbd "C-c r") 'vr/query-replace)
+;(global-set-key (kbd "C-c r") 'vr/query-replace)
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "C-M-h") 'backward-kill-word)
+(global-set-key [remap eval-expression] 'pp-eval-expression)
+(global-set-key [remap eval-last-sexp] 'pp-eval-last-sexp)
 
 (js3r-add-keybindings-with-prefix "C-c C-m")
 
@@ -91,6 +93,10 @@
 ;hyper key for mac
 (setq ns-function-modifier 'hyper) 
 
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (cljr-add-keybindings-with-prefix "C-c ")
+))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;; keychords ;;;;;;;;;;;;;;;;;;;
@@ -109,5 +115,8 @@
 (defalias 'gl 'magit-log)
 
 (move-text-default-bindings)
+
+;;works with guide-key-mode enabled. lists the options for the prefix
+(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x n" "C-c @" "C-c C-c" "C-x C-k" "C-c p" "C-c r" "C-c C-r"))
 
 (provide 'myshortcuts)

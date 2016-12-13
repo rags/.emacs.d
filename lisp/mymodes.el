@@ -19,6 +19,7 @@
 
 (defun make-file-associations ()
   (my-add-to-list 'auto-mode-alist 
+                  '("\\.clj$" . clojure-mode)
                   '("\\.html$" . nxml-mode)
                   '("\\.xml$" .  nxml-mode) 
                   '("\\.xsd$" .  nxml-mode)
@@ -86,10 +87,18 @@
 					(replace-regexp-in-string "\033\\[[0-9]+[A-Z]" "" output)))
 				     (infix-language-mode t))))
 
+
 (defun elisp-stuff ()
   (add-hook 'emacs-lisp-mode-hook
 	    (lambda () 
 	      (programming-modes)
+	      (paredit-mode))))
+
+(defun clojure-stuff ()
+  (add-hook 'clojure-mode-hook
+	    (lambda () 
+	      (programming-modes)
+          (clj-refactor-mode 1)
 	      (paredit-mode))))
 
 (defun git-stuff ()  
@@ -141,6 +150,7 @@
   (LaTeX-stuff)
   (xml-stuff)
   (git-stuff)
+  (clojure-stuff)
 
 
   (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)

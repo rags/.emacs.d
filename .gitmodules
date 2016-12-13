@@ -58,3 +58,6 @@
 [submodule "plugins/js3-highlight-vars"]
 	path = plugins/js3-highlight-vars
 	url = git@github.com:rags/js3-highlight-vars
+[submodule "snippets/clojure-mode"]
+	path = snippets/clojure-mode
+	url = git@github.com:swannodette/clojure-snippets

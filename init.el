@@ -61,9 +61,6 @@
 			     ,(concat plugins-dir "js3-refactor")) load-path))
     (add-to-list 'custom-theme-load-path 
 		 (concat plugins-dir "emacs-color-theme-darkula")))
-  (add-to-list 'exec-path "/usr/local/bin")
-  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-
 
   (require 'package)
   (add-to-list 'package-archives 
@@ -74,10 +71,10 @@
 
   ;; Install ELPA packages
   (let* ((my-packages `(sml-mode magit smex  ecb fuzzy-match js3-mode js2-refactor 
-				mark-multiple flymake clojure-mode guide-key key-chord
+				mark-multiple flymake clojure-mode cider clj-refactor guide-key 
 				auctex toggle-test ensime scala-mode2 paredit smart-operator
 				color-theme-solarized helm ac-helm json-mode expand-region
-				git-gutter-fringe+ flycheck tern tern-auto-complete
+				git-gutter-fringe+ flycheck tern tern-auto-complete key-chord
 				yasnippet ag web-beautify haskell-mode js-comint projectile
 				flx-ido ido-vertical-mode smartparens visual-regexp move-text ess))
 	 (to-install-packages (remove-if #'package-installed-p my-packages)))
@@ -127,12 +124,12 @@
 
   (yas-global-mode t)
   (my-add-to-list 'yas-snippet-dirs "~/.emacs.d/plugins/yasnippet-snippets" "~/.emacs.d/snippets")
+  
   (yas-reload-all)
   ;(defun yas/initialize());hack old version of yas used by epy
   ;(load-file  "~/.emacs.d/plugins/emacs-for-python/epy-init.el")
 
   (guide-key-mode t)
-  (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x n" "C-c @" "C-c C-c" ))
 
   (add-hook 'after-make-frame-functions 'client-initialization)
   (require 'helm-config)
@@ -145,7 +142,10 @@
   (require 'myproject nil 'noerror)
   (require 'myshortcuts)
 
+  (my-add-to-list 'exec-path "/usr/local/bin" "~/bin")
+  (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
 
+ 
   (custom-set-variables
    '(inhibit-startup-screen t)
    '(initial-scratch-message nil)
@@ -183,3 +183,43 @@
 ;;(if window-system (load-all) (load-quick))
 ;;(clojure-slime-config "/home/rags/projects/clojure/src")
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(backup-by-copying t)
+ '(backup-directory-alist (\` (("." . "~/.saves"))))
+ '(delete-old-versions t)
+ '(desktop-load-locked-desktop t)
+ '(desktop-save-buffer nil t)
+ '(ediff-split-window-function (quote split-window-horizontally))
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(ido-create-new-buffer (quote always))
+ '(indent-tabs-mode nil)
+ '(inhibit-startup-screen t)
+ '(initial-frame-alist (quote ((fullscreen . fullscreen))))
+ '(initial-scratch-message nil)
+ '(js3-auto-indent-p t)
+ '(js3-consistent-level-indent-inner-bracket t)
+ '(js3-enter-indents-newline t)
+ '(js3-indent-level 4)
+ '(js3-indent-on-enter-key t)
+ '(kept-new-versions 6)
+ '(kept-old-versions 2)
+ '(package-selected-packages
+   (quote
+    (clj-refactor cider web-beautify visual-regexp toggle-test tern-auto-complete sml-mode smex smartparens smart-operator projectile paredit move-text mark-multiple magit key-chord json-mode js3-mode js2-refactor js-comint ido-vertical-mode haskell-mode guide-key git-gutter-fringe+ fuzzy-match flycheck flx-ido expand-region ess ensime ecb color-theme-solarized clojure-mode auctex ag ac-helm)))
+ '(send-mail-function (quote mailclient-send-it))
+ '(show-paren-mode t)
+ '(stack-trace-on-error t)
+ '(tab-width 4)
+ '(tool-bar-mode nil)
+ '(transient-mark-mode nil)
+ '(visible-bell 1))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
