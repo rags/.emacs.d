@@ -13,15 +13,15 @@
 	      (setq-default python-indent-offset 4)
 	      (setq outline-regexp " *\\(def \\|clas\\|#hea\\)")
 					;(hide-sublevels 1)
-	      
+
 	      (setq ropemacs-goto-def-newwin t)
 	      )))
 
 (defun make-file-associations ()
-  (my-add-to-list 'auto-mode-alist 
+  (my-add-to-list 'auto-mode-alist
                   '("\\.clj$" . clojure-mode)
                   '("\\.html$" . nxml-mode)
-                  '("\\.xml$" .  nxml-mode) 
+                  '("\\.xml$" .  nxml-mode)
                   '("\\.xsd$" .  nxml-mode)
                   '("\\.js$" . js3-mode)
                   '("\\.m\\'" . octave-mode)))
@@ -39,18 +39,18 @@
 	  (output-html "xdg-open")))
   (setq TeX-view-program-list '(("emacsclient" "emacsclient %o")))
   (add-hook 'tex-mode-hook
-	    (lambda () 
+	    (lambda ()
 	      (TeX-PDF-mode)))
   )
 
 (defun xml-stuff ()
 
   (setq nxml-slash-auto-complete-flag t)
-  (add-hook 'nxml-mode-hook (lambda () 
+  (add-hook 'nxml-mode-hook (lambda ()
 			      (programming-modes))))
 (defun js-stuff()
  (require 'js3-refactor)
- (custom-set-variables 
+ (custom-set-variables
  '(js3-auto-indent-p t)         ; it's nice for commas to right themselves.
  '(js3-enter-indents-newline t) ; don't need to push tab before typing
  '(js3-indent-on-enter-key t)   ; fix indenting before moving on
@@ -62,10 +62,10 @@
    '(progn
       (require 'tern-auto-complete)
       (tern-ac-setup)))
- 
-  (autoload 'js3-mode "js3" nil t)  
-  (add-hook 'json-mode-hook (lambda () 			      
-			      (programming-modes) 
+
+  (autoload 'js3-mode "js3" nil t)
+  (add-hook 'json-mode-hook (lambda ()
+			      (programming-modes)
 				  (add-hook 'before-save-hook 'web-beautify-js-buffer t t)
 			      (setq outline-regexp "[^{]*{")))
   (add-hook 'js3-mode-hook
@@ -79,7 +79,7 @@
 		  ;; (js3-highlight-vars-mode))
 	      ))
   (setq inferior-js-program-command "node")
-  (add-hook 'inferior-js-mode-hook (lambda () 
+  (add-hook 'inferior-js-mode-hook (lambda ()
 				     (ansi-color-for-comint-mode-on)
 				     (add-to-list
 				      'comint-preoutput-filter-functions
@@ -90,25 +90,33 @@
 
 (defun elisp-stuff ()
   (add-hook 'emacs-lisp-mode-hook
-	    (lambda () 
+	    (lambda ()
 	      (programming-modes)
 	      (paredit-mode))))
 
 (defun clojure-stuff ()
+  (require 'ac-cider)
+  (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+  (add-hook 'cider-mode-hook 'ac-cider-setup)
+  (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+  (eval-after-load "auto-complete"
+    '(progn
+       (add-to-list 'ac-modes 'cider-mode)
+       (add-to-list 'ac-modes 'cider-repl-mode)))
   (add-hook 'clojure-mode-hook
-	    (lambda () 
-	      (programming-modes)
-          (clj-refactor-mode 1)
-	      (paredit-mode))))
+            (lambda ()
+              (programming-modes)
+              (clj-refactor-mode 1)
+              (paredit-mode))))
 
-(defun git-stuff ()  
+(defun git-stuff ()
 (require 'git-gutter-fringe+)
   (global-git-gutter+-mode t)
   (setq git-gutter-fr+-side 'right-fringe)
   (set-face-foreground 'git-gutter-fr+-modified "yellow"))
 
 (defun haskell-stuff ()
-  (add-hook 'haskell-interactive-mode-hook 
+  (add-hook 'haskell-interactive-mode-hook
 	    (lambda () (infix-language-mode t) (local-unset-key ":")))
 (add-hook 'haskell-mode-hook (lambda ()
 				 (haskell-indent-mode t)
@@ -116,19 +124,19 @@
 				 (infix-language-mode))))
 
 (defun infix-language-mode (&optional interactivep)
-  (programming-modes interactivep) 
+  (programming-modes interactivep)
   (smart-operator-mode t))
 
 (defun programming-modes (&optional interactivep)
   ;(smartparens-strict-mode t)
   (smartparens-mode t)
   (show-smartparens-mode t)
-  (if (not interactivep) 
+  (if (not interactivep)
       (progn (outline-minor-mode t)
 	     (hs-minor-mode t)
 	     (imenu-add-menubar-index)
 	     (yas-minor-mode t)))
-  
+
   (subword-mode t)
   (auto-complete-mode t)
   (setq mode-line-modes 'nil)
@@ -136,14 +144,14 @@
   (prettify-symbols-mode)
   ;(electric-pair-mode t)
 )
-   
+
 
 (defun setup-programming-modes ()
   (require 'clojure-mode)
   (require 'paredit)
   (require 'js3-highlight-vars)
   (require 'js3-refactor)
-  
+
   (python-stuff)
   (js-stuff)
   (elisp-stuff)
@@ -157,6 +165,10 @@
   (haskell-stuff)
   (setq-default inferior-R-program-name "R")
   (make-file-associations))
+
+(add-hook 'ecb-deactivate-hook
+      (lambda ()
+        (ecb-disable-advices 'ecb-winman-not-supported-function-advices t)))
 
 (setup-programming-modes)
 

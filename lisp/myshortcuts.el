@@ -34,7 +34,7 @@
 (global-set-key (kbd "C-M-m") 'mc/mark-more-like-this-extended) ; like the other two, but takes an argument (negative is previous)
 (global-set-key (kbd "C-*") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-c m") 'vr/mc-mark)
-(define-key python-mode-map (kbd "C-c t") 'tgt-toggle)
+
 (global-set-key (kbd "C-?") 'ac-complete-with-helm)
 (define-key ac-complete-mode-map (kbd "C-?") 'ac-complete-with-helm)
 (global-set-key (kbd "M-;") 'toggle-comment)
@@ -64,14 +64,13 @@
 	    (define-key python-mode-map (kbd "ESC <right>")
 	      'balle-python-shift-right)
 	    (define-key python-mode-map (kbd "ESC <left>")
-	      'balle-python-shift-left))
+	      'balle-python-shift-left)
+        (define-key python-mode-map (kbd "M-/") 'dabbrev-expand)
+        (define-key python-mode-map (kbd "C-c t") 'tgt-toggle)
+        )
 ;	    (define-key smart-operator-mode-map  "." 'disable-smart-op)
-
-		
 	  )
 
-(add-hook 'python-mode-hook
-		  (lambda () (define-key python-mode-map (kbd "M-/") 'dabbrev-expand)))
 
 (add-hook 'scheme-mode-hook
  (lambda ()
@@ -85,6 +84,7 @@
 	       (local-set-key "\C-cb" 'js-send-buffer)
 	       (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
 	       (local-set-key "\C-cl" 'js-require-file-and-go)))
+(key-chord-define js3-mode-map ";;" "\C-e;")
 
 (add-hook 'doc-view-mode-hook
  (lambda ()
@@ -95,12 +95,12 @@
 
 (add-hook 'clojure-mode-hook
           (lambda ()
-            (cljr-add-keybindings-with-prefix "C-c ")
-))
+            (define-key clojure-mode-map (kbd "C-c t") 'tgt-toggle)
+            (cljr-add-keybindings-with-prefix "C-c C-m")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;; keychords ;;;;;;;;;;;;;;;;;;;
- (key-chord-define js3-mode-map ";;" "\C-e;")
+
  (key-chord-define-global "uu" 'undo)
  (key-chord-define-global "xx" 'kill-whole-line)
  (key-chord-define-global "yy" 'copy-line)
