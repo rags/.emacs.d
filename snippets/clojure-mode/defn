@@ -1,0 +1,5 @@
+# name: dfn
+# key: dfn
+# --
+(defn ${1:name} [$2]
+$0)

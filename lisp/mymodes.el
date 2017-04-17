@@ -105,6 +105,7 @@
        (add-to-list 'ac-modes 'cider-repl-mode)))
   (add-hook 'clojure-mode-hook
             (lambda ()
+              (setq cljr-warn-on-eval 'nil)
               (programming-modes)
               (clj-refactor-mode 1)
               (paredit-mode))))

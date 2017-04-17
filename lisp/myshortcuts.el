@@ -117,6 +117,6 @@
 (move-text-default-bindings)
 
 ;;works with guide-key-mode enabled. lists the options for the prefix
-(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x n" "C-c @" "C-c C-c" "C-x C-k" "C-c p" "C-c r" "C-c C-r"))
+(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x n" "C-c @" "C-c C-c" "C-x C-k" "C-c p" "C-c r" "C-c C-r" "C-c RET" "C-c C-m"))
 
 (provide 'myshortcuts)
