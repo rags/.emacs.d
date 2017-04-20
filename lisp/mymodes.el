@@ -1,7 +1,7 @@
 (require 'mydefuns)
 (defun  python-stuff ()
-  (epy-setup-ipython)
-  (epy-setup-checker "pyflakes %f")
+  ;(epy-setup-ipython)
+  ;(epy-setup-checker "pyflakes %f")
   (setq ropemacs-enable-autoimport 't)
   (setq ropemacs-autoimport-modules '("os" "shutil" "logging"))
 

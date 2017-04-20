@@ -1,3 +1,4 @@
+(require 'cl)
 (defun load-all ()
   (setenv "GPG_AGENT_INFO" nil)
   (custom-set-variables
@@ -46,22 +47,7 @@
   (setq vc-follow-symlinks t)
   (setq ac-auto-show-menu nil)
 
-  (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
-    (load-file (concat plugins-dir "cua-emul.el"))
-    (load-file (concat plugins-dir "encrypt.el"))
-					;(load-file (concat plugins-dir "flymake.el"))
-					;(load-file (concat plugins-dir "paredit.el"))
-    (load-file (concat plugins-dir "kill-ring-ido.el"))
-    (load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
-
-    (setq load-path
-	  (append `( ,plugins-dir
-			     ,(concat emacs.d "lisp")
-			     ,(concat plugins-dir "nxml-mode")
-			     ,(concat plugins-dir "js3-highlight-vars")
-			     ,(concat plugins-dir "js3-refactor")) load-path))
-    (add-to-list 'custom-theme-load-path
-		 (concat plugins-dir "emacs-color-theme-darkula")))
+ 
 
   (require 'package)
   (add-to-list 'package-archives
@@ -73,7 +59,7 @@
   ;; Install ELPA packages
   (let* ((my-packages `(sml-mode magit smex  ecb fuzzy-match js3-mode js2-refactor
 				mark-multiple flymake clojure-mode cider clj-refactor ac-cider guide-key
-				auctex toggle-test ensime scala-mode2 paredit smart-operator
+				auctex toggle-test ensime paredit smart-operator
 				color-theme-solarized helm ac-helm json-mode expand-region
 				git-gutter-fringe+ flycheck tern tern-auto-complete key-chord
 				yasnippet ag web-beautify haskell-mode js-comint projectile
@@ -88,7 +74,23 @@
 		 (package-install package)))
       (message "Nothing new to install")))
 
+ (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
+    (load-file (concat plugins-dir "cua-emul.el"))
+    (load-file (concat plugins-dir "encrypt.el"))
+					;(load-file (concat plugins-dir "flymake.el"))
+					;(load-file (concat plugins-dir "paredit.el"))
+    (load-file (concat plugins-dir "kill-ring-ido.el"))
+    ;(load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
 
+    (setq load-path
+	  (append `( ,plugins-dir
+			     ,(concat emacs.d "lisp")
+			     ,(concat plugins-dir "nxml-mode")
+			     ,(concat plugins-dir "js3-highlight-vars")
+			     ,(concat plugins-dir "js3-refactor")) load-path))
+    (add-to-list 'custom-theme-load-path
+		 (concat plugins-dir "emacs-color-theme-darkula")))
+         
   (autoload 'encrypt-decrypt "encrypt"
     "Decrypt a crypted file use encrypt coding system" t)
 
