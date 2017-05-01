@@ -48,11 +48,11 @@
 ;;       (goto-line line-num)
 ;;       (let ((cur-line (concat "^" (regexp-quote (buffer-substring (point-at-bol) (point-at-eol))) "$")))
 ;; 	(delete-matching-lines cur-line (point-at-eol) (point-max)))
-;;       (incf line-num))   
+;;       (incf line-num))
 ;;     (message (concat (int-to-string (- lines-before (num-of-lines))) " duplicate line deleted"))))
 
 					;(defun duplicate-line ()
-					;  (interactive)  
+					;  (interactive)
 					;  (duplicate (point-at-bol)  (line-beginning-position 2)))
 					;
 
@@ -60,14 +60,129 @@
   (interactive)
   (kill-line 0))
 
-(defun copy-line () 
-  (interactive) 
-  (kill-ring-save 
-   (point-at-bol)  
+(defun copy-line ()
+  (interactive)
+  (kill-ring-save
+   (point-at-bol)
    (line-beginning-position 2)))
 
-(defun my-duplicate () (interactive) (if (use-region-p) (duplicate (region-beginning) (region-end)) (djcb-duplicate-line)))
+(defun my-duplicate ()
+  (interactive)
+  (if (use-region-p)
+      (duplicate (region-beginning) (region-end))
+    (duplicate (point-at-bol) (point-at-eol) t)))
 
+(defun duplicate (beg end &optional newline-p)
+  (interactive "r")
+  (if newline-p (message "dupline") (message "dup"))
+  (let ((cur-pos (point)))
+    (kill-ring-save beg end)
+    (goto-char end)
+    (if newline-p
+        (progn (open-line 1) (next-line)))
+    (yank)
+    (goto-char cur-pos)))
+
+(defun make-my-layout ()
+  (interactive)
+  (split-window-horizontally)
+  (enlarge-window-horizontally 4)
+  (select-window-2)
+  (split-window-vertically)
+  (enlarge-window 2)
+  (select-window-1))
+
+
+					;(defun switch-window (n)
+					;  (let ((windows (window-list)))
+					;  (select-window (nth (mod n (length windows))  windows))))
+
+(defun insert-lambda ()
+  (interactive)
+  (insert (concat "("  (char-to-string (make-char 'greek-iso8859-7 107)) " () )")))
+
+(defun reload.emacs ()
+  (interactive)
+  (load-file "~/.emacs.d/init.el"))
+
+(defun toggle-selective-display ()
+  (interactive)
+  (set-selective-display (if selective-display nil 1)))
+
+(defun kill-all-saved-buffers ()
+  (interactive)
+  (map nil (function kill-buffer)
+       (remove-if (function buffer-modified-p) (buffer-list))))
+
+
+(defun make-desktop-load-non-blocking ()
+  (defadvice desktop-restore-file-buffer
+	(around my-desktop-restore-file-buffer-advice)
+	"Be non-interactive while starting a daemon."
+	(if (and (daemonp)
+			 (not server-process))
+		(let ((noninteractive t))
+		  ad-do-it)
+	  ad-do-it))
+  (ad-activate 'desktop-restore-file-buffer))
+
+(defun string/ends-with (s ending)
+  "Return non-nil if string S ends with ENDING."
+  (cond ((>= (length s) (length ending))
+(defun duplicate (beg end)
+  (interactive "r")
+  (let ((cur-pos (point)))
+    (kill-ring-save beg end)
+    (goto-char end)
+    (yank)
+    (goto-char cur-pos)))
+
+(defun make-my-layout ()
+  (interactive)
+  (split-window-horizontally)
+  (enlarge-window-horizontally 4)
+  (select-window-2)
+  (split-window-vertically)
+  (enlarge-window 2)
+  (select-window-1))
+
+
+					;(defun switch-window (n)
+					;  (let ((windows (window-list)))
+					;  (select-window (nth (mod n (length windows))  windows))))
+
+(defun insert-lambda ()
+  (interactive) 
+  (insert (concat "("  (char-to-string (make-char 'greek-iso8859-7 107)) " () )")))
+
+(defun reload.emacs ()
+  (interactive)
+  (load-file "~/.emacs.d/init.el"))
+
+(defun toggle-selective-display ()
+  (interactive)
+  (set-selective-display (if selective-display nil 1)))
+
+(defun kill-all-saved-buffers ()
+  (interactive)
+  (map nil (function kill-buffer)
+       (remove-if (function buffer-modified-p) (buffer-list))))
+
+
+(defun make-desktop-load-non-blocking ()
+  (defadvice desktop-restore-file-buffer
+	(around my-desktop-restore-file-buffer-advice)
+	"Be non-interactive while starting a daemon."
+	(if (and (daemonp)
+			 (not server-process))
+		(let ((noninteractive t))
+		  ad-do-it)
+	  ad-do-it))
+  (ad-activate 'desktop-restore-file-buffer))
+
+(defun string/ends-with (s ending)
+  "Return non-nil if string S ends with ENDING."
+  (cond ((>= (length s) (length ending))
 (defun duplicate (beg end)
   (interactive "r")
   (let ((cur-pos (point)))
