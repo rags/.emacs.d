@@ -29,7 +29,7 @@
   (show-paren-mode 1)
   (if (boundp 'tool-bar-mode)  (tool-bar-mode -1))
   (setq frame-title-format "%b")
-  (setq x-select-enable-clipboard t)
+  (setq select-enable-clipboard t)
   (recentf-mode 1)
   (put 'downcase-region 'disabled nil)
   (put 'upcase-region 'disabled nil)
@@ -56,23 +56,9 @@
 	       '("melpa" . "http://melpa.milkbox.net/packages/"))
   (package-initialize)
 
-  ;; Install ELPA packages
-  (let* ((my-packages `(sml-mode magit smex  ecb fuzzy-match js3-mode js2-refactor
-				mark-multiple flymake clojure-mode cider clj-refactor ac-cider guide-key
-				auctex toggle-test ensime paredit smart-operator
-				color-theme-solarized helm ac-helm json-mode expand-region
-				git-gutter-fringe+ flycheck tern tern-auto-complete key-chord
-				yasnippet ag web-beautify haskell-mode js-comint projectile
-				flx-ido ido-vertical-mode smartparens visual-regexp move-text ess use-package))
-	 (to-install-packages (remove-if #'package-installed-p my-packages)))
-
-    (if to-install-packages
-	(progn (message "Refresh packages...")
-	       (package-refresh-contents)
-	       (dolist (package to-install-packages)
-		 (message (concat "installing package: " (symbol-name package)))
-		 (package-install package)))
-      (message "Nothing new to install")))
+  (if (not (package-installed-p 'use-package))
+      (progn (package-refresh-contents)
+                 (package-install 'use-package)))
 
  (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
     (load-file (concat plugins-dir "cua-emul.el"))
@@ -90,7 +76,8 @@
 			     ,(concat plugins-dir "js3-refactor")) load-path))
     (add-to-list 'custom-theme-load-path
 		 (concat plugins-dir "emacs-color-theme-darkula")))
-(require 'mypackages)         
+
+ (require 'mypackages)
   (autoload 'encrypt-decrypt "encrypt"
     "Decrypt a crypted file use encrypt coding system" t)
 

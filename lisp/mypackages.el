@@ -1,17 +1,24 @@
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)
 
 ;; Install ELPA packages
 ;;TODO: remove unsed pacakges like ido, helm. use use-package with config, bind,init for all packages. So we have entore library config in one place
-(let* ((my-packages `(sml-mode magit smex  ecb fuzzy-match js3-mode js2-refactor
-				mark-multiple flymake clojure-mode cider clj-refactor ac-cider guide-key
-				auctex toggle-test ensime paredit smart-operator
-				color-theme-solarized helm ac-helm json-mode expand-region
-				git-gutter-fringe+ flycheck tern tern-auto-complete key-chord
-				yasnippet ag web-beautify haskell-mode js-comint projectile
-				flx-ido ido-vertical-mode smartparens visual-regexp move-text ess)))
-    (dolist (package my-packages)
-      (use-package package :ensure t)))
+(let* ((my-packages '(sml-mode magit smex  ecb fuzzy-match js3-mode js2-refactor
+                               mark-multiple flymake clojure-mode cider clj-refactor ac-cider guide-key
+                               toggle-test ensime paredit smart-operator
+                                helm ac-helm json-mode expand-region
+                               git-gutter-fringe+ flycheck tern tern-auto-complete key-chord
+                               yasnippet ag web-beautify haskell-mode js-comint projectile
+                               flx-ido ido-vertical-mode smartparens visual-regexp move-text ess vlf)))
+  (dolist (package my-packages)
+    (eval `(use-package ,package :ensure t))))
 
+
+
+
+(use-package tex  :ensure auctex)
+(use-package color-theme-solarized  :ensure t :no-require t :defer t)
 (use-package counsel
              :ensure t
              :init (progn
