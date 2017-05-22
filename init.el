@@ -11,7 +11,6 @@
    '(kept-old-versions 2)
    '(desktop-load-locked-desktop t)
    '(desktop-save-buffer nil t)
-   '(ido-create-new-buffer (quote always))
    '(inhibit-startup-screen t)
    '(initial-scratch-message nil)
    '(send-mail-function (quote mailclient-send-it))
@@ -65,7 +64,6 @@
     (load-file (concat plugins-dir "encrypt.el"))
 					;(load-file (concat plugins-dir "flymake.el"))
 					;(load-file (concat plugins-dir "paredit.el"))
-    (load-file (concat plugins-dir "kill-ring-ido.el"))
     ;(load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
 
     (setq load-path
@@ -88,17 +86,7 @@
   (make-desktop-load-non-blocking)
 					;   (desktop-save-mode 1)
   (desktop-save-mode 0)
-  (ido-mode t)
-  (ido-vertical-mode 1)
-  (ido-everywhere 1)
-  (flx-ido-mode 1)
-  ;; disable ido faces to see flx highlights.
-  (setq ido-enable-flex-matching t)
-  (setq ido-use-faces nil)
-  (setq flx-ido-use-faces t)
-  (projectile-global-mode)
-  (setq projectile-indexing-method 'native)
-  (setq projectile-enable-caching t)
+
   (setq ag-highlight-search t)
 					;(color-theme-initialize)
 					;(color-theme-clarity)
@@ -122,8 +110,6 @@
   (guide-key-mode t)
 
   (add-hook 'after-make-frame-functions 'client-initialization)
-  (require 'helm-config)
-  (helm-mode 1)
   (require 'auto-complete-config)
   (ac-config-default)
   (key-chord-mode t)
@@ -139,7 +125,6 @@
   (custom-set-variables
    '(inhibit-startup-screen t)
    '(initial-scratch-message nil)
-   '(ido-create-new-buffer (quote always))
    '(show-paren-mode t)
    '(tool-bar-mode nil)
    '(transient-mark-mode nil)
