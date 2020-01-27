@@ -174,6 +174,46 @@
 (defun my-global-set-key (command &rest keys)  
   (dolist (key keys) (global-set-key key command)))
 
+(defun my-home ()
+  "If current column is greater than 0, goes to column 0.
+Otherwise, if not at top of current window, goes to top of window.
+Otherwise, goes to beginning of buffer."
+  (interactive)
+  (if (> (current-column) 0)            ; not at column 0, goto start of line
+      (beginning-of-line)
+    ;; else
+    (if (not (eq (point) (window-start))) ; not at top of window, goto to top
+        (move-to-window-line 0)
+      ;; else
+      (goto-char (point-min)))))	; at top of window, goto top of file
+
+(defun my-end ()
+  "If not at end of current line, goes to end of line.
+Otherwise, if not at bottom of current window, goes to bottom of
+window.  Otherwise, goes to end of buffer."
+  (interactive)
+  (setq oldpoint (point))               ; save original point
+  (if (not (eolp))                      ; if not at end of line,
+      (end-of-line)                     ;    go to end of line
+    ;; else
+    (move-to-window-line -1)            ; otherwise, goto end of window
+    (end-of-line)
+    (if (eq oldpoint (point))           ; if still at original point,
+        (goto-char (point-max)))))      ;    goto end of buffer
+
+(defun percentile (beg end percent)
+  (interactive "r\nNPercentile(between 0 and 1):")
+  (if (or (< percent 0) (> percent 1)) (error "Invalid percent value"))
+  (let* ((buf-str (buffer-substring-no-properties beg end))
+         (nums (sort (mapcar 'string-to-number (split-string buf-str "\n")) '<))
+         (n (length nums))
+         (position (* n percent))
+         (index (- (ceiling position) 1))
+         (num (nth index nums)))
+     (princ nums)
+     (message "Percentile %f is %f" percent num)
+     num))
+
 (provide 'mydefuns)
 
 

@@ -46,7 +46,6 @@
   (setq vc-follow-symlinks t)
   (setq ac-auto-show-menu nil)
 
- 
 
   (require 'package)
   (add-to-list 'package-archives
@@ -158,3 +157,43 @@
 ;;(if window-system (load-all) (load-quick))
 ;;(clojure-slime-config "/home/rags/projects/clojure/src")
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(backup-by-copying t)
+ '(backup-directory-alist (\` (("." . "~/.saves"))))
+ '(delete-old-versions t)
+ '(desktop-load-locked-desktop t)
+ '(desktop-save-buffer nil t)
+ '(ediff-split-window-function (quote split-window-horizontally))
+ '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(indent-tabs-mode nil)
+ '(inhibit-startup-screen t)
+ '(initial-frame-alist (quote ((fullscreen . fullscreen))))
+ '(initial-scratch-message nil)
+ '(js3-auto-indent-p t)
+ '(js3-consistent-level-indent-inner-bracket t)
+ '(js3-enter-indents-newline t)
+ '(js3-indent-level 4)
+ '(js3-indent-on-enter-key t)
+ '(kept-new-versions 6)
+ '(kept-old-versions 2)
+ '(package-selected-packages
+   (quote
+    (avy web-beautify vlf visual-regexp use-package toggle-test tern-auto-complete sml-mode smex smartparens smart-operator projectile move-text mark-multiple magit key-chord json-mode js3-mode js2-refactor js-comint ido-vertical-mode haskell-mode guide-key git-gutter-fringe+ fuzzy-match flycheck flx-ido expand-region ess ensime ecb counsel color-theme-solarized clj-refactor auctex ag ac-helm ac-cider)))
+ '(send-mail-function (quote mailclient-send-it))
+ '(show-paren-mode t)
+ '(show-trailing-whitespace t)
+ '(stack-trace-on-error t)
+ '(tab-width 4)
+ '(tool-bar-mode nil)
+ '(transient-mark-mode nil)
+ '(visible-bell 1))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

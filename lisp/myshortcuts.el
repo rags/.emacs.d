@@ -1,6 +1,8 @@
 (global-set-key [f1] help-map)
 (global-set-key [f11] 'toggle-frame-fullscreen)
 
+(global-set-key (kbd "C-e") 'my-end)
+(global-set-key (kbd "C-a") 'my-home)
 (global-set-key (kbd "M-c") 'capitalize-word)
 (global-set-key (kbd "C-z") 'copy-line)
 (global-set-key (kbd "M-RET") 'duplicate)
@@ -109,6 +111,6 @@
 (move-text-default-bindings)
 
 ;;works with guide-key-mode enabled. lists the options for the prefix
-(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x n" "C-c @" "C-c C-c" "C-x C-k" "C-c p" "C-c r" "C-c C-r" "C-c RET" "C-c C-m"))
+(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x n" "C-c @" "C-c C-c" "C-x C-k" "C-c p" "C-c r" "C-c C-r" "C-c RET" "C-c C-m" "C-c p s" "C-c p 4") )
 
 (provide 'myshortcuts)

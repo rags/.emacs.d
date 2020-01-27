@@ -167,6 +167,8 @@
   (setq-default inferior-R-program-name "R")
   (make-file-associations))
 
+(add-hook 'org-mode-hook 'hl-line-mode)
+
 (add-hook 'ecb-deactivate-hook
       (lambda ()
         (ecb-disable-advices 'ecb-winman-not-supported-function-advices t)))

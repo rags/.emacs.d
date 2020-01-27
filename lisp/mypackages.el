@@ -5,11 +5,11 @@
 ;; Install ELPA packages
 ;;TODO: remove unsed pacakges like ido, helm. use use-package with config, bind,init for all packages. So we have entore library config in one place
 (let* ((my-packages '(sml-mode magit smex  ecb  js3-mode js2-refactor
-                               mark-multiple flymake clojure-mode cider clj-refactor ac-cider guide-key
+                               mark-multiple flymake clojure-mode cider ac-cider guide-key
                                toggle-test ensime paredit smart-operator
                                json-mode expand-region
                                git-gutter-fringe+ flycheck tern tern-auto-complete key-chord
-                               yasnippet ag web-beautify haskell-mode js-comint 
+                               yasnippet ag web-beautify haskell-mode js-comint
                                 smartparens visual-regexp move-text ess vlf)))
   (dolist (package my-packages)
     (eval `(use-package ,package :ensure t))))
