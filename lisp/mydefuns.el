@@ -214,6 +214,10 @@ window.  Otherwise, goes to end of buffer."
      (message "Percentile %f is %f" percent num)
      num))
 
+(defun sudo-find-file (&optional initial-input)
+  (interactive)
+  (find-file (concat "/sudo::" (read-file-name "Sudo find file: "))))
+
 (provide 'mydefuns)
 
 

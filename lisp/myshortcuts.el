@@ -107,6 +107,7 @@
 (defalias 'rr 'vr/query-replace)
 (defalias 'gst 'magit-status)
 (defalias 'gl 'magit-log)
+(defalias 'su-ff 'sudo-find-file)
 
 (move-text-default-bindings)
 
