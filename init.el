@@ -134,6 +134,11 @@
   (global-font-lock-mode 1)
   (global-ede-mode t)
   (auto-complete-mode t)
+  (setq ivy-re-builders-alist
+      '((read-file-name-internal . ivy--regex-fuzzy)
+        (describe-variable . ivy--regex-ignore-order)
+        (counsel-M-x . ivy--regex-ignore-order)
+        (t . ivy--regex-plus)))
   (message "load all done")
   )
 
@@ -182,7 +187,7 @@
  '(kept-old-versions 2)
  '(package-selected-packages
    (quote
-    (avy web-beautify vlf visual-regexp use-package toggle-test tern-auto-complete sml-mode smex smartparens smart-operator projectile move-text mark-multiple magit key-chord json-mode js3-mode js2-refactor js-comint ido-vertical-mode haskell-mode guide-key git-gutter-fringe+ fuzzy-match flycheck flx-ido expand-region ess ensime ecb counsel color-theme-solarized clj-refactor auctex ag ac-helm ac-cider)))
+    (irony avy web-beautify vlf visual-regexp use-package toggle-test tern-auto-complete sml-mode smex smartparens smart-operator projectile move-text mark-multiple magit key-chord json-mode js3-mode js2-refactor js-comint ido-vertical-mode haskell-mode guide-key git-gutter-fringe+ fuzzy-match flycheck flx-ido expand-region ess ensime ecb counsel color-theme-solarized clj-refactor auctex ag ac-helm ac-cider)))
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-mode t)
  '(show-trailing-whitespace t)

@@ -19,6 +19,10 @@
 
 (defun make-file-associations ()
   (my-add-to-list 'auto-mode-alist
+                  '("\\.c$" . c++-mode)
+                  '("\\.h$" . c++-mode)
+                  '("\\.cpp$" . c++-mode)
+                  '("\\.hpp$" . c++-mode)
                   '("\\.clj$" . clojure-mode)
                   '("\\.html$" . nxml-mode)
                   '("\\.xml$" .  nxml-mode)
@@ -94,6 +98,13 @@
 	      (programming-modes)
 	      (paredit-mode))))
 
+(defun c++-stuff ()
+  (cmake-ide-setup)
+  (add-hook 'c++-mode-hook
+	    (lambda ()
+	      (programming-modes)
+          (infix-language-mode))))
+
 (defun clojure-stuff ()
   (require 'ac-cider)
   (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
@@ -160,7 +171,7 @@
   (xml-stuff)
   (git-stuff)
   (clojure-stuff)
-
+  (c++-stuff)
 
   (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
   (haskell-stuff)

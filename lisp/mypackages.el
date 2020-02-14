@@ -10,7 +10,7 @@
                                json-mode expand-region
                                git-gutter-fringe+ flycheck tern tern-auto-complete key-chord
                                yasnippet ag web-beautify haskell-mode js-comint
-                                smartparens visual-regexp move-text ess vlf)))
+                                smartparens visual-regexp move-text ess vlf rtags cmake-ide flx)))
   (dolist (package my-packages)
     (eval `(use-package ,package :ensure t))))
 
@@ -51,5 +51,27 @@
   :config  (projectile-global-mode)
   :bind (("C-x d" . projectile-find-dir)
          ("C-x f" . projectile-find-file)))
+
+(use-package irony
+  :hook ((c++-mode . irony-mode)
+	 (c-mode . irony-mode))
+  :defer t
+  :config
+  ;; counsel-irony setup
+  (define-key irony-mode-map
+      [remap completion-at-point] 'counsel-irony)
+  (define-key irony-mode-map
+      [remap complete-symbol] 'counsel-irony)
+  (irony-cdb-autosetup-compile-options)
+
+  (use-package irony-eldoc
+    :pin melpa
+    :hook (irony-mode . irony-eldoc))
+
+  (use-package flycheck-irony
+    :after flycheck
+    :hook (flycheck-mode . flycheck-irony-setup))
+)
+
 
 (provide 'mypackages)
