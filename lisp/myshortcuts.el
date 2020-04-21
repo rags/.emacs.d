@@ -51,7 +51,7 @@
 (global-set-key [remap eval-expression] 'pp-eval-expression)
 (global-set-key [remap eval-last-sexp] 'pp-eval-last-sexp)
 
-(js3r-add-keybindings-with-prefix "C-c C-m")
+;(js3r-add-keybindings-with-prefix "C-c C-m")
 
 (add-hook 'python-mode-hook
 	  (lambda ()
@@ -71,14 +71,15 @@
  (define-key scheme-mode-map (kbd "C-M-/") 'insert-lambda)))
 
 
-(add-hook 'js3-mode-hook
-	    (lambda ()
-	       (local-set-key "\C-x\C-e" 'js-send-last-sexp)
-	       (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
-	       (local-set-key "\C-cb" 'js-send-buffer)
-	       (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
-	       (local-set-key "\C-cl" 'js-require-file-and-go)))
-(key-chord-define js3-mode-map ";;" "\C-e;")
+;(add-hook 'js3-mode-hook
+;	    (lambda ()
+;	       (local-set-key "\C-x\C-e" 'js-send-last-sexp)
+;	       (local-set-key "\C-\M-x" 'js-send-last-sexp-and-go)
+;	       (local-set-key "\C-cb" 'js-send-buffer)
+;	       (local-set-key "\C-c\C-b" 'js-send-buffer-and-go)
+;	       (local-set-key "\C-cl" 'js-require-file-and-go)))
+
+;(key-chord-define js3-mode-map ";;" "\C-e;")
 
 (add-hook 'doc-view-mode-hook
  (lambda ()
@@ -93,6 +94,15 @@
             (cljr-add-keybindings-with-prefix "C-c C-m")))
 
 
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+            (define-key c++-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
+            (define-key c++-mode-map (kbd "M-,") 'rtags-find-references-at-point)
+            (define-key c++-mode-map (kbd "M-?") 'rtags-display-summary)
+            (define-key irony-mode-map [remap completion-at-point] 'counsel-irony)
+            (define-key irony-mode-map [remap complete-symbol] 'counsel-irony)
+            (rtags-enable-standard-keybindings)))
 ;;;;;;;;;;;;;;;;;;;;;;;;; keychords ;;;;;;;;;;;;;;;;;;;
 
  (key-chord-define-global "uu" 'undo)

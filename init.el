@@ -26,7 +26,7 @@
   (put 'narrow-to-region 'disabled nil)
   (put 'set-goal-column 'disabled nil)
   (show-paren-mode 1)
-  (if (boundp 'tool-bar-mode)  (tool-bar-mode -1))
+  (if (fboundp 'tool-bar-mode)  (tool-bar-mode -1))
   (setq frame-title-format "%b")
   (setq select-enable-clipboard t)
   (recentf-mode 1)
@@ -89,7 +89,7 @@
   (setq ag-highlight-search t)
 					;(color-theme-initialize)
 					;(color-theme-clarity)
-  (load-theme 'Darkula t)
+  (load-theme 'manoj-dark t)
   ;(set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 					;(set-default-font "-unknown-Inconsolata-bold-normal-normal-*-21-*-*-*-m-0-iso10646-1")
 					;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
@@ -152,7 +152,7 @@
   (menu-bar-mode 0)
   (global-font-lock-mode 1)
 					;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
-  (load-theme 'Darkula t)
+  (load-theme 'manoj-dark t)
   ;;   (set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
   )
 
@@ -169,6 +169,9 @@
  ;; If there is more than one, they won't work right.
  '(backup-by-copying t)
  '(backup-directory-alist (\` (("." . "~/.saves"))))
+ '(custom-safe-themes
+   (quote
+    ("41c8c11f649ba2832347fe16fe85cf66dafe5213ff4d659182e25378f9cfc183" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(delete-old-versions t)
  '(desktop-load-locked-desktop t)
  '(desktop-save-buffer nil t)
@@ -178,16 +181,11 @@
  '(inhibit-startup-screen t)
  '(initial-frame-alist (quote ((fullscreen . fullscreen))))
  '(initial-scratch-message nil)
- '(js3-auto-indent-p t)
- '(js3-consistent-level-indent-inner-bracket t)
- '(js3-enter-indents-newline t)
- '(js3-indent-level 4)
- '(js3-indent-on-enter-key t)
  '(kept-new-versions 6)
  '(kept-old-versions 2)
  '(package-selected-packages
    (quote
-    (irony avy web-beautify vlf visual-regexp use-package toggle-test tern-auto-complete sml-mode smex smartparens smart-operator projectile move-text mark-multiple magit key-chord json-mode js3-mode js2-refactor js-comint ido-vertical-mode haskell-mode guide-key git-gutter-fringe+ fuzzy-match flycheck flx-ido expand-region ess ensime ecb counsel color-theme-solarized clj-refactor auctex ag ac-helm ac-cider)))
+    (clang-format flycheck-irony irony-eldoc irony flx cmake-ide rtags web-beautify vlf visual-regexp use-package toggle-test tern-auto-complete sml-mode smex smartparens smart-operator projectile move-text mark-multiple magit key-chord json-mode js3-mode js2-refactor js-comint haskell-mode guide-key git-gutter-fringe git-gutter-fringe+ flycheck expand-region ess ecb darcula-theme counsel color-theme-solarized clj-refactor auctex ag ac-cider)))
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-mode t)
  '(show-trailing-whitespace t)

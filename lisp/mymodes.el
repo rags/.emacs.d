@@ -53,6 +53,8 @@
   (add-hook 'nxml-mode-hook (lambda ()
 			      (programming-modes))))
 (defun js-stuff()
+ (require 'js3-highlight-vars)
+ (require 'js3-refactor)
  (require 'js3-refactor)
  (custom-set-variables
  '(js3-auto-indent-p t)         ; it's nice for commas to right themselves.
@@ -99,11 +101,24 @@
 	      (paredit-mode))))
 
 (defun c++-stuff ()
+  (require 'rtags)
+  (require 'flycheck-rtags)
   (cmake-ide-setup)
+  (add-hook 'c++-mode-hook 'flycheck-mode)
+  (semantic-mode 1)
+  (eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (add-hook 'c++-mode-hook
 	    (lambda ()
 	      (programming-modes)
-          (infix-language-mode))))
+          (infix-language-mode)
+          (semantic-mode 1)
+          (flycheck-select-checker 'rtags)
+          (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
+          (setq-local flycheck-check-syntax-automatically nil)
+          (add-hook 'before-save-hook 'clang-format-buffer t t)
+          )))
 
 (defun clojure-stuff ()
   (require 'ac-cider)
@@ -161,11 +176,9 @@
 (defun setup-programming-modes ()
   (require 'clojure-mode)
   (require 'paredit)
-  (require 'js3-highlight-vars)
-  (require 'js3-refactor)
 
   (python-stuff)
-  (js-stuff)
+  ;(js-stuff)
   (elisp-stuff)
   (LaTeX-stuff)
   (xml-stuff)
@@ -173,8 +186,8 @@
   (clojure-stuff)
   (c++-stuff)
 
-  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-  (haskell-stuff)
+  ;(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+  ;(haskell-stuff)
   (setq-default inferior-R-program-name "R")
   (make-file-associations))
 

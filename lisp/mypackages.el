@@ -4,18 +4,29 @@
 
 ;; Install ELPA packages
 ;;TODO: remove unsed pacakges like ido, helm. use use-package with config, bind,init for all packages. So we have entore library config in one place
-(let* ((my-packages '(sml-mode magit smex  ecb  js3-mode js2-refactor
-                               mark-multiple flymake clojure-mode cider ac-cider guide-key
-                               toggle-test ensime paredit smart-operator
-                               json-mode expand-region
-                               git-gutter-fringe+ flycheck tern tern-auto-complete key-chord
-                               yasnippet ag web-beautify haskell-mode js-comint
-                                smartparens visual-regexp move-text ess vlf rtags cmake-ide flx)))
+(let* ((my-packages '(sml-mode magit smex  ecb
+                               ;;javascript
+                               js3-mode js2-refactor tern tern-auto-complete js-comint 
+                               mark-multiple flymake
+                               ;;clojure
+                               clojure-mode cider clj-refactor ac-cider
+                               guide-key toggle-test  paredit smart-operator
+                               json-mode expand-region darcula-theme
+                               flycheck key-chord
+                               yasnippet ag web-beautify haskell-mode
+                               smartparens visual-regexp move-text ess vlf flx
+                               ;;c++ packages
+                               rtags cmake-ide irony irony-eldoc flycheck-irony clang-format srefactor
+                               )))
   (dolist (package my-packages)
     (eval `(use-package ,package :ensure t))))
 
 
 
+(use-package git-gutter-fringe+
+  :init (unless (fboundp 'define-fringe-bitmap)
+          (defun define-fringe-bitmap (&rest _)
+            nil)))
 
 (use-package tex  :ensure auctex)
 (use-package color-theme-solarized  :ensure t :no-require t :defer t)
