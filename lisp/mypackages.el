@@ -16,7 +16,9 @@
                                yasnippet ag web-beautify haskell-mode
                                smartparens visual-regexp move-text ess vlf flx
                                ;;c++ packages
-                               rtags cmake-ide irony irony-eldoc flycheck-irony clang-format srefactor
+                               rtags cmake-ide irony irony-eldoc flycheck-irony clang-format srefactor flycheck-rtags
+                               ;;python
+                               elpy jedi
                                )))
   (dolist (package my-packages)
     (eval `(use-package ,package :ensure t))))
@@ -39,7 +41,7 @@
              :bind (("C-s" . swiper)
                     ("<f6>" . ivy-resume)
                     ("M-x" . counsel-M-x)
-                    ("C-x C-r" . ivy-recentf)
+                    ("C-x C-r" . counsel-recentf)
                     ("C-x C-f" . counsel-find-file)
                     ("<f1> f" . counsel-describe-function)
                     ("<f1> v" . counsel-describe-variable)

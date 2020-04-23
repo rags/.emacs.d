@@ -185,7 +185,7 @@
  '(kept-old-versions 2)
  '(package-selected-packages
    (quote
-    (clang-format flycheck-irony irony-eldoc irony flx cmake-ide rtags web-beautify vlf visual-regexp use-package toggle-test tern-auto-complete sml-mode smex smartparens smart-operator projectile move-text mark-multiple magit key-chord json-mode js3-mode js2-refactor js-comint haskell-mode guide-key git-gutter-fringe git-gutter-fringe+ flycheck expand-region ess ecb darcula-theme counsel color-theme-solarized clj-refactor auctex ag ac-cider)))
+    (elpy ropemacs git-gutter clang-format flycheck-irony irony-eldoc irony flx cmake-ide rtags web-beautify vlf visual-regexp use-package toggle-test tern-auto-complete sml-mode smex smartparens smart-operator projectile move-text mark-multiple magit key-chord json-mode js3-mode js2-refactor js-comint haskell-mode guide-key git-gutter-fringe git-gutter-fringe+ flycheck expand-region ess ecb darcula-theme counsel color-theme-solarized clj-refactor auctex ag ac-cider)))
  '(send-mail-function (quote mailclient-send-it))
  '(show-paren-mode t)
  '(show-trailing-whitespace t)

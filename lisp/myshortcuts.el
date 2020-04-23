@@ -61,6 +61,7 @@
 	      'balle-python-shift-left)
         (define-key python-mode-map (kbd "M-/") 'dabbrev-expand)
         (define-key python-mode-map (kbd "C-c t") 'tgt-toggle)
+        (define-key python-mode-map (kbd "M-.") 'jedi:goto-definition)
         )
 ;	    (define-key smart-operator-mode-map  "." 'disable-smart-op)
 	  )

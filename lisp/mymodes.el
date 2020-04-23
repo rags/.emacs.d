@@ -1,19 +1,26 @@
 (require 'mydefuns)
 (defun  python-stuff ()
+  ;; to setup ropemacs:
+  ;; wget https://github.com/dgentry/Pymacs/raw/master/install-pymacs.sh
+  ;; source install-pymacs.sh
+  (require 'pymacs)
+  (pymacs-load "ropemacs" "rope-")
   ;(epy-setup-ipython)
   ;(epy-setup-checker "pyflakes %f")
   (setq ropemacs-enable-autoimport 't)
   (setq ropemacs-autoimport-modules '("os" "shutil" "logging"))
-
+  (setq jedi:complete-on-dot t)
+  
   (add-hook 'python-mode-hook
 	    (lambda ()
+          (enable-elpy)
 	      (infix-language-mode)
 	      (local-unset-key ".")
 	      (setq-default tab-width 4)
 	      (setq-default python-indent-offset 4)
 	      (setq outline-regexp " *\\(def \\|clas\\|#hea\\)")
-					;(hide-sublevels 1)
-
+                                        ;(hide-sublevels 1)
+          (jedi:setup)
 	      (setq ropemacs-goto-def-newwin t)
 	      )))
 
@@ -117,7 +124,7 @@
           (flycheck-select-checker 'rtags)
           (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
           (setq-local flycheck-check-syntax-automatically nil)
-          (add-hook 'before-save-hook 'clang-format-buffer t t)
+          ;(add-hook 'before-save-hook 'clang-format-buffer t t)
           )))
 
 (defun clojure-stuff ()

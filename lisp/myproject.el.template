@@ -1,5 +1,5 @@
-(setq default-directory "~/projects/hagglev1")
-(rope-open-project "~/projects/hagglev1")
+(setq default-directory "~/dory")
+(rope-open-project "~/dory")
 
 (setenv "SHELL" "/usr/bin/logbash")
 (add-to-list 'ede-project-directories "/home/raghunr/ws/blast-client/src") 
