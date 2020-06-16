@@ -119,7 +119,7 @@
   (add-hook 'c++-mode-hook
 	    (lambda ()
 	      (programming-modes)
-          (infix-language-mode)
+          ;(infix-language-mode)
           (semantic-mode 1)
           (flycheck-select-checker 'rtags)
           (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
