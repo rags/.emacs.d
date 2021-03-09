@@ -116,14 +116,16 @@
   (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  ;(setq rtags-autostart-diagnostics t)
   (add-hook 'c++-mode-hook
 	    (lambda ()
 	      (programming-modes)
           ;(infix-language-mode)
           (semantic-mode 1)
           (flycheck-select-checker 'rtags)
-          (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
-          (setq-local flycheck-check-syntax-automatically nil)
+          (setq flycheck-clang-language-standard "c++17")
+          (setq-local flycheck-highlighting-mode 'symbols) ;; RTags creates more accurate overlays.
+          (setq-local flycheck-check-syntax-automatically '(save new-line))
           ;(add-hook 'before-save-hook 'clang-format-buffer t t)
           )))
 

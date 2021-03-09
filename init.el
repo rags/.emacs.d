@@ -21,6 +21,7 @@
    '(visible-bell 1)
    '(transient-mark-mode nil)
    '(show-trailing-whitespace t)
+   '(py-load-pymacs-p nil)
    '(stack-trace-on-error t))
 
   (put 'narrow-to-region 'disabled nil)

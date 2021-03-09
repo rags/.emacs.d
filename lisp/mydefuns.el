@@ -218,6 +218,11 @@ window.  Otherwise, goes to end of buffer."
   (interactive)
   (find-file (concat "/sudo::" (read-file-name "Sudo find file: "))))
 
+(defun diff ()
+  (interactive)
+  (diff-buffer-with-file))
+
+
 (provide 'mydefuns)
 
 
