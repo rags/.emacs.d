@@ -4,13 +4,13 @@
 
 ;; Install ELPA packages
 ;;TODO: remove unsed pacakges like ido, helm. use use-package with config, bind,init for all packages. So we have entore library config in one place
-(let* ((my-packages '(sml-mode magit smex  ecb
+(let* ((my-packages '(sml-mode magit smex  ;;ecb
                                ;;javascript
                                js3-mode js2-refactor tern tern-auto-complete js-comint 
                                mark-multiple flymake
                                ;;clojure
                                clojure-mode cider clj-refactor ac-cider
-                               guide-key toggle-test  paredit smart-operator
+                               guide-key toggle-test  paredit py-smart-operator
                                json-mode expand-region darcula-theme
                                flycheck key-chord
                                yasnippet ag web-beautify haskell-mode
@@ -31,7 +31,7 @@
             nil)))
 
 (use-package tex  :ensure auctex)
-(use-package color-theme-solarized  :ensure t :no-require t :defer t)
+(use-package solarized-theme  :ensure t :no-require t :defer t)
 (use-package counsel
              :ensure t
              :init (progn

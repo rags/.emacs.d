@@ -52,7 +52,7 @@
   (add-to-list 'package-archives
 	       '("marmalade" . "http://marmalade-repo.org/packages/"))
   (add-to-list 'package-archives
-	       '("melpa" . "http://melpa.milkbox.net/packages/"))
+	       '("melpa" . "https://melpa.org/packages/"))
   (package-initialize)
 
   (if (not (package-installed-p 'use-package))
@@ -61,7 +61,7 @@
 
  (let* ((emacs.d "~/.emacs.d/") (plugins-dir  (concat emacs.d "plugins/")))
     (load-file (concat plugins-dir "cua-emul.el"))
-    (load-file (concat plugins-dir "encrypt.el"))
+    ;(load-file (concat plugins-dir "encrypt.el"))
 					;(load-file (concat plugins-dir "flymake.el"))
 					;(load-file (concat plugins-dir "paredit.el"))
     ;(load-file (concat plugins-dir "emacs-for-python/epy-init.el"))
@@ -90,12 +90,12 @@
   (setq ag-highlight-search t)
 					;(color-theme-initialize)
 					;(color-theme-clarity)
-  (load-theme 'manoj-dark t)
+  (load-theme 'solarized-gruvbox-dark t)
   ;(set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 					;(set-default-font "-unknown-Inconsolata-bold-normal-normal-*-21-*-*-*-m-0-iso10646-1")
 					;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
 
-  (require 'ecb)
+;  (require 'ecb)
   (require 'window-numbering)
   (window-numbering-mode 1)
   (smex-initialize)
@@ -153,7 +153,7 @@
   (menu-bar-mode 0)
   (global-font-lock-mode 1)
 					;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
-  (load-theme 'manoj-dark t)
+  (load-theme 'solarized-gruvbox-dark t)
   ;;   (set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
   )
 
@@ -169,25 +169,24 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(backup-by-copying t)
- '(backup-directory-alist (\` (("." . "~/.saves"))))
+ '(backup-directory-alist `(("." . "~/.saves")))
  '(custom-safe-themes
-   (quote
-    ("41c8c11f649ba2832347fe16fe85cf66dafe5213ff4d659182e25378f9cfc183" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
+   '("51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "13a8eaddb003fd0d561096e11e1a91b029d3c9d64554f8e897b2513dbf14b277" "830877f4aab227556548dc0a28bf395d0abe0e3a0ab95455731c9ea5ab5fe4e1" "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" "79586dc4eb374231af28bbc36ba0880ed8e270249b07f814b0e6555bdcb71fab" "41c8c11f649ba2832347fe16fe85cf66dafe5213ff4d659182e25378f9cfc183" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default))
  '(delete-old-versions t)
  '(desktop-load-locked-desktop t)
  '(desktop-save-buffer nil t)
- '(ediff-split-window-function (quote split-window-horizontally))
- '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(ediff-split-window-function 'split-window-horizontally)
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(initial-frame-alist (quote ((fullscreen . fullscreen))))
+ '(initial-frame-alist '((fullscreen . fullscreen)))
  '(initial-scratch-message nil)
  '(kept-new-versions 6)
  '(kept-old-versions 2)
  '(package-selected-packages
-   (quote
-    (elpy ropemacs git-gutter clang-format flycheck-irony irony-eldoc irony flx cmake-ide rtags web-beautify vlf visual-regexp use-package toggle-test tern-auto-complete sml-mode smex smartparens smart-operator projectile move-text mark-multiple magit key-chord json-mode js3-mode js2-refactor js-comint haskell-mode guide-key git-gutter-fringe git-gutter-fringe+ flycheck expand-region ess ecb darcula-theme counsel color-theme-solarized clj-refactor auctex ag ac-cider)))
- '(send-mail-function (quote mailclient-send-it))
+   '(elpy ropemacs git-gutter clang-format flycheck-irony irony-eldoc irony flx cmake-ide rtags web-beautify vlf visual-regexp use-package toggle-test tern-auto-complete sml-mode smex smartparens smart-operator projectile move-text mark-multiple magit key-chord json-mode js3-mode js2-refactor js-comint haskell-mode guide-key git-gutter-fringe git-gutter-fringe+ flycheck expand-region ess ecb darcula-theme counsel color-theme-solarized clj-refactor auctex ag ac-cider))
+ '(py-load-pymacs-p nil)
+ '(send-mail-function 'mailclient-send-it)
  '(show-paren-mode t)
  '(show-trailing-whitespace t)
  '(stack-trace-on-error t)
