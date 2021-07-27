@@ -90,7 +90,13 @@
   (setq ag-highlight-search t)
 					;(color-theme-initialize)
 					;(color-theme-clarity)
+<<<<<<< HEAD
   (load-theme 'solarized-gruvbox-dark t)
+=======
+  ;(load-theme 'solarized-gruvbox-dark t)
+  ;(load-theme 'solarized-dark-high-contrast t)
+  (load-theme 'manoj-dark t)
+>>>>>>> remove pymacs
   ;(set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 					;(set-default-font "-unknown-Inconsolata-bold-normal-normal-*-21-*-*-*-m-0-iso10646-1")
 					;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
@@ -153,7 +159,9 @@
   (menu-bar-mode 0)
   (global-font-lock-mode 1)
 					;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
-  (load-theme 'solarized-gruvbox-dark t)
+                                        ;(load-theme 'solarized-gruvbox-dark t)
+  (load-theme 'solarized-dark-high-contrast t)
+;  (load-theme 'darcula t)
   ;;   (set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
   )
 
@@ -171,6 +179,7 @@
  '(backup-by-copying t)
  '(backup-directory-alist `(("." . "~/.saves")))
  '(custom-safe-themes
+
    '("51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "13a8eaddb003fd0d561096e11e1a91b029d3c9d64554f8e897b2513dbf14b277" "830877f4aab227556548dc0a28bf395d0abe0e3a0ab95455731c9ea5ab5fe4e1" "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" "79586dc4eb374231af28bbc36ba0880ed8e270249b07f814b0e6555bdcb71fab" "41c8c11f649ba2832347fe16fe85cf66dafe5213ff4d659182e25378f9cfc183" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default))
  '(delete-old-versions t)
  '(desktop-load-locked-desktop t)

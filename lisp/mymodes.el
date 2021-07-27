@@ -3,17 +3,23 @@
   ;; to setup ropemacs:
   ;; wget https://github.com/dgentry/Pymacs/raw/master/install-pymacs.sh
   ;; source install-pymacs.sh
-  (require 'pymacs)
-  (pymacs-load "ropemacs" "rope-")
+  ;(require 'pymacs)
+  ;(pymacs-load "ropemacs" "rope-")
   ;(epy-setup-ipython)
   ;(epy-setup-checker "pyflakes %f")
-  (setq ropemacs-enable-autoimport 't)
-  (setq ropemacs-autoimport-modules '("os" "shutil" "logging"))
+  ;(setq ropemacs-enable-autoimport 't)
+  ;(setq ropemacs-autoimport-modules '("os" "shutil" "logging"))
   (setq jedi:complete-on-dot t)
+  (setq elpy-rpc-python-command "python3.7")
+  (elpy-enable)
+  (setq elpy-rpc-backend "jedi")
+  (when (require 'flycheck nil t)
+    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode))
+
   
   (add-hook 'python-mode-hook
 	    (lambda ()
-          (enable-elpy)
 	      (infix-language-mode)
 	      (local-unset-key ".")
 	      (setq-default tab-width 4)
@@ -21,7 +27,7 @@
 	      (setq outline-regexp " *\\(def \\|clas\\|#hea\\)")
                                         ;(hide-sublevels 1)
           (jedi:setup)
-	      (setq ropemacs-goto-def-newwin t)
+	      ;(setq ropemacs-goto-def-newwin t)
 	      )))
 
 (defun make-file-associations ()
