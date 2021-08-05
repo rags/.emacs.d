@@ -19,6 +19,8 @@
                                rtags cmake-ide irony irony-eldoc flycheck-irony clang-format srefactor flycheck-rtags
                                ;;python
                                elpy jedi
+                               ;;completions
+                               ivy-hydra
                                )))
   (dolist (package my-packages)
     (eval `(use-package ,package :ensure t))))
