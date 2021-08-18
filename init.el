@@ -90,13 +90,8 @@
   (setq ag-highlight-search t)
 					;(color-theme-initialize)
 					;(color-theme-clarity)
-<<<<<<< HEAD
+
   (load-theme 'solarized-gruvbox-dark t)
-=======
-  ;(load-theme 'solarized-gruvbox-dark t)
-  ;(load-theme 'solarized-dark-high-contrast t)
-  (load-theme 'manoj-dark t)
->>>>>>> remove pymacs
   ;(set-frame-font "-unknown-Liberation Mono-bold-normal-normal-*-15-*-*-*-m-0-iso10646-1")
 					;(set-default-font "-unknown-Inconsolata-bold-normal-normal-*-21-*-*-*-m-0-iso10646-1")
 					;(set-default-font "-unknown-FreeMono-bold-normal-normal-*-19-*-*-*-m-0-iso10646-1")
@@ -115,7 +110,7 @@
 
   (guide-key-mode t)
 
-  (add-hook 'after-make-frame-functions 'client-initialization)
+  ;(add-hook 'after-make-frame-functions 'client-initialization)
   (require 'auto-complete-config)
   (ac-config-default)
   (key-chord-mode t)
