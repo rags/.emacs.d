@@ -1,4 +1,9 @@
 (require 'mydefuns)
+
+(defun setup-fci ()
+  (setq-default fill-column 79)
+  (display-fill-column-indicator-mode t))
+
 (defun  python-stuff ()
   ;; to setup ropemacs:
   ;; wget https://github.com/dgentry/Pymacs/raw/master/install-pymacs.sh
@@ -17,10 +22,10 @@
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
     (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-  
   (add-hook 'python-mode-hook
 	    (lambda ()
-	      (infix-language-mode)
+          (setup-fci)
+          (infix-language-mode)
 	      (local-unset-key ".")
 	      (setq-default tab-width 4)
 	      (setq-default python-indent-offset 4)
@@ -126,6 +131,7 @@
   (add-hook 'c++-mode-hook
 	    (lambda ()
 	      (programming-modes)
+          (setup-fci)
           ;(infix-language-mode)
           (semantic-mode 1)
           (flycheck-select-checker 'rtags)
